@@ -65,7 +65,7 @@ Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Dev
 ## 7. Submission requirements: all five are required, missing any one = not eligible
 
 - [x] ✅ 1. Public GitHub repository, source code + README (what it does, how to run it, which AI tools it uses). Repo: https://github.com/Daimx1214/learnify-ai, PUBLIC, main branch, MIT. Live site link and demo video link are in the README.
-- [x] ✅ 2. Demo video, YouTube, **4:02 (under 6 minutes)**, unlisted, shows the project working (not just slides). https://www.youtube.com/watch?v=vswKBBOw1RE, upload verified, playback confirmed. Link is in the README + Devpost draft.
+- [x] ✅ 2. Demo video, YouTube,  **4:18 (under 6 minutes)**, unlisted, shows the project working (not just slides). https://www.youtube.com/watch?v=20ow05Vy30A, upload verified, playback confirmed, audio heard. Link is in the README + Devpost draft.
 - [ ] ⏳ 3. Project description, Devpost form completed: name, problem, how it solves it, how it uses AI, what was learned, what to build next. Draft ready in `docs/DEVPOST_DRAFT.md`. Not submitted yet.
 - [x] ✅ 4. Track selection, Education, stated in the additional-details question / public description (draft)
 - [x] ✅ 5. Team members, solo: Daim Ali only, added on the submission
@@ -78,7 +78,7 @@ Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Dev
 - [x] ✅ Use of AI (20%), disclosed coding assistance + offline baseline + evidence check + measured comparison (45/45 verified, 0 numbers changed)
 - [x] ✅ Functionality (20%), works as shown; 40/40 tests pass; offline fallback so it never breaks on camera; live browser click-through passed (quiz 5/5, evidence highlight, flashcards, download); demo video recorded from the live site
 - [ ] ⚠️ Learning and Growth (20%), concrete "what I learned" in README/Devpost (5 points, incl. real bugs found); **no student test run yet (0 students, not 3)**, honestly stated everywhere; weakens this score but is not a disqualifier
-- [ ] ⏳ Presentation (20%), demo video recorded + uploaded (4:02, unlisted) + Demo Day presentation (see §10)
+- [ ] ⏳ Presentation (20%), demo video recorded + uploaded (4:18, unlisted) + Demo Day presentation (see §10)
 
 Tie-break: higher Problem and Impact score wins. All judging decisions are final.
 
@@ -106,7 +106,7 @@ Tie-break: higher Problem and Impact score wins. All judging decisions are final
 - Eval: 5 samples × 13 languages = 65 runs, **325/325 quiz items evidence-verified (100%)**, **75/75 unique quiz answers manually checked correct**, **0 explanations changed a number/formula**, median engine time **about 1-2 ms (varies run to run; latest median of medians 1.24 ms)**
 - AI mode (measured live, five runs on 21 Nov): run 1, AI 6/9, fallback 3/9; run 2, AI 8/9, fallback 1/9; run 3 (all 13 languages), AI 26/39, fallback 13/39; run 4 (all 13 languages, 5 samples, retry + language check), AI 63/65, fallback 2/65; run 5 (same, retry-after-rejection + English script check), AI 59/65, fallback 6/65; **0 numbers changed in 187 runs, quiz 935/935 verified**, AI answers in about 0.3-7 s. Quirks: one Roman Urdu AI explanation had a garbled phrase; one cells/english explanation came back in Urdu script (this motivated the English script check); one Hindi cells explanation had a grammar slip. Numbers still exact in all cases.
 - Student clarity rating: **not measured** (no student test)
-- Serving check: live site https://daimx1214.github.io/learnify-ai/ HTTP 200; repo public at https://github.com/Daimx1214/learnify-ai; demo video https://www.youtube.com/watch?v=vswKBBOw1RE (4:02, unlisted, playback verified). In AI mode the app calls text.pollinations.ai (free, no key); offline mode sends nothing anywhere. No keys, no personal data (secrets scan: zero hits). Live click-through 21 Nov ~18:15 PKT (Spanish + Arabic, browser task): dropdown shows all 13 options in 4 groups; Spanish quiz Q1 "Completa el espacio en blanco: …" + glossary "corriente, …" correct, AI explanation in Spanish; Arabic quiz Q1 "املأ الفراغ: …" + glossary "التيار الكهربائي, …" correct, RTL right-aligned, flashcards flip with Arabic progress line. One quirk: the AI explanation's middle sentences stayed in English in both languages (free-AI wording, not a code bug); section headings stay in English by design.
+- Serving check: live site https://daimx1214.github.io/learnify-ai/ HTTP 200; repo public at https://github.com/Daimx1214/learnify-ai; demo video https://www.youtube.com/watch?v=20ow05Vy30A (4:18, unlisted, playback verified, audio heard). In AI mode the app calls text.pollinations.ai (free, no key); offline mode sends nothing anywhere. No keys, no personal data (secrets scan: zero hits). Live click-through 21 Nov ~18:15 PKT (Spanish + Arabic, browser task): dropdown shows all 13 options in 4 groups; Spanish quiz Q1 "Completa el espacio en blanco: …" + glossary "corriente, …" correct, AI explanation in Spanish; Arabic quiz Q1 "املأ الفراغ: …" + glossary "التيار الكهربائي, …" correct, RTL right-aligned, flashcards flip with Arabic progress line. One quirk: the AI explanation's middle sentences stayed in English in both languages (free-AI wording, not a code bug); section headings stay in English by design.
 
 ## 12. Honest limits: must stay in README / Devpost / video (do not hide)
 
@@ -116,7 +116,7 @@ Tie-break: higher Problem and Impact score wins. All judging decisions are final
 - No student test run (0 students).
 - Urdu seed-glossary spellings have not been personally verified by Daim yet.
 - New-language glossary meanings (beyond Urdu and Roman Urdu) are standard dictionary translations of common STEM terms, not yet reviewed by native speakers.
-- The demo video (4:02) was recorded before the 13-language round and the two new samples, it shows Roman Urdu and 3 samples only. Re-record after everything is final, per Daim's order (21 Nov evening).
+- The demo video v3 (4:18, https://www.youtube.com/watch?v=20ow05Vy30A) was re-recorded 21 Nov evening on Daim.s order and shows the final version: Learnify AI name + tagline, 13 languages, 5 samples. The old v2 video (4:02, Roman Urdu only, 3 samples) is superseded.
 - The free AI sometimes mistranslates STEM terms in Arabic (seen live 21 Nov: "hypotenuse" rendered as "الضلع المستقيم" instead of "الوتر"), the checked glossary shows the correct term; the script check verifies the script, not the translation.
 
 ## 13. QA fixes already applied (21 Nov, re-tested)
@@ -180,7 +180,7 @@ Ninth fix (21 Nov evening, user: "chalo video banao final version wali", name Le
 
 ## 14. What is left: in order
 
-1. **Repo and live site, DONE**: public GitHub repo, GitHub Pages live. **Demo video RE-RECORDED 21 Nov evening (final v3, 4:18, learnify-ai-demo.mp4 in ~/workspace/tmp/samajh-video/)**: shows Learnify AI name + tagline, 13 languages, 5 samples, AI mode + offline fallback, quiz with evidence, flashcards, study sheet download. **Upload to YouTube unlisted PENDING (browser task)**, then update README + Devpost draft with the NEW video URL (old video https://www.youtube.com/watch?v=vswKBBOw1RE still linked until then).
+1. **Repo and live site, DONE**: public GitHub repo, GitHub Pages live. **Demo video RE-RECORDED 21 Nov evening (final v3, 4:18, learnify-ai-demo.mp4 in ~/workspace/tmp/samajh-video/)**: shows Learnify AI name + tagline, 13 languages, 5 samples, AI mode + offline fallback, quiz with evidence, flashcards, study sheet download.  **Uploaded to YouTube unlisted 21 Nov ~20:00 PKT: https://www.youtube.com/watch?v=20ow05Vy30A (4:18, playback + audio verified). README + Devpost draft updated to the new URL (commit a98a98c).**
 2. **Daim's own review** (review-before-submit rule): especially the Urdu seed-glossary spellings, the new-language meanings, and the "What I learned" wording.
 3. **Submit on Devpost** by 30 Nov 9:59 AM PKT (aim 60-90 min early), reopen and verify "submitted", not draft.
 4. **Demo Day**: check Discord for the new date/slot/link (was 24 Nov before the extension); present live or prerecorded; then request the Certificate of Participation and follow the private .xyz domain instructions.
