@@ -42,4 +42,4 @@ HTML, CSS, JavaScript (no framework, no build step, no server). Fonts: Source Se
 
 - GitHub: https://github.com/Daimx1214/learnify-ai
 - Live site: https://daimx1214.github.io/learnify-ai/
-- Demo video: https://www.youtube.com/watch?v=vswKBBOw1RE (4:02, unlisted)
+- Demo video: https://www.youtube.com/watch?v=20ow05Vy30A (4:02, unlisted)
