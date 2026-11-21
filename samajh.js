@@ -1,22 +1,29 @@
 /**
- * Samajh — core logic (offline, rule-based engine).
+ * Samajh — core logic.
  *
- * No network, no API key, no external calls. Everything here runs in the
- * browser (or in Node for the tests). The provider adapter at the bottom is
- * a documented stub: PROVIDER = 'none'. A future LLM can plug in there;
- * nothing in this file calls any external API.
+ * Two engines, one result shape:
+ *  - AI mode (default): the explanation and one-line takeaway come from a
+ *    free LLM — Pollinations text API, model "openai", no API key, no
+ *    sign-up, no text stored by Samajh. Tested live 21 Nov 2026 (see
+ *    docs/AI_LOG.md). The AI output is CHECKED before it is shown: any
+ *    number or formula in it that is not in the passage makes the app
+ *    discard the AI explanation and keep the offline one.
+ *  - Offline mode: a rule-based extractive engine. Used when AI mode is
+ *    off, when the AI call fails, or when the AI output fails validation.
  *
- * Honest limits: the offline engine is EXTRACTIVE. It re-uses sentences
- * from the passage itself, so it cannot translate a whole passage into
- * Roman Urdu or Urdu script. What it does in the chosen language is the
- * glossary (checked seed translations) and the quiz wording. The UI says
- * this plainly. Numbers and formulas are never reworded: they are copied
- * from the passage, so they cannot change.
+ * The quiz and glossary are ALWAYS built offline, whatever the mode:
+ * every quiz answer must quote an exact sentence from the passage, and
+ * glossary translations come only from the checked seed list — the AI
+ * never invents a translation or a quiz answer.
  */
 
 export const MIN_CHARS = 30;
 export const MAX_CHARS = 2500;
-export const PROVIDER = 'none';
+// Free LLM, no key: Pollinations text API (https://text.pollinations.ai).
+// POST with {messages, model, jsonMode}. No sign-up, no key stored anywhere.
+export const PROVIDER = 'pollinations';
+export const AI_ENDPOINT = 'https://text.pollinations.ai/';
+export const AI_MODEL = 'openai';
 
 // ---------------------------------------------------------------------------
 // Small word lists
@@ -528,37 +535,124 @@ export function buildStudySheet(result, passage, level, language) {
       '',
     ]),
     '---',
-    'Made with Samajh (STEM2Connect AI Hackathon 2026, Education track). Offline mode: no API key was used.',
+    'Made with Samajh (STEM2Connect AI Hackathon 2026, Education track). ' +
+      (result.mode === 'ai'
+        ? 'AI mode: explanation by Pollinations (free, no key); quiz and glossary checked offline against the passage.'
+        : 'Offline mode: no AI call was made; the explanation re-uses sentences from the passage.'),
   ];
   return lines.join('\n');
 }
 
 // ---------------------------------------------------------------------------
-// Provider adapter stub (F7) — documented, never called with a key
+// AI provider — Pollinations (free, no key) — F7
 // ---------------------------------------------------------------------------
 
 export function getProviderInfo() {
   return {
-    provider: PROVIDER, // 'none' — see README / docs/AI_LOG.md
-    model: null,
-    reason: 'no API key — works without one',
-    callsExternalApi: false,
-    // To plug in a future LLM, implement callProvider() to return the same
-    // shape offlineEngine() returns, then set PROVIDER and validate its
-    // output with checkEvidence() before rendering. No key is stored here.
+    provider: PROVIDER, // 'pollinations' — free text API, no key, no sign-up
+    model: AI_MODEL,
+    endpoint: AI_ENDPOINT,
+    reason: 'AI explanation via Pollinations (free, no key); quiz and glossary always checked offline',
+    callsExternalApi: true,
+    keyRequired: false,
+    // The passage IS sent to Pollinations when AI mode is on (that is how
+    // an LLM explains it). Nothing is stored by Samajh; do not paste
+    // personal information. AI mode can be switched off for a fully
+    // offline run that sends nothing anywhere.
   };
 }
 
-export async function callProvider() {
-  throw new Error('No AI provider configured (PROVIDER=none). Use offlineEngine() instead.');
+function aiLanguageInstruction(language) {
+  if (language === 'roman') return 'Write the explanation and takeaway in Roman Urdu (Urdu written in Latin letters, as Pakistani students speak it). Keep STEM terms in English where students normally say them in English (current, voltage, resistance).';
+  if (language === 'urdu') return 'Write the explanation and takeaway in Urdu script (Nastaliq). Keep STEM terms in English where students normally say them in English.';
+  return 'Write the explanation and takeaway in simple English, short sentences, Class 9 level.';
 }
 
-export function runPipeline(passage, level, language) {
-  // Single entry point the UI uses. With PROVIDER=none this always takes
-  // the offline path — the hackathon's API-credit exception, stated honestly.
-  const info = getProviderInfo();
-  if (info.provider === 'none') {
-    return { result: offlineEngine(passage, level, language), mode: 'offline', reason: info.reason };
+export function buildAiPrompt(passage, level, language) {
+  return {
+    system: 'You are Samajh, a study helper for Pakistani school students. Reply with valid JSON only. No markdown, no extra text, no code fences.',
+    user: `${aiLanguageInstruction(language)}\nLevel: ${level}.\nRules: use ONLY facts, numbers and formulas from the passage below. Do not add facts from outside it. Do not change any number or formula — copy them exactly as written. Keep the explanation to 2–4 short sentences.\nPassage:\n${passage}\n\nReply as JSON: {"explanation": "...", "takeaway": "..."} where takeaway is one sentence that sums the passage up.`,
+  };
+}
+
+export function parseAiResponse(rawText) {
+  const cleaned = (rawText ?? '').trim().replace(/^```(?:json)?/i, '').replace(/```$/i, '').trim();
+  const parsed = JSON.parse(cleaned);
+  if (!parsed || typeof parsed.explanation !== 'string' || typeof parsed.takeaway !== 'string') {
+    throw new Error('AI reply was not the expected JSON shape.');
   }
-  throw new Error(`Provider "${info.provider}" is not implemented in this build.`);
+  const explanation = parsed.explanation.trim();
+  const takeaway = parsed.takeaway.trim();
+  if (explanation.length < 30 || takeaway.length < 10) {
+    throw new Error('AI reply was too short to use.');
+  }
+  return { explanation, takeaway, explanationSentences: splitSentences(explanation) };
+}
+
+export async function callProvider(passage, level = 'class9', language = 'english', fetchImpl) {
+  const fetchFn = fetchImpl || (typeof fetch !== 'undefined' ? fetch : null);
+  if (!fetchFn) throw new Error('No fetch available for the AI provider.');
+  const prompt = buildAiPrompt(passage, level, language);
+  const res = await fetchFn(AI_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      messages: [
+        { role: 'system', content: prompt.system },
+        { role: 'user', content: prompt.user },
+      ],
+      model: AI_MODEL,
+      jsonMode: true,
+    }),
+  });
+  if (!res || !res.ok) throw new Error(`AI provider returned ${res ? res.status : 'no response'}.`);
+  const text = typeof res.text === 'function' ? await res.text() : JSON.stringify(await res.json());
+  return parseAiResponse(text);
+}
+
+// AI engine: offline result as the base (quiz + glossary always offline),
+// AI explanation swapped in only if it passes the number check.
+export async function aiEngine(passage, level = 'class9', language = 'english', fetchImpl) {
+  const base = offlineEngine(passage, level, language);
+  let aiError = null;
+  try {
+    const ai = await callProvider(passage, level, language, fetchImpl);
+    const changed = checkNumbers(passage, ai.explanation);
+    if (changed.length > 0) {
+      return {
+        ...base, mode: 'offline', aiAttempted: true,
+        aiRejected: `AI changed number(s) ${changed.join(', ')} — offline explanation kept`,
+        reason: `AI changed a number (${changed.join(', ')}), so the offline explanation was kept`,
+      };
+    }
+    return {
+      ...base, mode: 'ai', aiAttempted: true,
+      oneLine: ai.takeaway,
+      explanation: ai.explanation,
+      explanationSentences: ai.explanationSentences,
+      changedNumbers: [],
+      formulaPreserved: true,
+      reason: 'AI explanation (Pollinations, free, no key); quiz and glossary checked offline',
+    };
+  } catch (e) {
+    aiError = e && e.message ? e.message : 'AI call failed';
+    return {
+      ...base, mode: 'offline', aiAttempted: true, aiError,
+      reason: `AI call failed (${aiError}) — offline engine used`,
+    };
+  }
+}
+
+export async function runPipeline(passage, level, language, opts = {}) {
+  // Single entry point the UI uses. AI mode is the default; it falls back
+  // to the offline engine automatically when the AI call fails or its
+  // output fails the number check. Pass {useAI:false} for a fully offline
+  // run that sends nothing anywhere.
+  const useAI = opts.useAI !== false;
+  if (!useAI) {
+    const result = offlineEngine(passage, level, language);
+    return { result, mode: 'offline', reason: 'AI mode off — offline engine, nothing sent anywhere' };
+  }
+  const result = await aiEngine(passage, level, language, opts.fetchImpl);
+  return { result, mode: result.mode, reason: result.reason };
 }

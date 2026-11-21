@@ -31,7 +31,7 @@
     <div class="wrap">
       <p class="kicker">For students who study STEM in English — and think in Urdu</p>
       <h1>STEM, in the language you think in.</h1>
-      <p class="lede">Paste a paragraph from your textbook. Samajh explains it in simple English, lists the key terms, and tests you in Roman Urdu or Urdu script — every answer points to the exact sentence that proves it.</p>
+      <p class="lede">Paste a paragraph from your textbook. Samajh explains it in your language, lists the key terms, and tests you in Roman Urdu or Urdu script — every answer points to the exact sentence that proves it.</p>
       <p>
         <button class="btn btn-terracotta" id="hero-sample" type="button">Try a sample</button>
         <a class="btn btn-secondary" href="#tool">Paste your own</a>
@@ -45,7 +45,8 @@
       <details class="notice" open>
         <summary>Privacy &amp; AI — read this before your first use</summary>
         <p><strong>No accounts. Nothing is stored.</strong> Your text stays in this browser tab and disappears when you close it. Do not paste personal information (your name, phone number, address).</p>
-        <p><strong>Offline mode:</strong> this app has no AI API key, so it runs on a rule-based offline engine — it re-uses sentences from your own passage, it does not call any AI service, and it never sends your text anywhere. That is the hackathon’s API-credit exception, stated honestly. The explanation therefore stays in English; the glossary and quiz wording are given in your chosen language. A future AI provider can plug into the documented adapter in <code>samajh.js</code> — none is connected now.</p>
+        <p><strong>AI mode (on by default):</strong> the explanation is written by a free AI (Pollinations text API, no key, no sign-up). Your passage is sent to that service to be explained — nothing is stored by Samajh, and no account is needed. Before it is shown, Samajh checks the AI text: if it changes any number or formula from your passage, the AI explanation is thrown away and the offline one is shown instead. The quiz and glossary are always built offline, from your own passage and a checked glossary, so the AI can never invent a quiz answer or a translation.</p>
+        <p><strong>Offline mode:</strong> switch AI mode off and the app runs on a rule-based offline engine — it re-uses sentences from your own passage, sends nothing anywhere, and the explanation stays in English. Do not paste personal information (your name, phone number, address).</p>
         <p><strong>It can be wrong.</strong> Check any quiz item marked “Could not verify — check yourself”. Samajh is a study helper, not a replacement for your teacher or textbook.</p>
       </details>
     </div>
@@ -74,6 +75,8 @@
             <option value="roman">Roman Urdu</option>
             <option value="urdu">Urdu script</option>
           </select>
+
+          <p style="margin-top:16px"><label><input type="checkbox" id="ai-toggle" checked> AI mode — explanation by a free AI (no key). Untick for a fully offline run.</label></p>
 
           <p style="margin-top:16px"><button class="btn btn-primary" id="explain-btn" type="button">Explain</button></p>
 
@@ -161,7 +164,7 @@
       <h2>How it works</h2>
       <div class="steps">
         <div class="card"><p class="step-num">1</p><h3>Paste</h3><p>Paste a STEM paragraph, or tap a sample. Pick your level and language.</p></div>
-        <div class="card"><p class="step-num">2</p><h3>Understand</h3><p>Samajh pulls out the key sentences and terms, explains them in simple English, and gives the terms and quiz in your chosen language.</p></div>
+        <div class="card"><p class="step-num">2</p><h3>Understand</h3><p>In AI mode, a free AI explains the paragraph in your chosen language. Samajh checks that explanation against your passage, then lists the key terms and builds the quiz offline.</p></div>
         <div class="card"><p class="step-num">3</p><h3>Test yourself</h3><p>Answer five questions. Every answer shows the exact sentence from your passage that proves it — and the app checks that the sentence really is there.</p></div>
       </div>
     </div>
@@ -196,9 +199,9 @@
       <h2>About &amp; AI</h2>
       <div class="card">
         <p>Samajh was built by <strong>Daim Ali</strong>, a university student in Multan, for the STEM2Connect AI Hackathon 2026 (Education track), between 11 and 21 November 2026.</p>
-        <p><strong>AI disclosure.</strong> Inside the product there is no AI service: the engine is a rule-based offline program (extractive sentences, a checked seed glossary, cloze questions). No API key exists, no text leaves the browser, and no external API is called. This is the hackathon’s API-credit exception. An AI coding assistant (Muse) helped write the code; the code was run and tested before submission, the quiz and explanation bugs the tests found were fixed, and the sample passages were written for this project. The full log is in <code>docs/AI_LOG.md</code>.</p>
+        <p><strong>AI disclosure.</strong> Inside the product there is a real AI feature: the explanation and one-line takeaway are written by the Pollinations text API (model “openai”, free, no API key, no sign-up), tested live on 21 November 2026. Before the AI text is shown, Samajh checks it — any number or formula not in the passage discards it and the offline explanation is used instead. The quiz and glossary are always built offline by the rule-based engine (extractive sentences, a checked seed glossary, cloze questions), so the AI never invents a quiz answer or a translation. If the AI call fails, the offline engine takes over automatically. An AI coding assistant (Muse) helped write the code; the code was run and tested before submission, the quiz and explanation bugs the tests found were fixed, and the sample passages were written for this project. The full log is in <code>docs/AI_LOG.md</code>.</p>
         <p><strong>Credits.</strong> Fonts: Source Serif 4, Noto Sans, Noto Nastaliq Urdu (Google Fonts, open licences). No datasets were used. Sample passages are original. Licence: MIT.</p>
-        <p><strong>What’s next:</strong> a real AI provider behind the documented adapter (with the same evidence check), teacher mode, photo input, and spaced repetition for flashcards.</p>
+        <p><strong>What’s next:</strong> teacher mode, photo input, and spaced repetition for flashcards.</p>
       </div>
     </div>
   </section>

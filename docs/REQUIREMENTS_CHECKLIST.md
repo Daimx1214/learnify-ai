@@ -48,7 +48,7 @@ Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Dev
 - [x] ✅ F4 Quiz with evidence — 5 multiple-choice questions from the passage only, 4 options each, correct index, one-line reason, evidence sentence copied exactly from the passage; immediate feedback + final score
 - [x] ✅ F5 Flashcards — from glossary terms, flip, "Know it / Again", session-only progress (QA fix: progress resets on re-run)
 - [x] ✅ F6 Evidence check — normalised check (lowercase, collapse whitespace, strip quotes); green "Found in passage" or amber "Could not verify — check yourself" badge on every item; "Show in passage" highlights the sentence
-- [x] ✅ F7 Offline mode — no API key, rule-based engine always works; visible "Offline mode" chip with the reason; automatic fallback (API-credit exception, stated honestly)
+- [x] ✅ F7 AI mode + offline mode — real AI feature: Pollinations text API (free, no key) writes the explanation/takeaway in the chosen language; number check discards bad AI output; offline engine takes over automatically on failure (measured 21 Nov: 6/9 AI, 3/9 fallback, 0 numbers changed); AI toggle in the UI; visible mode chip with the reason
 - [x] ✅ F8 Privacy & AI disclosure — notice visible before first use; no personal info; text sent nowhere
 - [x] ✅ F9 Sample passages — 3 original passages: Ohm's law, Photosynthesis, Newton's second law (arithmetic checked: 12 V ÷ 4 Ω = 3 A; 10 N ÷ 2 kg = 5 m/s²; 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂)
 - [x] ✅ F10 Download study sheet — .md file with explanation, terms and quiz (QA fix: uses Urdu-script meanings when Urdu is selected)
@@ -57,7 +57,7 @@ Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Dev
 
 - [x] ✅ AI coding assistants allowed WITH disclosure — disclosed in README and Devpost draft, full log in `docs/AI_LOG.md` (Muse helped write code; tested on Daim's behalf; Daim's own review still pending)
 - [x] ✅ In-product AI: **none** — offline rule-based engine only; no API key, no external call, no text leaves the browser
-- [x] ✅ API-credit exception applied honestly — no integrated AI feature, not disqualified, not automatic zero on "Use of AI"; judges score the disclosed AI contribution (coding assistance + offline baseline + evidence check)
+- [x] ✅ Integrated AI feature present — Pollinations (free, no key) explains in the chosen language; disclosed in README, Devpost draft and the app itself; the API-credit exception no longer needs to be relied on, and the offline fallback is kept and measured
 - [x] ✅ AI feature is strongly recommended — compensated by the evidence check, the offline baseline, and the measured comparison in README/eval
 - [x] ✅ Simply fetching data from an ordinary API does NOT count as AI — Samajh does not do that
 - [x] ✅ Prompt-injection guard in design — passage treated as data, never as instructions (system prompt in plan §10.4; offline engine has no prompt to inject)

@@ -65,7 +65,7 @@ $('hero-sample').addEventListener('click', async () => {
 
 explainBtn.addEventListener('click', runExplain);
 
-function runExplain() {
+async function runExplain() {
   const level = $('level').value;
   const language = $('language').value;
   const validation = validateInput(passageEl.value, level, language);
@@ -76,21 +76,19 @@ function runExplain() {
   $('empty-state').hidden = true;
   $('results').hidden = true;
   $('loading').hidden = false;
-  // Short pause so the skeleton state is actually visible.
-  setTimeout(() => {
-    try {
-      const { result, mode, reason } = runPipeline(validation.text, level, language);
-      current = { result, passage: validation.text, level, language };
-      render(result, mode, reason);
-    } catch (e) {
-      showError(e.message || 'Something went wrong. Try a shorter passage.');
-      $('loading').hidden = true;
-      $('empty-state').hidden = false;
-    } finally {
-      explainBtn.disabled = false;
-      explainBtn.textContent = 'Explain';
-    }
-  }, 400);
+  try {
+    const useAI = $('ai-toggle') ? $('ai-toggle').checked : true;
+    const { result, mode, reason } = await runPipeline(validation.text, level, language, { useAI });
+    current = { result, passage: validation.text, level, language };
+    render(result, mode, reason);
+  } catch (e) {
+    showError(e.message || 'Something went wrong. Try a shorter passage.');
+    $('loading').hidden = true;
+    $('empty-state').hidden = false;
+  } finally {
+    explainBtn.disabled = false;
+    explainBtn.textContent = 'Explain';
+  }
 }
 
 function render(result, mode, reason) {
@@ -98,13 +96,13 @@ function render(result, mode, reason) {
   $('results').hidden = false;
   $('results').classList.add('fade-in');
   const chip = $('mode-chip');
-  chip.textContent = mode === 'offline'
-    ? '⚠ Offline mode — no API key, works without one'
-    : '✓ AI mode';
-  chip.className = mode === 'offline' ? 'chip offline' : 'chip ai';
-  $('mode-note').textContent = mode === 'offline'
-    ? 'Rule-based engine: it re-uses your own sentences. Explanation stays in English; glossary and quiz use your chosen language.'
-    : 'AI mode.';
+  chip.textContent = mode === 'ai'
+    ? '✓ AI mode — Pollinations (free, no key)'
+    : '⚠ Offline mode — AI off or unavailable';
+  chip.className = mode === 'ai' ? 'chip ai' : 'chip offline';
+  $('mode-note').textContent = reason
+    + (result.aiRejected ? ` (${result.aiRejected})` : '')
+    + (result.mode === 'ai' ? ' Quiz and glossary are still checked offline against your passage.' : '');
 
   const lang = result.language;
   $('explain-intro').textContent =

@@ -5,7 +5,8 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
   validateInput, normalise, checkEvidence, offlineEngine, runPipeline,
-  getProviderInfo, callProvider, buildStudySheet, extractKeyTerms,
+  getProviderInfo, callProvider, aiEngine, parseAiResponse, buildAiPrompt,
+  buildStudySheet, extractKeyTerms,
   splitSentences, checkNumbers, numberWarningText, scoreQuiz,
   createFlashcardDeck, resetDeck, deckProgress, MIN_CHARS, MAX_CHARS,
 } from '../samajh.js';
@@ -113,18 +114,76 @@ test('offline_engine: works in all three languages', () => {
   }
 });
 
-// --- F7 fallback / provider stub --------------------------------------------
-test('provider: PROVIDER=none, no external API, pipeline falls back to offline', () => {
-  const info = getProviderInfo();
-  assert.equal(info.provider, 'none');
-  assert.equal(info.callsExternalApi, false);
-  const { result, mode, reason } = runPipeline(photo, 'class9', 'english');
-  assert.equal(mode, 'offline');
-  assert.ok(reason.includes('no API key'));
-  assert.equal(result.mode, 'offline');
+// --- F7 AI provider (Pollinations, free, no key) --------------------------
+// All AI tests use a fake fetch — no network call in the test suite.
+const fakeAiFetch = (reply) => async (url, opts) => ({
+  ok: true, status: 200,
+  text: async () => JSON.stringify(reply),
 });
-test('provider: callProvider rejects (stub, never called with a key)', async () => {
-  await assert.rejects(callProvider(), /No AI provider configured/);
+const GOOD_AI = {
+  explanation: 'Ohm ka qanoon batata hai ke current, voltage ke seedha mutanasib hota hai aur resistance ke ulta. Agar voltage 12 V hai aur resistance 4 ohm hai, to current 3 A hota hai.',
+  takeaway: 'Voltage, current aur resistance ka rishta V = I × R se samjha jata hai.',
+};
+const BAD_NUMBER_AI = {
+  explanation: 'Ohm ka qanoon batata hai ke current 9 A hota hai jab voltage 12 V aur resistance 4 ohm ho.',
+  takeaway: 'Current 9 A hota hai.',
+};
+
+test('provider: Pollinations, free, no key required', () => {
+  const info = getProviderInfo();
+  assert.equal(info.provider, 'pollinations');
+  assert.equal(info.callsExternalApi, true);
+  assert.equal(info.keyRequired, false);
+  assert.ok(info.endpoint.includes('pollinations'));
+});
+test('provider: prompt tells the AI to use only the passage and copy numbers exactly', () => {
+  const p = buildAiPrompt(ohm, 'class9', 'roman');
+  assert.ok(p.user.includes('ONLY facts'));
+  assert.ok(p.user.includes('Do not change any number'));
+  assert.ok(p.user.includes('Roman Urdu'));
+  assert.ok(p.user.includes(ohm.slice(0, 40)));
+});
+test('provider: parseAiResponse accepts JSON and rejects junk', () => {
+  const r = parseAiResponse(JSON.stringify(GOOD_AI));
+  assert.ok(r.explanation.includes('12 V'));
+  assert.equal(r.explanationSentences.length >= 1, true);
+  assert.throws(() => parseAiResponse('not json'), /Unexpected token|not the expected/);
+  assert.throws(() => parseAiResponse(JSON.stringify({ explanation: 'short' })), /expected JSON shape/);
+});
+test('provider: callProvider returns the AI explanation (fake fetch)', async () => {
+  const r = await callProvider(ohm, 'class9', 'roman', fakeAiFetch(GOOD_AI));
+  assert.ok(r.explanation.includes('12 V'));
+  assert.ok(r.takeaway.length > 10);
+});
+test('provider: aiEngine uses the AI explanation and keeps the offline quiz', async () => {
+  const r = await aiEngine(ohm, 'class9', 'roman', fakeAiFetch(GOOD_AI));
+  assert.equal(r.mode, 'ai');
+  assert.ok(r.explanation.includes('12 V'));
+  assert.equal(r.quiz.length, 5);
+  assert.equal(r.verifiedCount, 5, 'quiz is still the offline, evidence-checked quiz');
+  assert.deepEqual(r.changedNumbers, []);
+});
+test('provider: AI text with a changed number is discarded, offline kept', async () => {
+  const r = await aiEngine(ohm, 'class9', 'english', fakeAiFetch(BAD_NUMBER_AI));
+  assert.equal(r.mode, 'offline');
+  assert.ok(r.aiRejected && r.aiRejected.includes('9'), 'rejection must name the changed number');
+  assert.ok(!r.explanation.includes('9 A'), 'offline explanation must not contain the AI number');
+  assert.deepEqual(r.changedNumbers, []);
+});
+test('provider: AI call failure falls back to offline, never crashes', async () => {
+  const failing = async () => { throw new Error('network down'); };
+  const r = await aiEngine(photo, 'class9', 'english', failing);
+  assert.equal(r.mode, 'offline');
+  assert.equal(r.quiz.length, 5);
+  assert.ok(r.aiError && r.aiError.includes('network down'));
+});
+test('provider: runPipeline is async; useAI:false is fully offline', async () => {
+  const off = await runPipeline(photo, 'class9', 'english', { useAI: false });
+  assert.equal(off.mode, 'offline');
+  assert.ok(off.reason.includes('offline'));
+  const on = await runPipeline(ohm, 'class9', 'roman', { fetchImpl: fakeAiFetch(GOOD_AI) });
+  assert.equal(on.mode, 'ai');
+  assert.equal(on.result.mode, 'ai');
 });
 
 // --- F10 study sheet ---------------------------------------------------------
