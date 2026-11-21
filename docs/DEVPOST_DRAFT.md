@@ -40,5 +40,5 @@ HTML, CSS, JavaScript (no framework, no build step, no server). Fonts: Source Se
 
 ## Links
 
-- GitHub: [TODO — repo URL once published]
+- GitHub: https://github.com/Daimx1214/samajh
 - Demo video: [TODO — YouTube/Vimeo link once recorded]

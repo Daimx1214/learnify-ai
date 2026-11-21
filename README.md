@@ -2,6 +2,8 @@
 
 STEM2Connect AI Hackathon 2026. Primary track: **Education**. Solo entrant: Daim Ali (university student, Multan).
 
+GitHub: https://github.com/Daimx1214/samajh
+
 Demo video: [TODO — to be added after recording]
 
 ## What it does
