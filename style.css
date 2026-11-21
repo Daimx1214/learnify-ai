@@ -161,20 +161,24 @@ textarea[aria-invalid="true"] { border: 2px solid var(--error); }
 }
 .score-ring span { background: var(--white); width: 92px; height: 92px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-/* Flashcards */
+/* Flashcards — plain show/hide flip (no 3D transform: 3D flips do not
+   render reliably inside a <button> in some browsers, and the back face
+   never became visible in the 21 Nov live click-through). */
 .flash-wrap { text-align: center; }
 .flashcard {
-  width: 100%; max-width: 420px; min-height: 220px; margin: 0 auto 16px; perspective: 800px;
+  width: 100%; max-width: 420px; min-height: 220px; margin: 0 auto 16px;
   background: none; border: none; cursor: pointer; font: inherit;
 }
-.flash-inner { position: relative; width: 100%; height: 100%; min-height: 220px; transition: transform .3s; transform-style: preserve-3d; }
-.flashcard.flipped .flash-inner { transform: rotateY(180deg); }
+.flash-inner { position: relative; width: 100%; min-height: 220px; }
 .flash-face {
-  position: absolute; inset: 0; backface-visibility: hidden; display: flex; flex-direction: column;
+  position: absolute; inset: 0; display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 8px; padding: 24px;
   background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius);
 }
-.flash-back { transform: rotateY(180deg); background: var(--info-bg); }
+.flash-back { display: none; background: var(--info-bg); }
+.flashcard.flipped .flash-front { display: none; }
+.flashcard.flipped .flash-back { display: flex; animation: flip-in .2s ease-out; }
+@keyframes flip-in { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: scale(1); } }
 .flash-term { font-family: "Source Serif 4", Georgia, serif; font-size: 28px; color: var(--cobalt); }
 .progress { font-weight: 700; }
 
