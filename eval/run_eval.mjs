@@ -26,7 +26,7 @@ function median(arr) {
 }
 
 const rows = [];
-const dump = ['# Samajh: quiz dump for manual correctness check', '', `Every quiz item from the ${runCount} evaluation runs. The 75 unique items (5 samples × 5 questions × 3 original languages) were read by a human and marked whether the correct option is the only sensible answer for the blank, given the evidence sentence. The 10 added languages reuse the same items with localized question/reason wording only. Options, answers and evidence are identical.`, ''];
+const dump = ['# Learnify AI: quiz dump for manual correctness check', '', `Every quiz item from the ${runCount} evaluation runs. The 75 unique items (5 samples × 5 questions × 3 original languages) were read by a human and marked whether the correct option is the only sensible answer for the blank, given the evidence sentence. The 10 added languages reuse the same items with localized question/reason wording only. Options, answers and evidence are identical.`, ''];
 let totalItems = 0;
 let totalVerified = 0;
 let totalChanged = 0;
@@ -81,7 +81,7 @@ if (existsSync(resultsPath)) {
   if (aiStart >= 0 && aiEnd > aiStart) aiSection = prev.slice(aiStart, aiEnd).trimEnd();
 }
 const table = [
-  '# Samajh: evaluation results (measured 21 November 2026)',
+  '# Learnify AI: evaluation results (measured 21 November 2026)',
   '',
   `Offline engine only (PROVIDER=none). 5 sample passages × ${languages.length} languages = ${runCount} runs. Each run timed 5 times; the median is shown.`,
   '',

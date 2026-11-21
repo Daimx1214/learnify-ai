@@ -1,8 +1,8 @@
-# Samajh: quiz dump for manual correctness check
+# Learnify AI: quiz dump for manual correctness check
 
 Every quiz item from the 65 evaluation runs. The 75 unique items (5 samples × 5 questions × 3 original languages) were read by a human and marked whether the correct option is the only sensible answer for the blank, given the evidence sentence. The 10 added languages reuse the same items with localized question/reason wording only. Options, answers and evidence are identical.
 
-## ohm: english (median 2.75 ms)
+## ohm: english (median 2.63 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -60,7 +60,7 @@ Reason: The passage says the missing word is “circuit”.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm: roman (median 1.85 ms)
+## ohm: roman (median 1.91 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -118,7 +118,7 @@ Reason: Passage mein khaali jagah par “circuit” hai.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm: urdu (median 1.30 ms)
+## ohm: urdu (median 1.35 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -176,7 +176,7 @@ Reason: عبارت میں خالی جگہ پر “circuit” ہے۔
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm: hindi (median 1.18 ms)
+## ohm: hindi (median 1.28 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -292,7 +292,7 @@ Reason: অনুচ্ছেদে খালি জায়গায় “cir
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm: arabic (median 1.27 ms)
+## ohm: arabic (median 1.24 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -350,7 +350,7 @@ Reason: تقول الفقرة إن الكلمة الناقصة هي “circuit�
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm: spanish (median 1.33 ms)
+## ohm: spanish (median 1.28 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -408,7 +408,7 @@ Reason: El pasaje dice que la palabra que falta es “circuit”.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm: french (median 1.24 ms)
+## ohm: french (median 1.28 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -466,7 +466,7 @@ Reason: Le passage dit que le mot manquant est « circuit ».
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm: portuguese (median 1.26 ms)
+## ohm: portuguese (median 1.17 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -524,7 +524,7 @@ Reason: O texto diz que a palavra que falta é “circuit”.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm: german (median 1.07 ms)
+## ohm: german (median 1.21 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -582,7 +582,7 @@ Reason: Im Text steht, dass das fehlende Wort „circuit“ ist.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm: turkish (median 1.12 ms)
+## ohm: turkish (median 1.11 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -640,7 +640,7 @@ Reason: Metinde eksik kelimenin “circuit” olduğu yazıyor.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm: indonesian (median 1.17 ms)
+## ohm: indonesian (median 1.20 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -698,7 +698,7 @@ Reason: Bacaan itu mengatakan kata yang hilang adalah “circuit”.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm: chinese (median 1.07 ms)
+## ohm: chinese (median 1.09 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -756,7 +756,7 @@ Reason: 文章中空缺的词是“circuit”。
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## photosynthesis: english (median 1.15 ms)
+## photosynthesis: english (median 1.24 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -814,7 +814,7 @@ Reason: The passage says the missing word is “reaction”.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis: roman (median 1.05 ms)
+## photosynthesis: roman (median 1.04 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -930,7 +930,7 @@ Reason: عبارت میں خالی جگہ پر “reaction” ہے۔
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis: hindi (median 1.09 ms)
+## photosynthesis: hindi (median 1.06 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -988,7 +988,7 @@ Reason: गद्यांश में खाली जगह पर “reactio
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis: bengali (median 1.03 ms)
+## photosynthesis: bengali (median 1.04 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1046,7 +1046,7 @@ Reason: অনুচ্ছেদে খালি জায়গায় “rea
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis: arabic (median 1.03 ms)
+## photosynthesis: arabic (median 1.15 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1104,7 +1104,7 @@ Reason: تقول الفقرة إن الكلمة الناقصة هي “reaction�
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis: spanish (median 1.02 ms)
+## photosynthesis: spanish (median 1.09 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1162,7 +1162,7 @@ Reason: El pasaje dice que la palabra que falta es “reaction”.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis: french (median 1.08 ms)
+## photosynthesis: french (median 1.25 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1220,7 +1220,7 @@ Reason: Le passage dit que le mot manquant est « reaction ».
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis: portuguese (median 1.03 ms)
+## photosynthesis: portuguese (median 1.05 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1278,7 +1278,7 @@ Reason: O texto diz que a palavra que falta é “reaction”.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis: german (median 1.02 ms)
+## photosynthesis: german (median 1.06 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1336,7 +1336,7 @@ Reason: Im Text steht, dass das fehlende Wort „reaction“ ist.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis: turkish (median 1.03 ms)
+## photosynthesis: turkish (median 1.04 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1394,7 +1394,7 @@ Reason: Metinde eksik kelimenin “reaction” olduğu yazıyor.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis: indonesian (median 1.13 ms)
+## photosynthesis: indonesian (median 1.12 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1452,7 +1452,7 @@ Reason: Bacaan itu mengatakan kata yang hilang adalah “reaction”.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis: chinese (median 1.07 ms)
+## photosynthesis: chinese (median 1.09 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1510,7 +1510,7 @@ Reason: 文章中空缺的词是“reaction”。
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## newton2: english (median 1.16 ms)
+## newton2: english (median 1.35 ms)
 
 Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
@@ -1568,7 +1568,7 @@ Reason: The passage says the missing word is “object”.
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2: roman (median 1.16 ms)
+## newton2: roman (median 1.22 ms)
 
 Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
@@ -1626,7 +1626,7 @@ Reason: Passage mein khaali jagah par “object” hai.
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2: urdu (median 1.08 ms)
+## newton2: urdu (median 1.03 ms)
 
 Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
@@ -1684,7 +1684,7 @@ Reason: عبارت میں خالی جگہ پر “object” ہے۔
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2: hindi (median 1.13 ms)
+## newton2: hindi (median 1.04 ms)
 
 Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
@@ -1742,7 +1742,7 @@ Reason: गद्यांश में खाली जगह पर “object�
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2: bengali (median 1.07 ms)
+## newton2: bengali (median 1.04 ms)
 
 Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
@@ -1800,7 +1800,7 @@ Reason: অনুচ্ছেদে খালি জায়গায় “obj
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2: arabic (median 1.05 ms)
+## newton2: arabic (median 1.07 ms)
 
 Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
@@ -1858,7 +1858,7 @@ Reason: تقول الفقرة إن الكلمة الناقصة هي “object”
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2: spanish (median 1.06 ms)
+## newton2: spanish (median 1.05 ms)
 
 Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
@@ -2032,7 +2032,7 @@ Reason: O texto diz que a palavra que falta é “object”.
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2: german (median 1.33 ms)
+## newton2: german (median 1.41 ms)
 
 Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
@@ -2206,7 +2206,7 @@ Reason: Bacaan itu mengatakan kata yang hilang adalah “object”.
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2: chinese (median 1.21 ms)
+## newton2: chinese (median 1.22 ms)
 
 Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
@@ -2264,7 +2264,7 @@ Reason: 文章中空缺的词是“object”。
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## pythagoras: english (median 1.63 ms)
+## pythagoras: english (median 1.34 ms)
 
 Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
 
@@ -2322,7 +2322,7 @@ Reason: The passage says the missing word is “rule”.
 
 Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
 
-## pythagoras: roman (median 1.04 ms)
+## pythagoras: roman (median 1.13 ms)
 
 Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
 
@@ -2380,7 +2380,7 @@ Reason: Passage mein khaali jagah par “rule” hai.
 
 Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
 
-## pythagoras: urdu (median 1.04 ms)
+## pythagoras: urdu (median 1.08 ms)
 
 Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
 
@@ -2438,7 +2438,7 @@ Reason: عبارت میں خالی جگہ پر “rule” ہے۔
 
 Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
 
-## pythagoras: hindi (median 1.04 ms)
+## pythagoras: hindi (median 1.12 ms)
 
 Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
 
@@ -2496,7 +2496,7 @@ Reason: गद्यांश में खाली जगह पर “rule”
 
 Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
 
-## pythagoras: bengali (median 1.21 ms)
+## pythagoras: bengali (median 1.12 ms)
 
 Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
 
@@ -2554,7 +2554,7 @@ Reason: অনুচ্ছেদে খালি জায়গায় “rul
 
 Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
 
-## pythagoras: arabic (median 1.04 ms)
+## pythagoras: arabic (median 1.12 ms)
 
 Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
 
@@ -2612,7 +2612,7 @@ Reason: تقول الفقرة إن الكلمة الناقصة هي “rule”.
 
 Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
 
-## pythagoras: spanish (median 1.04 ms)
+## pythagoras: spanish (median 1.09 ms)
 
 Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
 
@@ -2670,7 +2670,7 @@ Reason: El pasaje dice que la palabra que falta es “rule”.
 
 Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
 
-## pythagoras: french (median 1.34 ms)
+## pythagoras: french (median 1.06 ms)
 
 Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
 
@@ -2728,7 +2728,7 @@ Reason: Le passage dit que le mot manquant est « rule ».
 
 Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
 
-## pythagoras: portuguese (median 1.13 ms)
+## pythagoras: portuguese (median 1.26 ms)
 
 Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
 
@@ -2786,7 +2786,7 @@ Reason: O texto diz que a palavra que falta é “rule”.
 
 Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
 
-## pythagoras: german (median 1.17 ms)
+## pythagoras: german (median 1.09 ms)
 
 Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
 
@@ -2844,7 +2844,7 @@ Reason: Im Text steht, dass das fehlende Wort „rule“ ist.
 
 Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
 
-## pythagoras: turkish (median 1.07 ms)
+## pythagoras: turkish (median 1.11 ms)
 
 Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
 
@@ -2902,7 +2902,7 @@ Reason: Metinde eksik kelimenin “rule” olduğu yazıyor.
 
 Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
 
-## pythagoras: indonesian (median 1.05 ms)
+## pythagoras: indonesian (median 1.12 ms)
 
 Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
 
@@ -2960,7 +2960,7 @@ Reason: Bacaan itu mengatakan kata yang hilang adalah “rule”.
 
 Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
 
-## pythagoras: chinese (median 1.04 ms)
+## pythagoras: chinese (median 1.12 ms)
 
 Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
 
@@ -3018,7 +3018,7 @@ Reason: 文章中空缺的词是“rule”。
 
 Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
 
-## cells: english (median 1.29 ms)
+## cells: english (median 1.30 ms)
 
 Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
 
@@ -3076,7 +3076,7 @@ Reason: The passage says the missing word is “about”.
 
 Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
 
-## cells: roman (median 1.55 ms)
+## cells: roman (median 1.94 ms)
 
 Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
 
@@ -3134,7 +3134,7 @@ Reason: Passage mein khaali jagah par “about” hai.
 
 Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
 
-## cells: urdu (median 1.24 ms)
+## cells: urdu (median 1.30 ms)
 
 Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
 
@@ -3192,7 +3192,7 @@ Reason: عبارت میں خالی جگہ پر “about” ہے۔
 
 Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
 
-## cells: hindi (median 2.12 ms)
+## cells: hindi (median 1.30 ms)
 
 Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
 
@@ -3250,7 +3250,7 @@ Reason: गद्यांश में खाली जगह पर “about�
 
 Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
 
-## cells: bengali (median 1.29 ms)
+## cells: bengali (median 1.20 ms)
 
 Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
 
@@ -3308,7 +3308,7 @@ Reason: অনুচ্ছেদে খালি জায়গায় “abo
 
 Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
 
-## cells: arabic (median 2.10 ms)
+## cells: arabic (median 1.23 ms)
 
 Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
 
@@ -3366,7 +3366,7 @@ Reason: تقول الفقرة إن الكلمة الناقصة هي “about”.
 
 Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
 
-## cells: spanish (median 1.28 ms)
+## cells: spanish (median 1.23 ms)
 
 Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
 
@@ -3424,7 +3424,7 @@ Reason: El pasaje dice que la palabra que falta es “about”.
 
 Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
 
-## cells: french (median 1.36 ms)
+## cells: french (median 1.27 ms)
 
 Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
 
@@ -3482,7 +3482,7 @@ Reason: Le passage dit que le mot manquant est « about ».
 
 Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
 
-## cells: portuguese (median 1.26 ms)
+## cells: portuguese (median 1.30 ms)
 
 Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
 
@@ -3540,7 +3540,7 @@ Reason: O texto diz que a palavra que falta é “about”.
 
 Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
 
-## cells: german (median 1.63 ms)
+## cells: german (median 1.27 ms)
 
 Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
 
@@ -3656,7 +3656,7 @@ Reason: Metinde eksik kelimenin “about” olduğu yazıyor.
 
 Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
 
-## cells: indonesian (median 1.18 ms)
+## cells: indonesian (median 1.28 ms)
 
 Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
 
@@ -3714,7 +3714,7 @@ Reason: Bacaan itu mengatakan kata yang hilang adalah “about”.
 
 Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
 
-## cells: chinese (median 1.66 ms)
+## cells: chinese (median 1.27 ms)
 
 Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
 
