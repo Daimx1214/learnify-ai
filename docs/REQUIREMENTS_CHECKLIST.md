@@ -164,6 +164,12 @@ Sixth fix (21 Nov evening — live click-through found a glossary bug; the rest 
 26. **Stale-deploy lesson**: the 18:40 PKT click-through tested the OLD live version (GitHub Pages had not finished deploying the 18:38 push) — it saw 3 samples and English labels. Verified by curl afterwards: the live site serves the new code (Pythagoras button, 24 data-ui labels, ui-strings.js 200, "5 sample passages × 13 languages (65 runs)"). Re-test the live site only after curl confirms the deploy.
 27. **Free-AI Arabic mistranslations (known limit, not a code bug)**: the 18:40 click-through's live AI explanation rendered "right-angled triangle" as "المثلث المتراحم" and "hypotenuse" as "الضلع المستقيم" — the checked glossary has the correct "الوتر". The script check verifies the script, not the translation; the glossary is the correct source.
 
+Seventh fix (21 Nov evening — the thorough re-test found a crash the unit tests could not see):
+
+28. **TDZ crash in `render()`**: app.js used `lang` before its `const` declaration (introduced in the fifth fix round) — a ReferenceError that aborted every result render on a fresh load. The cloud click-throughs never saw it because they ran cached old JS. `const lang` moved to the top of `render()`. **Lesson: unit tests do not cover app.js (it needs a DOM) — verify every app.js change in a real fresh browser.**
+29. **Page-wide RTL flip**: `applyUiLanguage` now sets `dir=rtl` on `<html>` for RTL languages, so the whole layout (nav, columns, tabs) flips, not just the labelled elements.
+30. **Fresh-browser verification (21 Nov ~19:00 PKT, script at `~/workspace/tmp/samajh-video/verify.mjs`)**: against the live site with an empty cache — **9/9 checks pass**: 5 samples, Hindi labels ("समझाएँ"), offline level Class 9 = 4 sentences vs University = 5 (live re-check confirmed the 4; the first live run read 0 only because the sample file was still loading), Arabic labels ("اشرح") + page-wide RTL, hypotenuse = الوتر, no "squared squared", no page errors. Google Fonts fails to load in the sandboxed test browser only — the page falls back to system fonts, not an app bug. Local server + proxy processes killed after the run.
+
 ## 14. What is left — in order
 
 1. **Repo and live site — DONE**: public GitHub repo, GitHub Pages live. **Demo video — OUTDATED, re-record after everything is final** (per Daim's order, 21 Nov evening): the current video (4:02, unlisted) shows Roman Urdu and 3 samples only; the app now has 13 languages and 5 samples.
