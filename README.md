@@ -30,15 +30,16 @@ python3 -m http.server 8000
 Tests and evaluation (Node 18+; no dependencies):
 
 ```sh
-node --test tests/samajh.test.mjs   # 27 tests
+node --test tests/samajh.test.mjs   # 33 tests
 node eval/run_eval.mjs              # 3 samples × 3 languages, writes eval/results.md
+node eval/run_ai_eval.mjs           # same 9 runs with AI mode on (live Pollinations calls), prints the AI-mode summary
 ```
 
 ## AI tools and services used (disclosure)
 
 **Inside the product: a real AI feature.** The explanation and one-line takeaway are written by the Pollinations text API (model "openai", free, no API key, no sign-up). Before the AI text is shown, Samajh checks it: any number or formula not in the passage discards it and the offline explanation is used instead. The quiz and glossary are always built offline by the rule-based engine in `samajh.js` (extractive sentences, a checked seed glossary, cloze questions), so the AI never invents a quiz answer or a translation. If the AI call fails, the offline engine takes over automatically — measured live 21 Nov 2026: 9 runs, AI used in 6, offline fallback in 3, 0 numbers changed, quiz 45/45 verified in both modes (see `eval/results.md`). AI mode can be switched off in the UI for a fully offline run that sends nothing anywhere. Full log: `docs/AI_LOG.md`.
 
-**AI coding assistant:** Muse (Meta's Muse Spark) helped write the code in this repo. The code was run and tested before submission (27/27 tests; all 45 quiz items checked by hand — see "Results"), the quiz and explanation bugs the tests found were fixed, and the three sample passages were written for this project. The full log is in `docs/AI_LOG.md`.
+**AI coding assistant:** Muse (Meta's Muse Spark) helped write the code in this repo. The code was run and tested before submission (33/33 tests; all 45 quiz items checked by hand — see "Results"), the quiz and explanation bugs the tests found were fixed, and the three sample passages were written for this project. The full log is in `docs/AI_LOG.md`.
 
 **What the offline engine cannot do:** it cannot translate a whole passage into Roman Urdu or Urdu script — it re-uses sentences from the passage in English, and gives the glossary and quiz wording in the chosen language. The app says this plainly before first use.
 
@@ -48,20 +49,20 @@ node eval/run_eval.mjs              # 3 samples × 3 languages, writes eval/resu
 
 ## Results (measured, 21 November 2026)
 
-Offline engine only. 3 sample passages × 3 languages = 9 runs; each run timed 5 times, median shown. Full table: `eval/results.md`. Quiz correctness was checked by reading every item in `eval/quiz_dump.md` by hand.
+Offline engine and AI mode, both measured. 3 sample passages × 3 languages = 9 runs each; each offline run timed 5 times, median shown. Full tables: `eval/results.md`. Quiz correctness was checked by reading every item in `eval/quiz_dump.md` by hand.
 
-| Measure | Offline mode |
-|---|---|
-| Quiz items with evidence verified | 45 of 45 (100%) |
-| Quiz answers manually checked as correct | 45 of 45 (100%) |
-| Explanations that changed a number or formula | 0 of 9 runs |
-| Median time to result | about 1–2 ms (engine only; the page shows a 400 ms loading state — the exact median varies run to run, see eval/results.md) |
-| Student clarity rating (1–5) | not measured |
-| AI mode | not measured (no provider connected) |
+| Measure | Offline mode | AI mode (live, Pollinations) |
+|---|---|---|
+| Quiz items with evidence verified | 45 of 45 (100%) | 90 of 90 (100%, two runs of 9) |
+| Quiz answers manually checked as correct | 45 of 45 (100%) | 90 of 90 (100%) |
+| Explanations that changed a number or formula | 0 of 9 runs | 0 of 18 runs |
+| AI used vs offline fallback | — | Run 1: AI 6/9, fallback 3/9. Run 2 (re-check): AI 8/9, fallback 1/9 |
+| Median time to result | about 1–2 ms (engine only; the page shows a 400 ms loading state — the exact median varies run to run, see eval/results.md) | about 0.3–6 s per explanation (API call; fallback is instant) |
+| Student clarity rating (1–5) | not measured | not measured |
 
 Honest failure found and fixed during the check: the first Newton quiz had an ambiguous item — "a 2 kg ______" with "object" as a distractor, which also fits the blank. Generic words (object, law) are now never used as distractors, and short fragments are never used as filler options. All 45 items were re-checked after the fix.
 
-Second fix round (21 Nov): the number warning is now wired into the Explain tab (amber, icon + words) and tested with a hand-built result — it never triggers in offline mode, because the explanation is extractive. New tests cover Urdu-script input rejection, prompt-injection passages, quiz scoring, flashcard reset and Urdu study-sheet meanings (27 tests total, all passing). Newton quiz reuse was spread: with 4 sentences for 5 questions one sentence is still used twice, but no longer Q1's sentence.
+Second fix round (21 Nov): the number warning is now wired into the Explain tab (amber, icon + words) and tested with a hand-built result — it never triggers in offline mode, because the explanation is extractive. New tests cover Urdu-script input rejection, prompt-injection passages, quiz scoring, flashcard reset and Urdu study-sheet meanings (33 tests total, all passing — 8 more were added with AI mode for the fake-fetch AI tests). Newton quiz reuse was spread: with 4 sentences for 5 questions one sentence is still used twice, but no longer Q1's sentence.
 
 Limitation: these are cloze questions, not deep-comprehension questions — the answer is found by matching the sentence, which is the point of the evidence check, but it does not test whether the student understood the idea in their own words. No student test was run before the deadline (0 students, not 3).
 
@@ -75,14 +76,14 @@ Limitation: these are cloze questions, not deep-comprehension questions — the 
 
 ## What I would build next
 
-1. A real AI provider behind the documented adapter, with the same evidence check on its output.
+1. A more reliable paid AI provider behind the same adapter, with the same evidence check on its output (Pollinations is free and sometimes fails — it fell back 4 times in 18 measured runs).
 2. Teacher mode (a teacher pastes a passage and gets a printable sheet).
 3. Photo input for textbook pages, and spaced repetition for flashcards.
 4. A real student test: 3 students, 10 minutes each, with their (anonymous, consented) feedback.
 
 ## Privacy
 
-No accounts. Nothing is stored — results live in memory in the tab and disappear when it closes. The pasted text is never sent anywhere, because there is no server and no AI provider connected. Do not paste personal information.
+No accounts. Nothing is stored — results live in memory in the tab and disappear when it closes. In AI mode (on by default) your passage is sent to the free Pollinations text API to be explained; nothing is stored by Samajh. Untick AI mode for a fully offline run that sends nothing anywhere. Do not paste personal information.
 
 ## Credits
 

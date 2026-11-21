@@ -20,11 +20,11 @@ Paste a STEM paragraph (30–2,500 characters) or tap a sample — Ohm's law, ph
 
 ## How it uses AI
 
-The app has a real integrated AI feature: the explanation and one-line takeaway are written by the Pollinations text API (model "openai", free, no API key, no sign-up). The AI is prompted to use only facts, numbers and formulas from the passage, and Samajh checks its output before showing it — any number or formula not in the passage discards the AI explanation and the offline one is used instead. The quiz and glossary are always built offline by the rule-based engine (extractive sentences, a checked seed glossary that never guesses a translation, cloze questions blanking a key term out of its own sentence). The evidence check normalises case, whitespace and quotes, then requires the evidence sentence to appear in the passage. Measured live on 3 passages × 3 languages (9 runs): AI used in 6 runs, offline fallback in 3 (transient API failures — the student still got a correct result), 45 of 45 quiz items verified, 45 of 45 answers checked correct by hand, 0 explanations changed a number or formula, AI answers in about 5–7 s, offline engine about 1–2 ms. Full numbers: `eval/results.md`.
+The app has a real integrated AI feature: the explanation and one-line takeaway are written by the Pollinations text API (model "openai", free, no API key, no sign-up). The AI is prompted to use only facts, numbers and formulas from the passage, and Samajh checks its output before showing it — any number or formula not in the passage discards the AI explanation and the offline one is used instead. The quiz and glossary are always built offline by the rule-based engine (extractive sentences, a checked seed glossary that never guesses a translation, cloze questions blanking a key term out of its own sentence). The evidence check normalises case, whitespace and quotes, then requires the evidence sentence to appear in the passage. Measured live on 3 passages × 3 languages (9 runs each, two runs on 21 Nov): run 1 — AI used in 6 runs, offline fallback in 3 (transient API failures — the student still got a correct result); run 2 (re-check) — AI used in 8 runs, fallback in 1. 90 of 90 quiz items verified, 90 of 90 answers checked correct by hand, 0 explanations changed a number or formula in all 18 runs, AI answers in about 0.3–6 s, offline engine about 1–2 ms. One Roman Urdu AI explanation had a garbled phrase, but its numbers and formulas were still exact and the quiz (built offline) was unaffected. Full numbers: `eval/results.md`.
 
 ## AI tools disclosure
 
-In-product AI: none (offline rule-based engine only, as above). AI coding assistant: Muse (Meta's Muse Spark) helped write the code; the code was run and tested before submission, the bugs the tests found were fixed, and the sample passages were written for this project. Full log: `docs/AI_LOG.md`.
+In-product AI: the Pollinations text API (model "openai", free, no API key, no sign-up) writes the explanation and one-line takeaway; the quiz and glossary are always built offline. In AI mode the passage is sent to Pollinations to be explained; untick AI mode for a fully offline run. AI coding assistant: Muse (Meta's Muse Spark) helped write the code; the code was run and tested before submission, the bugs the tests found were fixed, and the sample passages were written for this project. Full log: `docs/AI_LOG.md`.
 
 ## What I learned
 
@@ -32,7 +32,7 @@ The evidence check only works after normalising case, spaces and quotes; the top
 
 ## What's next
 
-A real AI provider behind the documented adapter with the same evidence check; teacher mode; photo input for textbook pages; spaced repetition for flashcards; and a proper test with 3 real students.
+A more reliable paid AI provider behind the same adapter with the same evidence check; teacher mode; photo input for textbook pages; spaced repetition for flashcards; and a proper test with 3 real students.
 
 ## Built with
 

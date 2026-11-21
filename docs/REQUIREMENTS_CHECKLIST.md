@@ -3,7 +3,7 @@
 Source: official Devpost pages (overview + /rules, read live 21 Nov 2026) and the Samajh plan
 (`Samajh_STEM2Connect_Complete_Plan.pdf`). Live Devpost pages govern if anything differs.
 Project: **Samajh** — Education track, solo, Daim Ali.
-Deadline: **Sat 21 Nov 2026, 11:59 PM EST = Sun 22 Nov 2026, 9:59 AM PKT**. Late submissions are not accepted.
+Deadline: **Sat 29 Nov 2026, 11:59 PM EST = Sun 30 Nov 2026, 9:59 AM PKT** — EXTENDED by Devpost email 21 Nov 2026 13:02 PKT ("The submission deadline has been extended to November 29th"). Original deadline was 21 Nov 11:59 PM EST. Late submissions are not accepted.
 
 Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Devpost, not hidden)
 
@@ -38,7 +38,7 @@ Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Dev
 - [x] ✅ It works and can be demonstrated — not slides, mockups or a concept alone
 - [x] ✅ Runs on any OS/device — open `index.html`, no install, no server, no key
 - [x] ✅ No harmful, offensive or misleading content
-- [x] ✅ No personal data collected without consent — no accounts, nothing stored, text never leaves the browser
+- [x] ✅ No personal data collected without consent — no accounts, nothing stored; in AI mode the passage is sent to Pollinations to be explained (stated in the app before first use), offline mode sends nothing anywhere
 
 ## 5. Samajh features (plan §5.3, F1–F10) — all built and QA-passed
 
@@ -49,14 +49,14 @@ Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Dev
 - [x] ✅ F5 Flashcards — from glossary terms, flip, "Know it / Again", session-only progress (QA fix: progress resets on re-run)
 - [x] ✅ F6 Evidence check — normalised check (lowercase, collapse whitespace, strip quotes); green "Found in passage" or amber "Could not verify — check yourself" badge on every item; "Show in passage" highlights the sentence
 - [x] ✅ F7 AI mode + offline mode — real AI feature: Pollinations text API (free, no key) writes the explanation/takeaway in the chosen language; number check discards bad AI output; offline engine takes over automatically on failure (measured 21 Nov: 6/9 AI, 3/9 fallback, 0 numbers changed); AI toggle in the UI; visible mode chip with the reason
-- [x] ✅ F8 Privacy & AI disclosure — notice visible before first use; no personal info; text sent nowhere
+- [x] ✅ F8 Privacy & AI disclosure — notice visible before first use (AI mode sends the passage to Pollinations; offline mode sends nothing); no personal info
 - [x] ✅ F9 Sample passages — 3 original passages: Ohm's law, Photosynthesis, Newton's second law (arithmetic checked: 12 V ÷ 4 Ω = 3 A; 10 N ÷ 2 kg = 5 m/s²; 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂)
 - [x] ✅ F10 Download study sheet — .md file with explanation, terms and quiz (QA fix: uses Urdu-script meanings when Urdu is selected)
 
 ## 6. AI rules (important)
 
 - [x] ✅ AI coding assistants allowed WITH disclosure — disclosed in README and Devpost draft, full log in `docs/AI_LOG.md` (Muse helped write code; tested on Daim's behalf; Daim's own review still pending)
-- [x] ✅ In-product AI: **none** — offline rule-based engine only; no API key, no external call, no text leaves the browser
+- [x] ✅ In-product AI: **Pollinations text API** (free, no key) writes the explanation + takeaway; the quiz and glossary are always built offline. In AI mode the passage is sent to Pollinations; untick AI mode for a fully offline run that sends nothing anywhere. Disclosed in README, Devpost draft, the app itself and `docs/AI_LOG.md`
 - [x] ✅ Integrated AI feature present — Pollinations (free, no key) explains in the chosen language; disclosed in README, Devpost draft and the app itself; the API-credit exception no longer needs to be relied on, and the offline fallback is kept and measured
 - [x] ✅ AI feature is strongly recommended — compensated by the evidence check, the offline baseline, and the measured comparison in README/eval
 - [x] ✅ Simply fetching data from an ordinary API does NOT count as AI — Samajh does not do that
@@ -64,8 +64,8 @@ Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Dev
 
 ## 7. Submission requirements — all five are required, missing any one = not eligible
 
-- [ ] ⏳ 1. Public GitHub repository — source code + README (what it does, how to run it, which AI tools it uses). **Repo built, QA-passed and committed locally (one commit, repo-local identity Daim Ali, no remote yet); push BLOCKED waiting for Daim's 8-char GitHub sudo code** (email 21 Nov 16:42 PKT to his Gmail). Suggested repo name: `samajh`.
-- [ ] ⏳ 2. Demo video — YouTube or Vimeo, **6 minutes or less**, public or unlisted, shows the project working (not just slides). Script ready in `docs/VIDEO_SCRIPT.md` (5:00–5:30). Not recorded yet.
+- [x] ✅ 1. Public GitHub repository — source code + README (what it does, how to run it, which AI tools it uses). Repo: https://github.com/Daimx1214/samajh — PUBLIC, main branch, MIT. Live site link and demo video link are in the README.
+- [x] ✅ 2. Demo video — YouTube, **4:02 (under 6 minutes)**, unlisted, shows the project working (not just slides). https://www.youtube.com/watch?v=vswKBBOw1RE — upload verified, playback confirmed. Link is in the README + Devpost draft.
 - [ ] ⏳ 3. Project description — Devpost form completed: name, problem, how it solves it, how it uses AI, what was learned, what to build next. Draft ready in `docs/DEVPOST_DRAFT.md`. Not submitted yet.
 - [x] ✅ 4. Track selection — Education, stated in the additional-details question / public description (draft)
 - [x] ✅ 5. Team members — solo: Daim Ali only, added on the submission
@@ -76,9 +76,9 @@ Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Dev
 
 - [x] ✅ Problem and Impact (20%) — clear local problem (English STEM text is hard for Urdu-thinking students), real user group, before/after example in hero
 - [x] ✅ Use of AI (20%) — disclosed coding assistance + offline baseline + evidence check + measured comparison (45/45 verified, 0 numbers changed)
-- [x] ✅ Functionality (20%) — works as shown; 27/27 tests pass; offline fallback so it never breaks on camera; fresh-copy run verified (27/27 in /tmp copy, eval 45/45)
+- [x] ✅ Functionality (20%) — works as shown; 33/33 tests pass; offline fallback so it never breaks on camera; live browser click-through passed (quiz 5/5, evidence highlight, flashcards, download); demo video recorded from the live site
 - [ ] ⚠️ Learning and Growth (20%) — concrete "what I learned" in README/Devpost (5 points, incl. real bugs found); **no student test run yet (0 students, not 3)** — honestly stated everywhere; weakens this score but is not a disqualifier
-- [ ] ⏳ Presentation (20%) — demo video (script ready, not recorded) + Demo Day presentation (see §10)
+- [ ] ⏳ Presentation (20%) — demo video recorded + uploaded (4:02, unlisted) + Demo Day presentation (see §10)
 
 Tie-break: higher Problem and Impact score wins. All judging decisions are final.
 
@@ -95,26 +95,26 @@ Tie-break: higher Problem and Impact score wins. All judging decisions are final
 
 - [x] ✅ 11 Oct 2026 — program & hacking period began
 - [x] ✅ 17 Oct 2026 — Devpost submissions opened
-- [ ] ⏳ **22 Nov 2026, 9:59 AM PKT — submission deadline (target: submit 60–90 min early)**
-- [ ] ⏳ 22–24 Nov 2026 — judges review complete submissions
-- [ ] ⏳ **Tue 24 Nov 2026 (EST) — Demo Day (live or prerecorded) + winners announced.** Times, meeting links, order and prerecorded instructions are announced in the STEM2Connect AI Hackathon Discord — check Discord for your slot.
+- [x] ✅ 21 Nov 2026 13:02 PKT — Devpost email: deadline EXTENDED to 29 Nov 2026
+- [ ] ⏳ **30 Nov 2026, 9:59 AM PKT — submission deadline (target: submit 60–90 min early)**
+- [ ] ⏳ Judges review complete submissions (dates move with the extension — check Devpost /updates)
+- [ ] ⏳ **Demo Day — was Tue 24 Nov 2026 (EST) before the extension; new date to confirm in the STEM2Connect AI Hackathon Discord.** Times, meeting links, order and prerecorded instructions are announced in the Discord — check Discord for your slot.
 
 ## 11. Measured results (real numbers only, 21 Nov 2026)
 
-- Tests: **27/27 pass, 0 fail** (`node --test tests/samajh.test.mjs`) — 18 original + 9 added in the second fix round (number warning, Urdu-script input, prompt injection, quiz scoring, flashcard reset, Urdu study sheet); fresh-copy check also 27/27
-- Eval: 3 samples × 3 languages = 9 runs — **45/45 quiz items evidence-verified (100%)**, **45/45 quiz answers manually checked correct**, **0 explanations changed a number/formula**, median engine time **about 1–2 ms (varies run to run; latest medians of medians 1.19 and 1.26 ms, observed range 1.05–1.73 ms)**
+- Tests: **33/33 pass, 0 fail** (`node --test tests/samajh.test.mjs`) — 18 original + 9 added in the second fix round + 8 added with AI mode (fake-fetch AI tests)
+- Eval: 3 samples × 3 languages = 9 runs — **45/45 quiz items evidence-verified (100%)**, **45/45 quiz answers manually checked correct**, **0 explanations changed a number/formula**, median engine time **about 1–2 ms (varies run to run; latest medians of medians 1.25 ms)**
+- AI mode (measured live, two runs of 9 on 21 Nov): run 1 — AI 6/9, fallback 3/9; run 2 — AI 8/9, fallback 1/9; **0 numbers changed in 18 runs, quiz 90/90 verified**, AI answers in about 0.3–6 s. One Roman Urdu AI explanation had a garbled phrase; numbers still exact.
 - Student clarity rating: **not measured** (no student test)
-- AI mode: **not measured** (no provider connected)
-- Serving check: index.html, style.css, app.js, samajh.js, all 3 samples — all HTTP 200; only external URLs are Google Fonts; only fetch is local samples; no keys, no personal data (secrets scan: zero hits)
+- Serving check: live site https://daimx1214.github.io/samajh/ HTTP 200; repo public at https://github.com/Daimx1214/samajh; demo video https://www.youtube.com/watch?v=vswKBBOw1RE (4:02, unlisted, playback verified). In AI mode the app calls text.pollinations.ai (free, no key); offline mode sends nothing anywhere. No keys, no personal data (secrets scan: zero hits)
 
 ## 12. Honest limits — must stay in README / Devpost / video (do not hide)
 
-- Offline mode only; no in-product AI service.
-- Explanation stays in English (extractive sentences from the passage); only glossary and quiz wording are in Roman Urdu / Urdu script.
+- AI mode sends the passage to the free Pollinations text API; untick AI mode for a fully offline run. The free AI sometimes fails (4 fallbacks in 18 measured runs) and its Roman Urdu wording can be rough — numbers and formulas are checked, never trusted blindly.
+- In offline mode the explanation stays in English (extractive sentences from the passage); only glossary and quiz wording are in Roman Urdu / Urdu script.
 - Cloze questions test sentence-matching, not deep comprehension.
 - No student test run (0 students).
-- No live hosting — local run + video are the evidence.
-- One local git commit (no remote yet; push pending on Daim's code).
+- Urdu seed-glossary spellings have not been personally verified by Daim yet.
 
 ## 13. QA fixes already applied (21 Nov, re-tested)
 
@@ -134,11 +134,16 @@ Second fix round (21 Nov, re-tested — 27/27 tests, eval 45/45, all 45 quiz ite
 11. **Urdu-script input validation added**: a passage mostly in Urdu script is rejected with a clear message explaining Samajh explains English paragraphs and Urdu is for terms/quiz.
 12. **Git repo initialised locally**: one commit, repo-local identity Daim Ali, no remote, nothing pushed.
 
+Third fix round (21 Nov evening — AI mode added, then a full QA re-check found stale pre-AI wording in the docs):
+
+13. **Real AI mode added** (`PROVIDER = 'pollinations'`, `callProvider()`, `aiEngine()`, async `runPipeline()`; AI toggle + mode chip in the UI; number check discards bad AI output). Measured live twice: run 1 — AI 6/9, fallback 3/9; run 2 — AI 8/9, fallback 1/9; 0 numbers changed in 18 runs; quiz 90/90 verified. 8 new unit tests with a fake fetch — **33/33 tests pass**.
+14. **Flashcard layout root cause fixed**: `.flash-inner` was an inline `<span>`, so the card faces collapsed narrow and overlapped the buttons below — the first recording attempt failed on the "Know it" click for this reason. Fixed with `display: block` (commit `ced6a00`); the re-recorded demo shows the card full-width.
+15. **Demo video recorded, muxed and uploaded**: Playwright recording of the live site (3 attempts: flashcard click blocked, then GitHub `networkidle` timeout — fixed with `domcontentloaded` + try/finally so the video file always finalises), narration (242 s) muxed with ffmpeg, 4 frames visually verified, uploaded to YouTube unlisted (4:02, playback confirmed).
+16. **Stale pre-AI wording removed from the docs** (found in the final QA pass): README said "27 tests", "AI mode: not measured (no provider connected)", "a real AI provider" as a next step, and "the pasted text is never sent anywhere"; the Devpost draft said "In-product AI: none"; `eval/results.md` said "AI mode: not measured"; this checklist still listed the old 22 Nov deadline, a blocked GitHub push, an unrecorded video and "no live hosting". All corrected to the measured numbers and the extended 30 Nov deadline.
+
 ## 14. What is left — in order
 
-1. **Daim sends the 8-char GitHub sudo code** (email 21 Nov 16:42 PKT) → CLI authorises → push the already-committed `samajh` repo (public) → verify it opens logged-out, add repo URL to README + Devpost draft.
-2. **Live browser click-through** before recording: tabs, one full quiz pass, "Show in passage", flashcard reset, download.
-3. **Record the demo video** (script ready, 5:00–5:30), upload unlisted to YouTube/Vimeo, add the link to README + Devpost draft.
-4. **Daim's own review** (review-before-submit rule): especially the Urdu seed-glossary spellings and the "What I learned" wording.
-5. **Submit on Devpost** by 22 Nov 9:59 AM PKT (aim 60–90 min early), reopen and verify "submitted", not draft.
-6. **Demo Day, Tue 24 Nov**: check Discord for slot/link; present live or prerecorded; then request the Certificate of Participation and follow the private .xyz domain instructions.
+1. **Repo, live site and video — DONE**: public GitHub repo, GitHub Pages live, demo video on YouTube unlisted (links in README + Devpost draft).
+2. **Daim's own review** (review-before-submit rule): especially the Urdu seed-glossary spellings and the "What I learned" wording.
+3. **Submit on Devpost** by 30 Nov 9:59 AM PKT (aim 60–90 min early), reopen and verify "submitted", not draft.
+4. **Demo Day**: check Discord for the new date/slot/link (was 24 Nov before the extension); present live or prerecorded; then request the Certificate of Participation and follow the private .xyz domain instructions.

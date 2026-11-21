@@ -2,7 +2,7 @@
 
 Every quiz item from the 9 evaluation runs. A human read each one and marked whether the correct option is the only sensible answer for the blank, given the evidence sentence.
 
-## ohm — english (median 2.84 ms)
+## ohm — english (median 2.73 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -60,7 +60,7 @@ Reason: The passage says the missing word is “circuit”.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — roman (median 1.76 ms)
+## ohm — roman (median 1.83 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -118,7 +118,7 @@ Reason: Passage mein khaali jagah par “circuit” hai.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — urdu (median 1.26 ms)
+## ohm — urdu (median 1.27 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -176,7 +176,7 @@ Reason: عبارت میں خالی جگہ پر “circuit” ہے۔
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## photosynthesis — english (median 1.53 ms)
+## photosynthesis — english (median 1.23 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -234,7 +234,7 @@ Reason: The passage says the missing word is “reaction”.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — roman (median 1.15 ms)
+## photosynthesis — roman (median 1.06 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -292,7 +292,7 @@ Reason: Passage mein khaali jagah par “reaction” hai.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — urdu (median 1.29 ms)
+## photosynthesis — urdu (median 1.07 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -350,7 +350,7 @@ Reason: عبارت میں خالی جگہ پر “reaction” ہے۔
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## newton2 — english (median 1.24 ms)
+## newton2 — english (median 1.28 ms)
 
 Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
@@ -408,7 +408,7 @@ Reason: The passage says the missing word is “object”.
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2 — roman (median 1.24 ms)
+## newton2 — roman (median 1.21 ms)
 
 Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
