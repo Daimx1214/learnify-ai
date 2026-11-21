@@ -117,6 +117,7 @@ Tie-break: higher Problem and Impact score wins. All judging decisions are final
 - Urdu seed-glossary spellings have not been personally verified by Daim yet.
 - New-language glossary meanings (beyond Urdu and Roman Urdu) are standard dictionary translations of common STEM terms, not yet reviewed by native speakers.
 - The demo video (4:02) was recorded before the 13-language round and the two new samples — it shows Roman Urdu and 3 samples only. Re-record after everything is final, per Daim's order (21 Nov evening).
+- The free AI sometimes mistranslates STEM terms in Arabic (seen live 21 Nov: "hypotenuse" rendered as "الضلع المستقيم" instead of "الوتر") — the checked glossary shows the correct term; the script check verifies the script, not the translation.
 
 ## 13. QA fixes already applied (21 Nov, re-tested)
 
@@ -156,6 +157,12 @@ Fifth fix round (21 Nov evening — Daim's gap list, one by one; video deferred 
 22. **Two more sample passages**: Pythagoras' theorem (3² + 4² = 25) and cells (37 trillion cells, 10 micrometres) — 5 samples total, 12 new seed terms in all 13 languages (45 terms total), 2 new tests. Offline eval re-run: 65 runs, 325/325 verified; all 30 new unique quiz items read by hand — **75/75 correct** (one weak item: cells Q5 blanks the filler word "about" — unambiguous, but it tests a filler word, not understanding).
 23. **Script audit**: a permanent test checks every seed meaning and every UI string is written in its own language's script. It caught one real issue — the Chinese mode chip was mostly the Latin brand name "Pollinations" — fixed by excluding brand names from the script count.
 24. **Cleanup + Demo Day check**: the video-recording proxy process was killed (Chrome + recorder kept for the re-record). Devpost /updates checked 21 Nov ~18:40 PKT: the extension to 29 Nov is confirmed, but no new Demo Day date is posted — Discord is the only source.
+
+Sixth fix (21 Nov evening — live click-through found a glossary bug; the rest was a stale deploy):
+
+25. **Invented bigrams removed**: `extractKeyTerms()` built bigrams across the whole passage, inventing "squared squared" (from "a squared + b squared") and "current flows" (words that only met at a sentence boundary) — both appeared as glossary terms and in all five quiz options. Bigrams are now built inside one sentence only, never from the same word twice. 1 new test — **53/53 tests pass**; offline eval re-run, 65 runs, 325/325 verified, quiz items unchanged (only timings moved).
+26. **Stale-deploy lesson**: the 18:40 PKT click-through tested the OLD live version (GitHub Pages had not finished deploying the 18:38 push) — it saw 3 samples and English labels. Verified by curl afterwards: the live site serves the new code (Pythagoras button, 24 data-ui labels, ui-strings.js 200, "5 sample passages × 13 languages (65 runs)"). Re-test the live site only after curl confirms the deploy.
+27. **Free-AI Arabic mistranslations (known limit, not a code bug)**: the 18:40 click-through's live AI explanation rendered "right-angled triangle" as "المثلث المتراحم" and "hypotenuse" as "الضلع المستقيم" — the checked glossary has the correct "الوتر". The script check verifies the script, not the translation; the glossary is the correct source.
 
 ## 14. What is left — in order
 

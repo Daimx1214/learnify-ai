@@ -4,78 +4,78 @@ Offline engine only (PROVIDER=none). 5 sample passages × 13 languages = 65 runs
 
 | Sample | Language | Median time (ms) | Quiz items | Verified | Terms | Numbers changed |
 |---|---|---|---|---|---|---|
-| ohm | english | 2.74 | 5 | 5 | 8 | 0 |
-| ohm | roman | 1.95 | 5 | 5 | 8 | 0 |
-| ohm | urdu | 1.32 | 5 | 5 | 8 | 0 |
-| ohm | hindi | 1.24 | 5 | 5 | 8 | 0 |
-| ohm | bengali | 1.51 | 5 | 5 | 8 | 0 |
-| ohm | arabic | 1.27 | 5 | 5 | 8 | 0 |
-| ohm | spanish | 1.31 | 5 | 5 | 8 | 0 |
-| ohm | french | 1.29 | 5 | 5 | 8 | 0 |
-| ohm | portuguese | 1.33 | 5 | 5 | 8 | 0 |
-| ohm | german | 1.17 | 5 | 5 | 8 | 0 |
-| ohm | turkish | 1.11 | 5 | 5 | 8 | 0 |
-| ohm | indonesian | 1.13 | 5 | 5 | 8 | 0 |
-| ohm | chinese | 1.33 | 5 | 5 | 8 | 0 |
-| photosynthesis | english | 1.26 | 5 | 5 | 8 | 0 |
-| photosynthesis | roman | 1.14 | 5 | 5 | 8 | 0 |
-| photosynthesis | urdu | 1.31 | 5 | 5 | 8 | 0 |
-| photosynthesis | hindi | 1.48 | 5 | 5 | 8 | 0 |
-| photosynthesis | bengali | 1.07 | 5 | 5 | 8 | 0 |
-| photosynthesis | arabic | 1.06 | 5 | 5 | 8 | 0 |
-| photosynthesis | spanish | 1.05 | 5 | 5 | 8 | 0 |
-| photosynthesis | french | 1.14 | 5 | 5 | 8 | 0 |
-| photosynthesis | portuguese | 1.12 | 5 | 5 | 8 | 0 |
-| photosynthesis | german | 1.12 | 5 | 5 | 8 | 0 |
-| photosynthesis | turkish | 1.12 | 5 | 5 | 8 | 0 |
-| photosynthesis | indonesian | 1.26 | 5 | 5 | 8 | 0 |
-| photosynthesis | chinese | 1.20 | 5 | 5 | 8 | 0 |
-| newton2 | english | 1.38 | 5 | 5 | 8 | 0 |
-| newton2 | roman | 1.19 | 5 | 5 | 8 | 0 |
-| newton2 | urdu | 1.19 | 5 | 5 | 8 | 0 |
-| newton2 | hindi | 1.24 | 5 | 5 | 8 | 0 |
-| newton2 | bengali | 1.39 | 5 | 5 | 8 | 0 |
-| newton2 | arabic | 1.76 | 5 | 5 | 8 | 0 |
-| newton2 | spanish | 1.42 | 5 | 5 | 8 | 0 |
-| newton2 | french | 1.88 | 5 | 5 | 8 | 0 |
-| newton2 | portuguese | 2.29 | 5 | 5 | 8 | 0 |
-| newton2 | german | 1.65 | 5 | 5 | 8 | 0 |
-| newton2 | turkish | 1.76 | 5 | 5 | 8 | 0 |
-| newton2 | indonesian | 1.10 | 5 | 5 | 8 | 0 |
-| newton2 | chinese | 1.20 | 5 | 5 | 8 | 0 |
-| pythagoras | english | 1.29 | 5 | 5 | 8 | 0 |
-| pythagoras | roman | 1.13 | 5 | 5 | 8 | 0 |
-| pythagoras | urdu | 1.18 | 5 | 5 | 8 | 0 |
-| pythagoras | hindi | 1.06 | 5 | 5 | 8 | 0 |
-| pythagoras | bengali | 1.04 | 5 | 5 | 8 | 0 |
-| pythagoras | arabic | 1.03 | 5 | 5 | 8 | 0 |
-| pythagoras | spanish | 1.07 | 5 | 5 | 8 | 0 |
+| ohm | english | 2.80 | 5 | 5 | 8 | 0 |
+| ohm | roman | 1.99 | 5 | 5 | 8 | 0 |
+| ohm | urdu | 1.33 | 5 | 5 | 8 | 0 |
+| ohm | hindi | 1.19 | 5 | 5 | 8 | 0 |
+| ohm | bengali | 1.20 | 5 | 5 | 8 | 0 |
+| ohm | arabic | 1.23 | 5 | 5 | 8 | 0 |
+| ohm | spanish | 1.27 | 5 | 5 | 8 | 0 |
+| ohm | french | 1.26 | 5 | 5 | 8 | 0 |
+| ohm | portuguese | 1.52 | 5 | 5 | 8 | 0 |
+| ohm | german | 1.15 | 5 | 5 | 8 | 0 |
+| ohm | turkish | 1.10 | 5 | 5 | 8 | 0 |
+| ohm | indonesian | 1.08 | 5 | 5 | 8 | 0 |
+| ohm | chinese | 1.07 | 5 | 5 | 8 | 0 |
+| photosynthesis | english | 1.27 | 5 | 5 | 8 | 0 |
+| photosynthesis | roman | 1.05 | 5 | 5 | 8 | 0 |
+| photosynthesis | urdu | 1.04 | 5 | 5 | 8 | 0 |
+| photosynthesis | hindi | 1.07 | 5 | 5 | 8 | 0 |
+| photosynthesis | bengali | 1.03 | 5 | 5 | 8 | 0 |
+| photosynthesis | arabic | 1.12 | 5 | 5 | 8 | 0 |
+| photosynthesis | spanish | 1.03 | 5 | 5 | 8 | 0 |
+| photosynthesis | french | 1.09 | 5 | 5 | 8 | 0 |
+| photosynthesis | portuguese | 1.17 | 5 | 5 | 8 | 0 |
+| photosynthesis | german | 1.09 | 5 | 5 | 8 | 0 |
+| photosynthesis | turkish | 1.10 | 5 | 5 | 8 | 0 |
+| photosynthesis | indonesian | 1.13 | 5 | 5 | 8 | 0 |
+| photosynthesis | chinese | 1.08 | 5 | 5 | 8 | 0 |
+| newton2 | english | 1.13 | 5 | 5 | 8 | 0 |
+| newton2 | roman | 1.18 | 5 | 5 | 8 | 0 |
+| newton2 | urdu | 1.08 | 5 | 5 | 8 | 0 |
+| newton2 | hindi | 1.10 | 5 | 5 | 8 | 0 |
+| newton2 | bengali | 1.07 | 5 | 5 | 8 | 0 |
+| newton2 | arabic | 1.16 | 5 | 5 | 8 | 0 |
+| newton2 | spanish | 1.13 | 5 | 5 | 8 | 0 |
+| newton2 | french | 1.11 | 5 | 5 | 8 | 0 |
+| newton2 | portuguese | 1.33 | 5 | 5 | 8 | 0 |
+| newton2 | german | 1.33 | 5 | 5 | 8 | 0 |
+| newton2 | turkish | 1.06 | 5 | 5 | 8 | 0 |
+| newton2 | indonesian | 1.00 | 5 | 5 | 8 | 0 |
+| newton2 | chinese | 1.33 | 5 | 5 | 8 | 0 |
+| pythagoras | english | 1.45 | 5 | 5 | 8 | 0 |
+| pythagoras | roman | 1.09 | 5 | 5 | 8 | 0 |
+| pythagoras | urdu | 1.07 | 5 | 5 | 8 | 0 |
+| pythagoras | hindi | 1.02 | 5 | 5 | 8 | 0 |
+| pythagoras | bengali | 1.09 | 5 | 5 | 8 | 0 |
+| pythagoras | arabic | 1.07 | 5 | 5 | 8 | 0 |
+| pythagoras | spanish | 1.05 | 5 | 5 | 8 | 0 |
 | pythagoras | french | 1.07 | 5 | 5 | 8 | 0 |
-| pythagoras | portuguese | 1.05 | 5 | 5 | 8 | 0 |
-| pythagoras | german | 1.04 | 5 | 5 | 8 | 0 |
-| pythagoras | turkish | 1.08 | 5 | 5 | 8 | 0 |
-| pythagoras | indonesian | 1.08 | 5 | 5 | 8 | 0 |
-| pythagoras | chinese | 1.11 | 5 | 5 | 8 | 0 |
-| cells | english | 2.12 | 5 | 5 | 8 | 0 |
-| cells | roman | 1.30 | 5 | 5 | 8 | 0 |
-| cells | urdu | 1.28 | 5 | 5 | 8 | 0 |
-| cells | hindi | 1.32 | 5 | 5 | 8 | 0 |
-| cells | bengali | 1.33 | 5 | 5 | 8 | 0 |
-| cells | arabic | 1.30 | 5 | 5 | 8 | 0 |
-| cells | spanish | 1.19 | 5 | 5 | 8 | 0 |
-| cells | french | 1.24 | 5 | 5 | 8 | 0 |
-| cells | portuguese | 1.32 | 5 | 5 | 8 | 0 |
-| cells | german | 2.13 | 5 | 5 | 8 | 0 |
-| cells | turkish | 1.21 | 5 | 5 | 8 | 0 |
-| cells | indonesian | 1.22 | 5 | 5 | 8 | 0 |
-| cells | chinese | 1.25 | 5 | 5 | 8 | 0 |
+| pythagoras | portuguese | 1.09 | 5 | 5 | 8 | 0 |
+| pythagoras | german | 1.06 | 5 | 5 | 8 | 0 |
+| pythagoras | turkish | 1.06 | 5 | 5 | 8 | 0 |
+| pythagoras | indonesian | 1.06 | 5 | 5 | 8 | 0 |
+| pythagoras | chinese | 1.06 | 5 | 5 | 8 | 0 |
+| cells | english | 1.30 | 5 | 5 | 8 | 0 |
+| cells | roman | 1.39 | 5 | 5 | 8 | 0 |
+| cells | urdu | 1.26 | 5 | 5 | 8 | 0 |
+| cells | hindi | 1.25 | 5 | 5 | 8 | 0 |
+| cells | bengali | 1.26 | 5 | 5 | 8 | 0 |
+| cells | arabic | 1.29 | 5 | 5 | 8 | 0 |
+| cells | spanish | 1.31 | 5 | 5 | 8 | 0 |
+| cells | french | 1.22 | 5 | 5 | 8 | 0 |
+| cells | portuguese | 1.21 | 5 | 5 | 8 | 0 |
+| cells | german | 1.26 | 5 | 5 | 8 | 0 |
+| cells | turkish | 1.19 | 5 | 5 | 8 | 0 |
+| cells | indonesian | 1.21 | 5 | 5 | 8 | 0 |
+| cells | chinese | 1.22 | 5 | 5 | 8 | 0 |
 
 ## Summary (measured)
 
 - Quiz items with evidence verified: **325 of 325 (100.0%)**
 - Quiz answers manually checked as correct: **75 of 75 unique items (100%)** — I read every item in eval/quiz_dump.md and checked that the marked answer is the only sensible word for the blank, given the evidence sentence. The 13-language runs reuse those same 75 items (325 total): only the question/reason wording is localized, options, answers and evidence are identical — spot-checked in Spanish, Arabic, French and Chinese in the new dump. One weak item, not a wrong one: cells Q5 blanks the filler word "about" ("has ______ 37 trillion cells") — the answer is unambiguous, but it tests a filler word, not understanding.
 - Explanations that changed a number or formula: **0 of 65 runs**
-- Median time to result (median of the 65 run-medians): **1.24 ms** (in-process engine time only; excludes the 400 ms skeleton pause in the UI)
+- Median time to result (median of the 65 run-medians): **1.13 ms** (in-process engine time only; excludes the 400 ms skeleton pause in the UI)
 - Student clarity rating (1–5): **not measured** (no student test was run before the deadline)
 - AI mode: **measured live — see the AI mode section below**
 

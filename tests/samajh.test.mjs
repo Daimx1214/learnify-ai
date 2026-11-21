@@ -534,3 +534,18 @@ test('ai: Urdu explanation for an English request is discarded', async () => {
   assert.equal(r.mode, 'offline');
   assert.ok(r.aiRejected && r.aiRejected.includes('wrong language'));
 });
+
+// --- Bigram bug (21 Nov evening — live click-through found "squared squared") ---
+test('terms: no invented bigram from a repeated word or a sentence boundary', () => {
+  const repeated = "The rule is a squared + b squared = c squared. The rule is a squared + b squared = c squared. Builders use this rule to check a corner.";
+  const r1 = offlineEngine(repeated, 'class9', 'english');
+  assert.ok(!r1.keyTerms.some((t) => t.lower === 'squared squared'), 'no "squared squared" term');
+  assert.ok(!r1.quiz.some((q) => q.options.includes('squared squared')), 'no "squared squared" quiz option');
+  const boundary = "The battery drives current. Flows of current heat the wire. The battery drives current. Flows of current heat the wire.";
+  const r2 = offlineEngine(boundary, 'class9', 'english');
+  assert.ok(!r2.keyTerms.some((t) => t.lower === 'current flows'), 'no cross-sentence "current flows" term');
+  // A real in-sentence bigram still works (Pythagoras sample).
+  const pyth = readFileSync(join(dir, '../samples/pythagoras.txt'), 'utf8').trim();
+  const real = offlineEngine(pyth, 'class9', 'english');
+  assert.ok(real.keyTerms.some((t) => t.lower === 'right-angled triangle'), 'real in-sentence bigram "right-angled triangle" still extracted');
+});

@@ -422,12 +422,21 @@ export function extractKeyTerms(passage, sentences) {
   const freq = new Map();
   for (const w of contentWords(passage)) freq.set(w, (freq.get(w) ?? 0) + 1);
 
-  // Bigrams that repeat or are in the seed glossary.
+  // Bigrams that repeat or are in the seed glossary — built inside one
+  // sentence only, and never from the same word twice. The old code built
+  // bigrams across the whole passage, which invented phrases from words
+  // that only met at a sentence boundary ("current flows" from "…
+  // current. Flows of current …") and from a repeated word ("squared
+  // squared" from "a squared + b squared"). Both showed up as glossary
+  // terms and quiz options (spotted in the 21 Nov live click-through).
   const bigramFreq = new Map();
-  const words = contentWords(passage);
-  for (let i = 0; i < words.length - 1; i++) {
-    const b = `${words[i]} ${words[i + 1]}`;
-    bigramFreq.set(b, (bigramFreq.get(b) ?? 0) + 1);
+  for (const s of sentences) {
+    const ws = contentWords(s);
+    for (let i = 0; i < ws.length - 1; i++) {
+      if (ws[i] === ws[i + 1]) continue;
+      const b = `${ws[i]} ${ws[i + 1]}`;
+      bigramFreq.set(b, (bigramFreq.get(b) ?? 0) + 1);
+    }
   }
 
   const candidates = new Map(); // key -> {term, score}
