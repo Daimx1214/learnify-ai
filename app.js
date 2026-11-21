@@ -16,6 +16,10 @@ function applyUiLanguage(language) {
     else { el.removeAttribute('dir'); el.removeAttribute('lang'); }
   });
   document.documentElement.setAttribute('lang', meta.lang);
+  // Page-wide direction: RTL languages flip the whole layout (nav, form
+  // and results columns, tabs), not just the labelled elements.
+  if (meta.dir === 'rtl') document.documentElement.setAttribute('dir', 'rtl');
+  else document.documentElement.removeAttribute('dir');
 }
 
 document.getElementById('language').addEventListener('change', (e) => applyUiLanguage(e.target.value));
@@ -115,6 +119,7 @@ async function runExplain() {
 }
 
 function render(result, mode, reason) {
+  const lang = result.language;
   $('loading').hidden = true;
   $('results').hidden = false;
   $('results').classList.add('fade-in');
@@ -125,7 +130,6 @@ function render(result, mode, reason) {
     + (result.aiRejected ? ` (${result.aiRejected})` : '')
     + (result.mode === 'ai' ? ' Quiz and glossary are still checked offline against your passage.' : '');
 
-  const lang = result.language;
   const meta = languageMeta(lang);
   const introEl = $('explain-intro');
   introEl.textContent = explainIntro(lang);
