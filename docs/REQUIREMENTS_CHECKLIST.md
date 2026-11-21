@@ -170,6 +170,10 @@ Seventh fix (21 Nov evening, the thorough re-test found a crash the unit tests c
 29. **Page-wide RTL flip**: `applyUiLanguage` now sets `dir=rtl` on `<html>` for RTL languages, so the whole layout (nav, columns, tabs) flips, not just the labelled elements.
 30. **Fresh-browser verification (21 Nov ~19:00 PKT, script at `~/workspace/tmp/samajh-video/verify.mjs`)**: against the live site with an empty cache, **9/9 checks pass**: 5 samples, Hindi labels ("समझाएँ"), offline level Class 9 = 4 sentences vs University = 5 (live re-check confirmed the 4; the first live run read 0 only because the sample file was still loading), Arabic labels ("اشرح") + page-wide RTL, hypotenuse = الوتر, no "squared squared", no page errors. Google Fonts fails to load in the sandboxed test browser only, the page falls back to system fonts, not an app bug. Local server + proxy processes killed after the run.
 
+Eighth fix (21 Nov evening, user: "AI wali sari vibes remove kro, FULL humanize kro", no em dashes anywhere):
+
+31. **Humanize pass**: every em dash and en dash removed from the whole repo (0 left, checked by grep). Seed glossary meanings and all 13 UI languages now use colons or commas instead of dashes (Chinese uses a Chinese comma/colon). index.html copy rewritten in plain short sentences, trust table numbers fixed to the current 325/325, 75/75, 162/187. Devpost draft and video script rewritten in first person, plain spoken words. README, AI_LOG, checklist and results the same, plus stale numbers fixed (53/53 tests, 25 fallbacks in 187 runs, no "run in progress" line). New test locks the rule in: no em/en dash in any UI string, seed meaning or the page. **54/54 tests pass**, offline eval 65 runs 325/325. The user also asked for a new name. Suggestions given: Seekho, SimplySTEM, Taleem, Ilm. Not yet picked.
+
 ## 14. What is left: in order
 
 1. **Repo and live site, DONE**: public GitHub repo, GitHub Pages live. **Demo video, OUTDATED, re-record after everything is final** (per Daim's order, 21 Nov evening): the current video (4:02, unlisted) shows Roman Urdu and 3 samples only; the app now has 13 languages and 5 samples.
