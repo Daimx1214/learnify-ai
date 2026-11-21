@@ -6,7 +6,7 @@ GitHub: https://github.com/Daimx1214/samajh
 
 Live site: https://daimx1214.github.io/samajh/
 
-Demo video: [TODO — to be added after recording]
+Demo video: https://www.youtube.com/watch?v=vswKBBOw1RE (4:02, unlisted)
 
 ## What it does
 
