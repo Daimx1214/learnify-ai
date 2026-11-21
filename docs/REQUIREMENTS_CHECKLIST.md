@@ -66,10 +66,10 @@ Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Dev
 
 - [x] ✅ 1. Public GitHub repository, source code + README (what it does, how to run it, which AI tools it uses). Repo: https://github.com/Daimx1214/learnify-ai, PUBLIC, main branch, MIT. Live site link and demo video link are in the README.
 - [x] ✅ 2. Demo video, YouTube,  **4:18 (under 6 minutes)**, unlisted, shows the project working (not just slides). https://www.youtube.com/watch?v=20ow05Vy30A, upload verified, playback confirmed, audio heard. Link is in the README + Devpost draft.
-- [ ] ⏳ 3. Project description, Devpost form completed: name, problem, how it solves it, how it uses AI, what was learned, what to build next. Draft ready in `docs/DEVPOST_DRAFT.md`. Not submitted yet.
+- [x] ✅ 3. Project description, Devpost form completed: name, problem, how it solves it, how it uses AI, what was learned, what to build next. Submitted 21 Nov ~20:07 PKT from `docs/DEVPOST_DRAFT.md`, verified SUBMITTED (5/5 steps done), https://devpost.com/software/learnify-ai-d6e85i
 - [x] ✅ 4. Track selection, Education, stated in the additional-details question / public description (draft)
 - [x] ✅ 5. Team members, solo: Daim Ali only, added on the submission
-- [ ] ⏳ Saving a draft does NOT enter the hackathon, must click Submit, then reopen and verify status is "submitted", not draft
+- [x] ✅ Submitted (not a draft): green SUBMITTED badge + 5/5 steps done verified on the manage page 21 Nov ~20:07 PKT
 - [ ] ⏳ Re-read Devpost /rules and /updates once more before submitting
 
 ## 8. Judging criteria: 5 categories, 20% each
@@ -182,5 +182,5 @@ Ninth fix (21 Nov evening, user: "chalo video banao final version wali", name Le
 
 1. **Repo and live site, DONE**: public GitHub repo, GitHub Pages live. **Demo video RE-RECORDED 21 Nov evening (final v3, 4:18, learnify-ai-demo.mp4 in ~/workspace/tmp/samajh-video/)**: shows Learnify AI name + tagline, 13 languages, 5 samples, AI mode + offline fallback, quiz with evidence, flashcards, study sheet download.  **Uploaded to YouTube unlisted 21 Nov ~20:00 PKT: https://www.youtube.com/watch?v=20ow05Vy30A (4:18, playback + audio verified). README + Devpost draft updated to the new URL (commit a98a98c).**
 2. **Daim's own review** (review-before-submit rule): especially the Urdu seed-glossary spellings, the new-language meanings, and the "What I learned" wording.
-3. **Submit on Devpost** by 30 Nov 9:59 AM PKT (aim 60-90 min early), reopen and verify "submitted", not draft.
+3. **Submit on Devpost: DONE 21 Nov ~20:07 PKT**, verified SUBMITTED, https://devpost.com/software/learnify-ai-d6e85i. Project can still be edited until the 30 Nov 9:59 AM PKT deadline.
 4. **Demo Day**: check Discord for the new date/slot/link (was 24 Nov before the extension); present live or prerecorded; then request the Certificate of Participation and follow the private .xyz domain instructions.
