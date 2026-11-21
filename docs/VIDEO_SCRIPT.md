@@ -1,6 +1,8 @@
 # Demo video script — Samajh (aim 5:00–5:30, hard limit 6:00)
 
-Record with OBS Studio, 1080p, clear microphone, quiet room. Show the app really running, not slides. Upload to YouTube or Vimeo as unlisted and check it plays while logged out. Use your own voice.
+Record with a screen recorder, 1280×720, quiet room. Show the app really running, not slides. Upload to YouTube as unlisted and check it plays while logged out. Narration is TTS from this script (Daim's own voice was not available for recording).
+
+**Updated 21 Nov 2026 evening (v2): the app now has a real AI feature (Pollinations, free, no key). Sections 2:45–3:30, 3:30–4:15 and 5:00–5:30 were rewritten — the v1 wording ("no AI service runs inside the product", "next: a real AI provider") is no longer true.**
 
 ## 0:00–0:30 — Problem
 
@@ -21,15 +23,15 @@ Walk through one full pass, slowly enough to read:
 3. Quiz tab: answer one question right, then **get one question wrong on purpose** — show the reason, the evidence sentence, and the green "Found in passage" badge. Click "Show in passage" and show the sentence highlight in the original.
 4. Cards tab: flip one flashcard, tap "Know it".
 
-## 2:45–3:30 — Reliability (offline mode)
+## 2:45–3:30 — Reliability (offline fallback)
 
-On screen: the Offline mode chip and the notice strip.
-Say: "There is no AI key in this build, so Samajh runs on a rule-based offline engine. If the AI service fails or credits run out, it still works — that is the API-credit exception, and the app says so honestly instead of pretending to be an AI."
+On screen: untick the AI-mode box, tap Explain again, and show the Offline mode chip.
+Say: "The AI is a free service with no key, so it can fail — in my own test it failed 3 times out of 9. When it does, Samajh does not break: the offline engine takes over automatically, and the app says so honestly instead of pretending the AI answered."
 
 ## 3:30–4:15 — AI and honesty
 
 On screen: the README "AI tools" section and the results table in `eval/results.md`.
-Say: "No AI service runs inside the product. An AI coding assistant helped write the code; I read it, ran it and tested it. Measured on 3 passages × 3 languages: 45 of 45 quiz items verified, 45 of 45 answers checked correct by hand, 0 explanations changed a number or formula. I also found a real bug — one quiz question had two sensible answers — and fixed it. No student test was run yet, so I claim no student rating."
+Say: "The explanation is written by a free AI — Pollinations, no key, no sign-up — and Samajh checks it before showing it: any number that is not in your passage throws the AI text away. The quiz and glossary are always built offline, so the AI can never invent an answer. An AI coding assistant helped write the code; I read it, ran it and tested it. Measured on 3 passages × 3 languages: the AI answered 6 of 9 runs, the offline engine covered the other 3, 45 of 45 quiz items verified, 45 of 45 answers checked correct by hand, 0 explanations changed a number or formula, and 33 of 33 tests pass. I also found a real bug — one quiz question had two sensible answers — and fixed it. No student test was run yet, so I claim no student rating."
 
 ## 4:15–5:00 — Learning
 
@@ -39,7 +41,7 @@ Say three concrete things: (1) the evidence check only works after normalising c
 ## 5:00–5:30 — Next and close
 
 On screen: the "What I would build next" list and the repo URL.
-Say: "Next: a real AI provider behind the same evidence check, teacher mode, and a proper student test. The code is at [repo URL]. Thank you."
+Say: "Next: teacher mode, photo input so you can snap a textbook page, and a proper test with real students. The code and the live site are at the links below. Thank you."
 
 ## Recording checklist
 

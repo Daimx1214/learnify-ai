@@ -166,10 +166,10 @@ textarea[aria-invalid="true"] { border: 2px solid var(--error); }
    never became visible in the 21 Nov live click-through). */
 .flash-wrap { text-align: center; }
 .flashcard {
-  width: 100%; max-width: 420px; min-height: 220px; margin: 0 auto 16px;
+  display: block; width: 100%; max-width: 420px; min-height: 220px; margin: 0 auto 16px;
   background: none; border: none; cursor: pointer; font: inherit;
 }
-.flash-inner { position: relative; width: 100%; min-height: 220px; }
+.flash-inner { display: block; position: relative; width: 100%; min-height: 220px; }
 .flash-face {
   position: absolute; inset: 0; display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 8px; padding: 24px;
