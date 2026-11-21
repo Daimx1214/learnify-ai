@@ -4,11 +4,13 @@ STEM2Connect AI Hackathon 2026. Primary track: **Education**. Solo entrant: Daim
 
 GitHub: https://github.com/Daimx1214/samajh
 
+Live site: https://daimx1214.github.io/samajh/
+
 Demo video: [TODO — to be added after recording]
 
 ## What it does
 
-Paste a STEM paragraph. Samajh explains it in simple English and lists the key terms in both languages — in offline mode the explanation stays in English, while the glossary and quiz use your chosen language (Roman Urdu or Urdu script). Every quiz answer shows the sentence from your passage that proves it — and the app checks that the sentence really exists in the passage. There is also a flashcard deck built from the glossary, and a downloadable study sheet (.md).
+Paste a STEM paragraph. Samajh explains it in your chosen language (Simple English, Roman Urdu or Urdu script) using a free AI (Pollinations, no key), lists the key terms in both languages, and gives a 5-question quiz where every answer shows the sentence from your passage that proves it — and the app checks that the sentence really exists in the passage. There is also a flashcard deck built from the glossary, and a downloadable study sheet (.md). If the AI call fails, the offline engine takes over automatically and the explanation re-uses your own sentences.
 
 The problem: a student can read every word of an English textbook paragraph and still miss the idea. Translating the whole page word for word does not fix it, and a generic chatbot can sound confident while being wrong. Samajh keeps every answer tied to a sentence the student can check.
 
