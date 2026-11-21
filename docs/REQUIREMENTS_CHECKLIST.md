@@ -1,8 +1,8 @@
 # STEM2Connect AI Hackathon 2026: Complete Requirements Checklist
 
-Source: official Devpost pages (overview + /rules, read live 21 Nov 2026) and the Samajh plan
-(`Samajh_STEM2Connect_Complete_Plan.pdf`). Live Devpost pages govern if anything differs.
-Project: **Samajh**, Education track, solo, Daim Ali.
+Source: official Devpost pages (overview + /rules, read live 21 Nov 2026) and the Learnify AI plan
+(`Learnify AI_STEM2Connect_Complete_Plan.pdf`). Live Devpost pages govern if anything differs.
+Project: **Learnify AI**, Education track, solo, Daim Ali.
 Deadline: **Sat 29 Nov 2026, 11:59 PM EST = Sun 30 Nov 2026, 9:59 AM PKT**, EXTENDED by Devpost email 21 Nov 2026 13:02 PKT ("The submission deadline has been extended to November 29th"). Original deadline was 21 Nov 11:59 PM EST. Late submissions are not accepted.
 
 Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Devpost, not hidden)
@@ -40,7 +40,7 @@ Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Dev
 - [x] ✅ No harmful, offensive or misleading content
 - [x] ✅ No personal data collected without consent, no accounts, nothing stored; in AI mode the passage is sent to Pollinations to be explained (stated in the app before first use), offline mode sends nothing anywhere
 
-## 5. Samajh features (plan §5.3, F1-F10): all built and QA-passed
+## 5. Learnify AI features (plan §5.3, F1-F10): all built and QA-passed
 
 - [x] ✅ F1 Input & options, paste 30-2,500 chars or pick a sample; level (Class 9-10 / Intermediate / University); language (13 languages: Simple English, Roman Urdu, Urdu script, Hindi, Bengali, Arabic, Spanish, French, Portuguese, German, Turkish, Indonesian, Chinese); clear inline errors
 - [x] ✅ F2 Simple explanation, plain-language restatement + one-line takeaway; numbers, formulas and units kept exactly as written
@@ -59,12 +59,12 @@ Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Dev
 - [x] ✅ In-product AI: **Pollinations text API** (free, no key) writes the explanation + takeaway; the quiz and glossary are always built offline. In AI mode the passage is sent to Pollinations; untick AI mode for a fully offline run that sends nothing anywhere. Disclosed in README, Devpost draft, the app itself and `docs/AI_LOG.md`
 - [x] ✅ Integrated AI feature present, Pollinations (free, no key) explains in the chosen language; disclosed in README, Devpost draft and the app itself; the API-credit exception no longer needs to be relied on, and the offline fallback is kept and measured
 - [x] ✅ AI feature is strongly recommended, compensated by the evidence check, the offline baseline, and the measured comparison in README/eval
-- [x] ✅ Simply fetching data from an ordinary API does NOT count as AI, Samajh does not do that
+- [x] ✅ Simply fetching data from an ordinary API does NOT count as AI, Learnify AI does not do that
 - [x] ✅ Prompt-injection guard in design, passage treated as data, never as instructions (system prompt in plan §10.4; offline engine has no prompt to inject)
 
 ## 7. Submission requirements: all five are required, missing any one = not eligible
 
-- [x] ✅ 1. Public GitHub repository, source code + README (what it does, how to run it, which AI tools it uses). Repo: https://github.com/Daimx1214/samajh, PUBLIC, main branch, MIT. Live site link and demo video link are in the README.
+- [x] ✅ 1. Public GitHub repository, source code + README (what it does, how to run it, which AI tools it uses). Repo: https://github.com/Daimx1214/learnify-ai, PUBLIC, main branch, MIT. Live site link and demo video link are in the README.
 - [x] ✅ 2. Demo video, YouTube, **4:02 (under 6 minutes)**, unlisted, shows the project working (not just slides). https://www.youtube.com/watch?v=vswKBBOw1RE, upload verified, playback confirmed. Link is in the README + Devpost draft.
 - [ ] ⏳ 3. Project description, Devpost form completed: name, problem, how it solves it, how it uses AI, what was learned, what to build next. Draft ready in `docs/DEVPOST_DRAFT.md`. Not submitted yet.
 - [x] ✅ 4. Track selection, Education, stated in the additional-details question / public description (draft)
@@ -106,7 +106,7 @@ Tie-break: higher Problem and Impact score wins. All judging decisions are final
 - Eval: 5 samples × 13 languages = 65 runs, **325/325 quiz items evidence-verified (100%)**, **75/75 unique quiz answers manually checked correct**, **0 explanations changed a number/formula**, median engine time **about 1-2 ms (varies run to run; latest median of medians 1.24 ms)**
 - AI mode (measured live, five runs on 21 Nov): run 1, AI 6/9, fallback 3/9; run 2, AI 8/9, fallback 1/9; run 3 (all 13 languages), AI 26/39, fallback 13/39; run 4 (all 13 languages, 5 samples, retry + language check), AI 63/65, fallback 2/65; run 5 (same, retry-after-rejection + English script check), AI 59/65, fallback 6/65; **0 numbers changed in 187 runs, quiz 935/935 verified**, AI answers in about 0.3-7 s. Quirks: one Roman Urdu AI explanation had a garbled phrase; one cells/english explanation came back in Urdu script (this motivated the English script check); one Hindi cells explanation had a grammar slip. Numbers still exact in all cases.
 - Student clarity rating: **not measured** (no student test)
-- Serving check: live site https://daimx1214.github.io/samajh/ HTTP 200; repo public at https://github.com/Daimx1214/samajh; demo video https://www.youtube.com/watch?v=vswKBBOw1RE (4:02, unlisted, playback verified). In AI mode the app calls text.pollinations.ai (free, no key); offline mode sends nothing anywhere. No keys, no personal data (secrets scan: zero hits). Live click-through 21 Nov ~18:15 PKT (Spanish + Arabic, browser task): dropdown shows all 13 options in 4 groups; Spanish quiz Q1 "Completa el espacio en blanco: …" + glossary "corriente, …" correct, AI explanation in Spanish; Arabic quiz Q1 "املأ الفراغ: …" + glossary "التيار الكهربائي, …" correct, RTL right-aligned, flashcards flip with Arabic progress line. One quirk: the AI explanation's middle sentences stayed in English in both languages (free-AI wording, not a code bug); section headings stay in English by design.
+- Serving check: live site https://daimx1214.github.io/learnify-ai/ HTTP 200; repo public at https://github.com/Daimx1214/learnify-ai; demo video https://www.youtube.com/watch?v=vswKBBOw1RE (4:02, unlisted, playback verified). In AI mode the app calls text.pollinations.ai (free, no key); offline mode sends nothing anywhere. No keys, no personal data (secrets scan: zero hits). Live click-through 21 Nov ~18:15 PKT (Spanish + Arabic, browser task): dropdown shows all 13 options in 4 groups; Spanish quiz Q1 "Completa el espacio en blanco: …" + glossary "corriente, …" correct, AI explanation in Spanish; Arabic quiz Q1 "املأ الفراغ: …" + glossary "التيار الكهربائي, …" correct, RTL right-aligned, flashcards flip with Arabic progress line. One quirk: the AI explanation's middle sentences stayed in English in both languages (free-AI wording, not a code bug); section headings stay in English by design.
 
 ## 12. Honest limits: must stay in README / Devpost / video (do not hide)
 
@@ -134,7 +134,7 @@ Second fix round (21 Nov, re-tested, 27/27 tests, eval 45/45, all 45 quiz items 
 8. **Test-matrix gaps closed**: T5 (Urdu-script passage rejected with a clear message, never crashes; a few Urdu words in an English passage are still fine), T12 (prompt-injection passage treated as data, schema holds, no injected word becomes an answer), quiz scoring (all right / mixed / all wrong), flashcard reset (pure deck helpers, tested), Urdu study-sheet meanings (tested per language).
 9. **Newton quiz reuse spread**: the cloze builder now reuses the least-used sentence first. Newton has 4 sentences for 5 questions, so one sentence is still used twice, but it is now the definition sentence (Q3 mass, Q5 object), and Q1/Q5 no longer share a sentence.
 10. **Quiz scoring and flashcard state made pure and testable** (`scoreQuiz()`, `createFlashcardDeck()` / `resetDeck()` / `deckProgress()`); `app.js` now uses them instead of inline logic.
-11. **Urdu-script input validation added**: a passage mostly in Urdu script is rejected with a clear message explaining Samajh explains English paragraphs and Urdu is for terms/quiz.
+11. **Urdu-script input validation added**: a passage mostly in Urdu script is rejected with a clear message explaining Learnify AI explains English paragraphs and Urdu is for terms/quiz.
 12. **Git repo initialised locally**: one commit, repo-local identity Daim Ali, no remote, nothing pushed.
 
 Third fix round (21 Nov evening, AI mode added, then a full QA re-check found stale pre-AI wording in the docs):

@@ -1,10 +1,10 @@
 /**
- * Samajh: core logic.
+ * Learnify AI: core logic.
  *
  * Two engines, one result shape:
  *  - AI mode (default): the explanation and one-line takeaway come from a
  *    free LLM: Pollinations text API, model "openai", no API key, no
- *    sign-up, no text stored by Samajh. Tested live 21 Nov 2026 (see
+ *    sign-up, no text stored by Learnify AI. Tested live 21 Nov 2026 (see
  *    docs/AI_LOG.md). The AI output is CHECKED before it is shown: any
  *    number or formula in it that is not in the passage makes the app
  *    discard the AI explanation and keep the offline one.
@@ -26,7 +26,7 @@ export const AI_ENDPOINT = 'https://text.pollinations.ai/';
 export const AI_MODEL = 'openai';
 
 // ---------------------------------------------------------------------------
-// Languages: 13, so a student anywhere can use Samajh in the language
+// Languages: 13, so a student anywhere can use Learnify AI in the language
 // they think in. Glossary meanings come only from the checked seed list
 // below (a missing meaning shows English only: never a guessed
 // translation). The quiz question/reason, the "in simple words" intro,
@@ -255,14 +255,14 @@ export function validateInput(rawText, level, language) {
     return { ok: false, code: 'too_long', message: `Too long: ${text.length} characters. Keep it under ${MAX_CHARS} characters: cut it to one paragraph.` };
   }
   // A passage mostly in a non-Latin script (e.g. Urdu or Arabic) is
-  // rejected with a clear message, never crashed on. Samajh explains
+  // rejected with a clear message, never crashed on. Learnify AI explains
   // English STEM paragraphs; the language choice is for the glossary and
   // quiz wording, not for the input text. A few non-Latin words in an
   // otherwise English paragraph are fine.
   const nonLatinChars = (text.match(/[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/g) || []).length;
   const letters = (text.match(/[A-Za-z\u0600-\u06FF\u0750-\u077F]/g) || []).length;
   if (letters > 0 && nonLatinChars / letters > 0.5) {
-    return { ok: false, code: 'non_latin_script', message: 'This passage is not written in English. Samajh explains English STEM paragraphs: paste the English paragraph, then choose your language for the terms and quiz.' };
+    return { ok: false, code: 'non_latin_script', message: 'This passage is not written in English. Learnify AI explains English STEM paragraphs: paste the English paragraph, then choose your language for the terms and quiz.' };
   }
   if (!['class9', 'intermediate', 'university'].includes(level)) {
     return { ok: false, code: 'bad_level', message: 'Pick a level: Class 9-10, Intermediate or University.' };
@@ -666,7 +666,7 @@ function escapeRegExp(s) {
 
 export function buildStudySheet(result, passage, level, language) {
   const lines = [
-    '# Samajh: study sheet',
+    '# Learnify AI: study sheet',
     '',
     `Level: ${level} · Language: ${language} · Mode: ${result.mode} (${result.reason})`,
     '',
@@ -697,7 +697,7 @@ export function buildStudySheet(result, passage, level, language) {
       '',
     ]),
     '---',
-    'Made with Samajh (STEM2Connect AI Hackathon 2026, Education track). ' +
+    'Made with Learnify AI (STEM2Connect AI Hackathon 2026, Education track). ' +
       (result.mode === 'ai'
         ? 'AI mode: explanation by Pollinations (free, no key); quiz and glossary checked offline against the passage.'
         : 'Offline mode: no AI call was made; the explanation re-uses sentences from the passage.'),
@@ -718,7 +718,7 @@ export function getProviderInfo() {
     callsExternalApi: true,
     keyRequired: false,
     // The passage IS sent to Pollinations when AI mode is on (that is how
-    // an LLM explains it). Nothing is stored by Samajh; do not paste
+    // an LLM explains it). Nothing is stored by Learnify AI; do not paste
     // personal information. AI mode can be switched off for a fully
     // offline run that sends nothing anywhere.
   };
@@ -730,7 +730,7 @@ function aiLanguageInstruction(language) {
 
 export function buildAiPrompt(passage, level, language) {
   return {
-    system: 'You are Samajh, a study helper for Pakistani school students. Reply with valid JSON only. No markdown, no extra text, no code fences.',
+    system: 'You are Learnify AI, a study helper for Pakistani school students. Reply with valid JSON only. No markdown, no extra text, no code fences.',
     user: `${aiLanguageInstruction(language)}\nLevel: ${level}.\nWrite EVERY sentence of the explanation and the takeaway in the requested language: do not write any sentence in English. Only STEM terms themselves may stay in English.\nRules: use ONLY facts, numbers and formulas from the passage below. Do not add facts from outside it. Do not change any number or formula: copy them exactly as written. Keep the explanation to 2-4 short sentences.\nPassage:\n${passage}\n\nReply as JSON: {"explanation": "...", "takeaway": "..."} where takeaway is one sentence that sums the passage up.`,
   };
 }

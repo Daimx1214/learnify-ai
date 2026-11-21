@@ -1,18 +1,18 @@
-# Samajh: STEM, in the language you think in
+# Learnify AI: Turn Every Paragraph into Knowledge
 
 STEM2Connect AI Hackathon 2026. Primary track: **Education**. Solo entrant: Daim Ali (university student, Multan).
 
-GitHub: https://github.com/Daimx1214/samajh
+GitHub: https://github.com/Daimx1214/learnify-ai
 
-Live site: https://daimx1214.github.io/samajh/
+Live site: https://daimx1214.github.io/learnify-ai/
 
 Demo video: https://www.youtube.com/watch?v=vswKBBOw1RE (4:02, unlisted)
 
 ## What it does
 
-Paste a STEM paragraph. Samajh explains it in your chosen language. It works in 13 languages: Simple English, Roman Urdu, Urdu script, Hindi, Bengali, Arabic, Spanish, French, Portuguese, German, Turkish, Indonesian and Chinese. It uses a free AI (Pollinations, no key), lists the key terms in your language, and gives a 5-question quiz where every answer shows the sentence from your passage that proves it, and the app checks that the sentence really exists in the passage. There is also a flashcard deck built from the glossary, and a downloadable study sheet (.md). If the AI call fails, the offline engine takes over automatically and the explanation re-uses your own sentences. The hackathon is international, so any student anywhere can pick their own language and use it themselves.
+Paste a STEM paragraph. Learnify AI explains it in your chosen language. It works in 13 languages: Simple English, Roman Urdu, Urdu script, Hindi, Bengali, Arabic, Spanish, French, Portuguese, German, Turkish, Indonesian and Chinese. It uses a free AI (Pollinations, no key), lists the key terms in your language, and gives a 5-question quiz where every answer shows the sentence from your passage that proves it, and the app checks that the sentence really exists in the passage. There is also a flashcard deck built from the glossary, and a downloadable study sheet (.md). If the AI call fails, the offline engine takes over automatically and the explanation re-uses your own sentences. The hackathon is international, so any student anywhere can pick their own language and use it themselves.
 
-The problem: a student can read every word of an English textbook paragraph and still miss the idea. Translating the whole page word for word does not fix it, and a generic chatbot can sound confident while being wrong. Samajh keeps every answer tied to a sentence the student can check.
+The problem: a student can read every word of an English textbook paragraph and still miss the idea. Translating the whole page word for word does not fix it, and a generic chatbot can sound confident while being wrong. Learnify AI keeps every answer tied to a sentence the student can check.
 
 ## How to run
 
@@ -37,7 +37,7 @@ node eval/run_ai_eval.mjs           # same 65 runs with AI mode on (live Pollina
 
 ## AI tools and services used (disclosure)
 
-**Inside the product: a real AI feature.** The explanation and one-line takeaway are written by the Pollinations text API (model "openai", free, no API key, no sign-up). Before the AI text is shown, Samajh checks it: any number or formula not in the passage discards it, and for languages written in a non-Latin script (Urdu, Arabic, Hindi, Bengali, Chinese) the text must actually be in that script, an English explanation for Arabic is discarded too. The AI call is retried once on a transient failure. The quiz and glossary are always built offline by the rule-based engine in `samajh.js` (extractive sentences, a checked seed glossary, cloze questions), so the AI never invents a quiz answer or a translation. If the AI call fails, the offline engine takes over automatically. Measured live 21 Nov 2026 across 5 runs (187 runs total): AI used in 162, offline fallback in 25, 0 numbers changed, quiz 935/935 verified (see `eval/results.md`). AI mode can be switched off in the UI for a fully offline run that sends nothing anywhere. Full log: `docs/AI_LOG.md`.
+**Inside the product: a real AI feature.** The explanation and one-line takeaway are written by the Pollinations text API (model "openai", free, no API key, no sign-up). Before the AI text is shown, Learnify AI checks it: any number or formula not in the passage discards it, and for languages written in a non-Latin script (Urdu, Arabic, Hindi, Bengali, Chinese) the text must actually be in that script, an English explanation for Arabic is discarded too. The AI call is retried once on a transient failure. The quiz and glossary are always built offline by the rule-based engine in `samajh.js` (extractive sentences, a checked seed glossary, cloze questions), so the AI never invents a quiz answer or a translation. If the AI call fails, the offline engine takes over automatically. Measured live 21 Nov 2026 across 5 runs (187 runs total): AI used in 162, offline fallback in 25, 0 numbers changed, quiz 935/935 verified (see `eval/results.md`). AI mode can be switched off in the UI for a fully offline run that sends nothing anywhere. Full log: `docs/AI_LOG.md`.
 
 **AI coding assistant:** Muse (Meta's Muse Spark) helped write the code in this repo. The code was run and tested before submission (53/53 tests; all 75 unique quiz items checked by hand, see "Results"), the quiz and explanation bugs the tests found were fixed, and the five sample passages were written for this project. The full log is in `docs/AI_LOG.md`.
 
@@ -66,7 +66,7 @@ Honest failure found and fixed during the check: the first Newton quiz had an am
 
 Second fix round (21 Nov): the number warning is now wired into the Explain tab (amber, icon + words) and tested with a hand-built result, it never triggers in offline mode, because the explanation is extractive. New tests cover Urdu-script input rejection, prompt-injection passages, quiz scoring, flashcard reset and Urdu study-sheet meanings (33 tests total, all passing, 8 more were added with AI mode for the fake-fetch AI tests). Newton quiz reuse was spread: with 4 sentences for 5 questions one sentence is still used twice, but no longer Q1's sentence.
 
-Third fix round (21 Nov evening): the hackathon is international, so Samajh grew from 3 languages to 13, Hindi, Bengali, Arabic, Spanish, French, Portuguese, German, Turkish, Indonesian and Chinese, with the full seed glossary translated for every term, localized quiz questions/reasons, localized flashcard progress, right-to-left layout for Urdu and Arabic, and the AI prompted to explain in the chosen language. 7 new tests (40 total, all passing) enforce that every seed term has a meaning in every language. Measured again: offline 39 runs, 195/195 quiz verified, 0 numbers changed; AI run 3 across all 13 languages, AI 26/39, fallback 13/39, 0 numbers changed, quiz 195/195.
+Third fix round (21 Nov evening): the hackathon is international, so Learnify AI grew from 3 languages to 13, Hindi, Bengali, Arabic, Spanish, French, Portuguese, German, Turkish, Indonesian and Chinese, with the full seed glossary translated for every term, localized quiz questions/reasons, localized flashcard progress, right-to-left layout for Urdu and Arabic, and the AI prompted to explain in the chosen language. 7 new tests (40 total, all passing) enforce that every seed term has a meaning in every language. Measured again: offline 39 runs, 195/195 quiz verified, 0 numbers changed; AI run 3 across all 13 languages, AI 26/39, fallback 13/39, 0 numbers changed, quiz 195/195.
 
 Fourth fix round (21 Nov evening, after the gap list): level now changes the offline explanation, Class 9 keeps it short (definition + worked example), University uses the most sentences. The whole tool chrome (hero, labels, tabs, buttons, quiz feedback, flashcards) is now in all 13 languages, with a script audit test that every translation is written in its own language's script. The AI prompt now says every sentence must be in the chosen language; a script check discards an English explanation for a non-Latin language; and a failed AI call is retried once. Two more sample passages were added, Pythagoras' theorem (3² + 4² = 25) and cells (37 trillion cells, 10 micrometres), with 12 new seed terms in all 13 languages (45 terms total). 12 new tests (52 total, all passing). Measured again: offline 65 runs, 325/325 quiz verified, 0 numbers changed; all 75 unique quiz items read by hand, 75/75 correct (one weak item: cells Q5 blanks the filler word "about", unambiguous, but it tests a filler word, not understanding). AI runs 4-5 (65 runs each, with the retry, the language check and the English script check): AI 63/65 then 59/65, 0 numbers changed, quiz 325/325 each time.
 
@@ -95,7 +95,7 @@ Limitation: these are cloze questions, not deep-comprehension questions, the ans
 
 ## Privacy
 
-No accounts. Nothing is stored, results live in memory in the tab and disappear when it closes. In AI mode (on by default) your passage is sent to the free Pollinations text API to be explained; nothing is stored by Samajh. Untick AI mode for a fully offline run that sends nothing anywhere. Do not paste personal information.
+No accounts. Nothing is stored, results live in memory in the tab and disappear when it closes. In AI mode (on by default) your passage is sent to the free Pollinations text API to be explained; nothing is stored by Learnify AI. Untick AI mode for a fully offline run that sends nothing anywhere. Do not paste personal information.
 
 ## Credits
 

@@ -9,7 +9,7 @@
 export const UI_STRINGS = {
   english: {
     heroKicker: 'For students anywhere who study STEM in English and think in their own language',
-    heroLede: 'Paste a paragraph from your textbook. Samajh explains it in your language. It works in 13 languages, from Urdu and Hindi to Spanish, French and Arabic. It lists the key terms and tests you, and every answer points to the exact sentence that proves it.',
+    heroLede: 'Paste a paragraph from your textbook. Learnify AI explains it in your language. It works in 13 languages, from Urdu and Hindi to Spanish, French and Arabic. It lists the key terms and tests you, and every answer points to the exact sentence that proves it.',
     heroTry: 'Try a sample',
     heroPaste: 'Paste your own',
     labelPassage: 'Your STEM paragraph',
@@ -42,7 +42,7 @@ export const UI_STRINGS = {
   },
   roman: {
     heroKicker: 'Duniya bhar ke students ke liye jo STEM English mein parhte hain, aur apni zaban mein sochte hain',
-    heroLede: 'Apni textbook se aik paragraph paste karein. Samajh aapki zaban mein samjhata hai, 13 zabanen, Urdu aur Hindi se Spanish, French aur Arabic tak, key terms batata hai, aur aapka test leta hai, har jawab us jumle ki taraf ishara karta hai jo use sabit karta hai.',
+    heroLede: 'Apni textbook se aik paragraph paste karein. Learnify AI aapki zaban mein samjhata hai, 13 zabanen, Urdu aur Hindi se Spanish, French aur Arabic tak, key terms batata hai, aur aapka test leta hai, har jawab us jumle ki taraf ishara karta hai jo use sabit karta hai.',
     heroTry: 'Sample try karein',
     heroPaste: 'Apna paste karein',
     labelPassage: 'Aapka STEM paragraph',
@@ -207,7 +207,7 @@ export const UI_STRINGS = {
   },
   spanish: {
     heroKicker: 'Para estudiantes de todo el mundo que estudian STEM en inglés, y piensan en su propio idioma',
-    heroLede: 'Pega un párrafo de tu libro. Samajh te lo explica en tu idioma, 13 idiomas, del urdu y el hindi al español, el francés y el árabe, enumera los términos clave y te evalúa, cada respuesta señala la frase exacta que la demuestra.',
+    heroLede: 'Pega un párrafo de tu libro. Learnify AI te lo explica en tu idioma, 13 idiomas, del urdu y el hindi al español, el francés y el árabe, enumera los términos clave y te evalúa, cada respuesta señala la frase exacta que la demuestra.',
     heroTry: 'Prueba un ejemplo',
     heroPaste: 'Pega el tuyo',
     labelPassage: 'Tu párrafo de STEM',
@@ -240,7 +240,7 @@ export const UI_STRINGS = {
   },
   french: {
     heroKicker: 'Pour les élèves du monde entier qui étudient les sciences en anglais, et pensent dans leur propre langue',
-    heroLede: 'Collez un paragraphe de votre manuel. Samajh l’explique dans votre langue, 13 langues, de l’ourdou et de l’hindi à l’espagnol, au français et à l’arabe, liste les termes clés et vous interroge, chaque réponse renvoie à la phrase exacte qui la prouve.',
+    heroLede: 'Collez un paragraphe de votre manuel. Learnify AI l’explique dans votre langue, 13 langues, de l’ourdou et de l’hindi à l’espagnol, au français et à l’arabe, liste les termes clés et vous interroge, chaque réponse renvoie à la phrase exacte qui la prouve.',
     heroTry: 'Essayer un exemple',
     heroPaste: 'Collez le vôtre',
     labelPassage: 'Votre paragraphe de sciences',
@@ -273,7 +273,7 @@ export const UI_STRINGS = {
   },
   portuguese: {
     heroKicker: 'Para estudantes do mundo todo que estudam STEM em inglês, e pensam no próprio idioma',
-    heroLede: 'Cole um parágrafo do seu livro. O Samajh explica no seu idioma, 13 idiomas, do urdu e do hindi ao espanhol, ao francês e ao árabe, lista os termos principais e testa você, cada resposta aponta para a frase exata que a comprova.',
+    heroLede: 'Cole um parágrafo do seu livro. O Learnify AI explica no seu idioma, 13 idiomas, do urdu e do hindi ao espanhol, ao francês e ao árabe, lista os termos principais e testa você, cada resposta aponta para a frase exata que a comprova.',
     heroTry: 'Experimente um exemplo',
     heroPaste: 'Cole o seu',
     labelPassage: 'Seu parágrafo de STEM',
@@ -306,7 +306,7 @@ export const UI_STRINGS = {
   },
   german: {
     heroKicker: 'Für Schülerinnen und Schüler weltweit, die MINT auf Englisch lernen, und in ihrer eigenen Sprache denken',
-    heroLede: 'Fügen Sie einen Absatz aus Ihrem Lehrbuch ein. Samajh erklärt ihn in Ihrer Sprache, 13 Sprachen, von Urdu und Hindi bis Spanisch, Französisch und Arabisch, listet die wichtigsten Begriffe auf und testet Sie, jede Antwort verweist auf den genauen Satz, der sie beweist.',
+    heroLede: 'Fügen Sie einen Absatz aus Ihrem Lehrbuch ein. Learnify AI erklärt ihn in Ihrer Sprache, 13 Sprachen, von Urdu und Hindi bis Spanisch, Französisch und Arabisch, listet die wichtigsten Begriffe auf und testet Sie, jede Antwort verweist auf den genauen Satz, der sie beweist.',
     heroTry: 'Beispiel ausprobieren',
     heroPaste: 'Eigenen Absatz einfügen',
     labelPassage: 'Ihr MINT-Absatz',
@@ -339,7 +339,7 @@ export const UI_STRINGS = {
   },
   turkish: {
     heroKicker: 'STEM’i İngilizce öğrenen ama kendi dilinde düşünen, dünyanın her yerindeki öğrenciler için',
-    heroLede: 'Ders kitabınızdan bir paragraf yapıştırın. Samajh bunu sizin dilinizde açıklar, Urduca ve Hintçeden İspanyolca, Fransızca ve Arapçaya 13 dil, önemli terimleri listeler ve sizi sınar, her cevap, onu kanıtlayan tam cümleyi gösterir.',
+    heroLede: 'Ders kitabınızdan bir paragraf yapıştırın. Learnify AI bunu sizin dilinizde açıklar, Urduca ve Hintçeden İspanyolca, Fransızca ve Arapçaya 13 dil, önemli terimleri listeler ve sizi sınar, her cevap, onu kanıtlayan tam cümleyi gösterir.',
     heroTry: 'Örnek deneyin',
     heroPaste: 'Kendinizinkini yapıştırın',
     labelPassage: 'STEM paragrafınız',
@@ -372,7 +372,7 @@ export const UI_STRINGS = {
   },
   indonesian: {
     heroKicker: 'Untuk pelajar di mana saja yang belajar STEM dalam bahasa Inggris, dan berpikir dalam bahasa mereka sendiri',
-    heroLede: 'Tempel satu paragraf dari buku Anda. Samajh menjelaskannya dalam bahasa Anda, 13 bahasa, dari Urdu dan Hindi hingga Spanyol, Prancis, dan Arab, mencantumkan istilah-istilah penting, dan menguji Anda, setiap jawaban menunjuk ke kalimat persis yang membuktikannya.',
+    heroLede: 'Tempel satu paragraf dari buku Anda. Learnify AI menjelaskannya dalam bahasa Anda, 13 bahasa, dari Urdu dan Hindi hingga Spanyol, Prancis, dan Arab, mencantumkan istilah-istilah penting, dan menguji Anda, setiap jawaban menunjuk ke kalimat persis yang membuktikannya.',
     heroTry: 'Coba contoh',
     heroPaste: 'Tempel milik Anda',
     labelPassage: 'Paragraf STEM Anda',
@@ -405,7 +405,7 @@ export const UI_STRINGS = {
   },
   chinese: {
     heroKicker: '献给世界各地用英语学习 STEM、却用自己的语言思考的学生',
-    heroLede: '粘贴课本中的一段文字。Samajh 会用你的语言讲解：13 种语言，从乌尔都语、印地语到西班牙语、法语和阿拉伯语，列出关键术语，并考考你，每个答案都指向证明它的原句。',
+    heroLede: '粘贴课本中的一段文字。Learnify AI 会用你的语言讲解：13 种语言，从乌尔都语、印地语到西班牙语、法语和阿拉伯语，列出关键术语，并考考你，每个答案都指向证明它的原句。',
     heroTry: '试试示例',
     heroPaste: '粘贴你自己的',
     labelPassage: '你的 STEM 段落',

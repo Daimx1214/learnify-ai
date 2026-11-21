@@ -328,7 +328,7 @@ $('download-btn').addEventListener('click', () => {
   const blob = new Blob([md], { type: 'text/markdown' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'samajh-study-sheet.md';
+  a.download = 'learnify-ai-study-sheet.md';
   a.click();
   URL.revokeObjectURL(a.href);
 });
