@@ -1,4 +1,25 @@
 import { validateInput, runPipeline, buildStudySheet, normalise, splitSentences, numberWarningText, scoreQuiz, createFlashcardDeck, resetDeck, deckProgress, languageMeta, explainIntro } from './samajh.js';
+import { uiText } from './ui-strings.js';
+
+// Apply the chosen language to every static UI string (hero, labels,
+// tabs, buttons) and set dir/lang so RTL languages lay out correctly.
+// Called on load and whenever the language picker changes — before any
+// result exists, so the whole tool already speaks the student's language.
+// (Uses document.getElementById directly: this block runs before the $
+// helper below is defined.)
+function applyUiLanguage(language) {
+  const meta = languageMeta(language);
+  document.querySelectorAll('[data-ui]').forEach((el) => {
+    el.textContent = uiText(language, el.dataset.ui);
+    if (meta.dir === 'rtl') { el.setAttribute('dir', 'rtl'); el.setAttribute('lang', meta.lang); }
+    else if (language !== 'english') { el.setAttribute('lang', meta.lang); el.removeAttribute('dir'); }
+    else { el.removeAttribute('dir'); el.removeAttribute('lang'); }
+  });
+  document.documentElement.setAttribute('lang', meta.lang);
+}
+
+document.getElementById('language').addEventListener('change', (e) => applyUiLanguage(e.target.value));
+applyUiLanguage(document.getElementById('language').value);
 
 // Fallback copies of the samples, used only if fetch() cannot read the
 // samples/ files (e.g. when index.html is opened directly from disk).
@@ -6,6 +27,8 @@ const SAMPLE_FALLBACK = {
   ohm: "Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A. Doubling the resistance while keeping the voltage the same halves the current.",
   photosynthesis: 'Photosynthesis is the process by which green plants make their own food. Inside the chloroplasts, chlorophyll absorbs sunlight. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.',
   newton2: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. If the same force acts on two objects, the lighter object accelerates more. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².",
+  pythagoras: "Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. The rule is written as a² + b² = c², where c is the hypotenuse. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.",
+  cells: 'A cell is the smallest unit of life. Every living thing is made of one or more cells. The nucleus is the control centre of the cell and holds the instructions for making proteins. The cell membrane is a thin skin around the cell that controls what enters and leaves. Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.',
 };
 
 const $ = (id) => document.getElementById(id);
@@ -96,9 +119,7 @@ function render(result, mode, reason) {
   $('results').hidden = false;
   $('results').classList.add('fade-in');
   const chip = $('mode-chip');
-  chip.textContent = mode === 'ai'
-    ? '✓ AI mode — Pollinations (free, no key)'
-    : '⚠ Offline mode — AI off or unavailable';
+  chip.textContent = mode === 'ai' ? uiText(lang, 'modeChipAi') : uiText(lang, 'modeChipOffline');
   chip.className = mode === 'ai' ? 'chip ai' : 'chip offline';
   $('mode-note').textContent = reason
     + (result.aiRejected ? ` (${result.aiRejected})` : '')
@@ -167,12 +188,13 @@ function renderGlossary(result) {
 
 function renderQuiz(result) {
   quizAnswers = new Array(result.quiz.length).fill(null);
-  $('quiz-verified').textContent = `${result.verifiedCount} of ${result.totalQuiz} answers verified in the passage`;
+  const lang = result.language;
+  $('quiz-verified').textContent = uiText(lang, 'quizVerified', { v: result.verifiedCount, t: result.totalQuiz });
   $('quiz-score').hidden = true;
   $('quiz').innerHTML = result.quiz.map((q, i) => {
     const badge = q.verified
-      ? '<span class="badge ok">✓ Found in passage</span>'
-      : '<span class="badge warn">⚠ Could not verify — check yourself</span>';
+      ? `<span class="badge ok">${escapeHtml(uiText(lang, 'verifiedBadge'))}</span>`
+      : `<span class="badge warn">${escapeHtml(uiText(lang, 'unverifiedBadge'))}</span>`;
     return `<div class="quiz-item" id="quiz-item-${i}">
       <p><strong>Q${i + 1}.</strong> ${escapeHtml(q.question)}</p>
       <div class="options" role="group" aria-label="Question ${i + 1} options">
@@ -181,12 +203,12 @@ function renderQuiz(result) {
       <div class="feedback" id="feedback-${i}" hidden>
         <p id="feedback-text-${i}"></p>
         <p class="muted" id="feedback-reason-${i}"></p>
-        <p class="evidence">Evidence: “<span id="feedback-evidence-${i}"></span>” ${badge}</p>
-        <p><button class="link-btn" type="button" data-show-evidence="${i}">Show in passage ↑</button></p>
+        <p class="evidence">${escapeHtml(uiText(lang, 'evidenceLabel'))} “<span id="feedback-evidence-${i}"></span>” ${badge}</p>
+        <p><button class="link-btn" type="button" data-show-evidence="${i}">${escapeHtml(uiText(lang, 'showEvidence'))}</button></p>
       </div>
     </div>`;
   }).join('');
-  $('quiz-progress').textContent = 'Question 1 of 5 — answer any question to begin';
+  $('quiz-progress').textContent = uiText(lang, 'quizStart');
   document.querySelectorAll('.option').forEach((btn) => btn.addEventListener('click', () => answerQuiz(btn)));
   document.querySelectorAll('[data-show-evidence]').forEach((btn) => btn.addEventListener('click', () => {
     const q = current.result.quiz[Number(btn.dataset.showEvidence)];
@@ -210,18 +232,18 @@ function answerQuiz(btn) {
     else if (j === oi) b.classList.add('wrong');
   });
   $(`feedback-${qi}`).hidden = false;
-  $(`feedback-text-${qi}`).textContent = correct ? '✓ Correct.' : `✕ Not quite — the answer is “${q.options[q.answer_index]}”.`;
+  const lang = current.language;
+  $(`feedback-text-${qi}`).textContent = correct ? uiText(lang, 'feedbackCorrect') : uiText(lang, 'feedbackWrong', { answer: q.options[q.answer_index] });
   $(`feedback-reason-${qi}`).textContent = q.reason;
   $(`feedback-evidence-${qi}`).textContent = q.evidence;
   const answered = quizAnswers.filter((a) => a !== null).length;
-  $('quiz-progress').textContent = `Answered ${answered} of ${current.result.quiz.length}`;
+  $('quiz-progress').textContent = uiText(lang, 'quizAnswered', { a: answered, t: current.result.quiz.length });
   if (answered === current.result.quiz.length) {
     const score = scoreQuiz(current.result.quiz, quizAnswers);
     $('quiz-score').hidden = false;
     $('score-text').textContent = `${score} of ${current.result.quiz.length}`;
     $('score-ring').style.setProperty('--score', String((score / current.result.quiz.length) * 100));
-    $('score-note').textContent = score === 5 ? 'Full marks — every answer is backed by a sentence in your passage.'
-      : 'Check the ones you missed: each one shows the sentence that proves the answer.';
+    $('score-note').textContent = score === 5 ? uiText(lang, 'scoreFull') : uiText(lang, 'scorePartial');
   }
 }
 

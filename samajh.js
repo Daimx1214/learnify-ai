@@ -177,7 +177,11 @@ const STEM_KEYWORDS = [
   'motion', 'distance', 'time', 'volume', 'density', 'liquid', 'gas', 'solid', 'evaporation',
   'condensation', 'radiation', 'conduction', 'convection', 'trolley', 'object', 'soil', 'seed',
   'root', 'leaf', 'flower', 'water', 'hydrogen', 'nitrogen', 'calcium', 'iron', 'copper',
+  'triangle', 'hypotenuse', 'square', 'angle', 'theorem', 'nucleus', 'membrane', 'cytoplasm',
+  'control',
 ];
+// NOTE: 'side' is deliberately NOT a keyword — it is a substring of
+// "inside", which would extract a false term from any passage.
 
 // Checked seed glossary. Roman Urdu spellings are the ones Daim uses in
 // class (current = barqi rau, resistance = muzahmat, voltage = barqi dabao,
@@ -220,6 +224,19 @@ export const GLOSSARY_SEED = {
   'growth': { en: 'Getting bigger; what glucose is used for.', roman: 'barhna — glucose isi kaam aata hai', urdu: 'بڑھنا — گلوکوز اسی کام آتا ہے', hindi: 'वृद्धि — बड़ा होना; ग्लूकोज़ इसी काम आता है', bengali: 'বৃদ্ধি — বড় হওয়া; গ্লুকোজ এই কাজে ব্যবহৃত হয়', arabic: 'النمو — أن يكبر الشيء؛ الغلوكوز يُستخدم لهذا الغرض', spanish: 'crecimiento — hacerse más grande; para eso se usa la glucosa', french: 'croissance — le fait de grandir ; c’est à cela que sert le glucose', portuguese: 'crescimento — ficar maior; é para isso que serve a glicose', german: 'Wachstum — größer werden; dafür wird Glukose verwendet', turkish: 'büyüme — büyümek; glikoz bunun için kullanılır', indonesian: 'pertumbuhan — menjadi lebih besar; glukosa digunakan untuk itu', chinese: '生长 — 变大；葡萄糖就是用于此' },
   'starch': { en: 'Stored food in a plant.', roman: 'starch — poday mein mehfooz khana', urdu: 'نشاستہ — پودے میں محفوظ خوراک', hindi: 'स्टार्च — पौधे में संचित भोजन', bengali: 'শ্বেতসার — উদ্ভিদে সঞ্চিত খাবার', arabic: 'النشا — غذاء مخزّن في النبات', spanish: 'almidón — alimento almacenado en una planta', french: 'amidon — la nourriture stockée dans une plante', portuguese: 'amido — alimento armazenado em uma planta', german: 'Stärke — gespeicherte Nahrung in einer Pflanze', turkish: 'nişasta — bitkide depolanan besin', indonesian: 'pati — makanan yang disimpan dalam tumbuhan', chinese: '淀粉 — 储存在植物体内的养分' },
   'reaction': { en: 'A change in which substances turn into other substances.', roman: 'reaction — tabdeeli jis mein ek cheez doosri ban jati hai', urdu: 'تعامل — تبدیلی جس میں ایک چیز دوسری بن جاتی ہے', hindi: 'अभिक्रिया — वह बदलाव जिसमें एक पदार्थ दूसरे पदार्थ में बदल जाता है', bengali: 'বিক্রিয়া — পরিবর্তন যাতে এক পদার্থ অন্য পদার্থে পরিণত হয়', arabic: 'التفاعل — تغيّر تتحول فيه مادة إلى مادة أخرى', spanish: 'reacción — un cambio en el que unas sustancias se transforman en otras', french: 'réaction — un changement dans lequel des substances se transforment en d’autres', portuguese: 'reação — uma mudança na qual substâncias se transformam em outras', german: 'Reaktion — eine Veränderung, bei der Stoffe in andere Stoffe übergehen', turkish: 'tepkime — maddelerin başka maddelere dönüştüğü değişim', indonesian: 'reaksi — perubahan ketika suatu zat berubah menjadi zat lain', chinese: '反应 — 物质转变为其他物质的变化' },
+  // Added 21 Nov evening for the two new samples (Pythagoras, cells).
+  'triangle': { en: 'A shape with three straight sides and three angles.', roman: 'trikon — teen seedhi sides aur teen angles wali shakal', urdu: 'مثلث — تین سیدھی بھجاؤں اور تین زاویوں والی شکل', hindi: 'त्रिभुज — तीन सीधी भुजाओं और तीन कोणों वाली आकृति', bengali: 'ত্রিভুজ — তিনটি সরল বাহু ও তিনটি কোণ বিশিষ্ট আকৃতি', arabic: 'المثلث — شكل له ثلاثة أضلاع مستقيمة وثلاث زوايا', spanish: 'triángulo — una figura con tres lados rectos y tres ángulos', french: 'triangle — une figure à trois côtés droits et trois angles', portuguese: 'triângulo — uma figura com três lados retos e três ângulos', german: 'Dreieck — eine Figur mit drei geraden Seiten und drei Winkeln', turkish: 'üçgen — üç düz kenarı ve üç açısı olan şekil', indonesian: 'segitiga — bangun dengan tiga sisi lurus dan tiga sudut', chinese: '三角形 — 有三条直边和三个角的图形' },
+  'hypotenuse': { en: 'The longest side of a right-angled triangle, opposite the right angle.', roman: 'hypotenuse — right-angled triangle ki sab se lambi side, right angle ke samne', urdu: 'وتر — قائم الزاویہ مثلث کی سب سے لمبی بھجا، قائم زاویے کے سامنے', hindi: 'कर्ण — समकोण त्रिभुज की सबसे लंबी भुजा, समकोण के सामने', bengali: 'অতিভুজ — সমকোণী ত্রিভুজের সবচেয়ে লম্বা বাহু, সমকোণের বিপরীতে', arabic: 'الوتر — أطول ضلع في مثلث قائم الزاوية، مقابل للزاوية القائمة', spanish: 'hipotenusa — el lado más largo de un triángulo rectángulo, opuesto al ángulo recto', french: 'hypoténuse — le côté le plus long d’un triangle rectangle, opposé à l’angle droit', portuguese: 'hipotenusa — o lado mais longo de um triângulo retângulo, oposto ao ângulo reto', german: 'Hypotenuse — die längste Seite eines rechtwinkligen Dreiecks, gegenüber dem rechten Winkel', turkish: 'hipotenüs — dik üçgenin en uzun kenarı, dik açının karşısında', indonesian: 'hipotenusa — sisi terpanjang segitiga siku-siku, berhadapan dengan sudut siku-siku', chinese: '斜边 — 直角三角形中最长的边，与直角相对' },
+  'square': { en: 'A number multiplied by itself; also the square of a side in the theorem.', roman: 'square — kisi number ko khud se zarb dena', urdu: 'مربع — کسی عدد کو خود سے ضرب دینا', hindi: 'वर्ग — किसी संख्या को स्वयं से गुणा करना', bengali: 'বর্গ — কোনো সংখ্যাকে নিজে দিয়ে গুণ করা', arabic: 'المربع — عدد مضروب في نفسه', spanish: 'cuadrado — un número multiplicado por sí mismo', french: 'carré — un nombre multiplié par lui-même', portuguese: 'quadrado — um número multiplicado por ele mesmo', german: 'Quadrat — eine Zahl, die mit sich selbst multipliziert wird', turkish: 'kare — bir sayının kendisiyle çarpımı', indonesian: 'kuadrat — suatu bilangan dikalikan dengan dirinya sendiri', chinese: '平方 — 一个数乘以它本身' },
+  'angle': { en: 'The space between two lines that meet; a right angle is 90 degrees.', roman: 'angle — do lines ke milne se banne wala kona; right angle 90 degrees hota hai', urdu: 'زاویہ — دو خطوں کے ملنے سے بننے والا کونہ؛ قائم زاویہ 90 درجے ہوتا ہے', hindi: 'कोण — दो रेखाओं के मिलने से बना कोना; समकोण 90 डिग्री का होता है', bengali: 'কোণ — দুটি রেখার মিলনে তৈরি কোণ; সমকোণ 90 ডিগ্রি', arabic: 'الزاوية — الفراغ بين خطين يلتقيان؛ الزاوية القائمة 90 درجة', spanish: 'ángulo — el espacio entre dos líneas que se encuentran; un ángulo recto mide 90 grados', french: 'angle — l’espace entre deux lignes qui se rencontrent ; un angle droit mesure 90 degrés', portuguese: 'ângulo — o espaço entre duas linhas que se encontram; um ângulo reto mede 90 graus', german: 'Winkel — der Raum zwischen zwei sich treffenden Linien; ein rechter Winkel misst 90 Grad', turkish: 'açı — kesişen iki çizgi arasındaki boşluk; dik açı 90 derecedir', indonesian: 'sudut — ruang antara dua garis yang bertemu; sudut siku-siku adalah 90 derajat', chinese: '角 — 两条相交直线之间的空间；直角为 90 度' },
+  'theorem': { en: 'A rule in maths that has been proved, like Pythagoras’ theorem.', roman: 'theorem — maths ka woh usool jo sabit ho chuka ho, jaise Pythagoras ka theorem', urdu: 'مسئلہ — ریاضی کا وہ اصول جو ثابت ہو چکا ہو، جیسے فیثاغورث کا مسئلہ', hindi: 'प्रमेय — गणित का वह नियम जो सिद्ध हो चुका हो, जैसे पाइथागोरस का प्रमेय', bengali: 'উপপাদ্য — গণিতের সেই নিয়ম যা প্রমাণিত, যেমন পিথাগোরাসের উপপাদ্য', arabic: 'النظرية — قاعدة في الرياضيات تم إثباتها، مثل نظرية فيثاغورس', spanish: 'teorema — una regla de matemáticas que ha sido demostrada, como el teorema de Pitágoras', french: 'théorème — une règle de mathématiques qui a été démontrée, comme le théorème de Pythagore', portuguese: 'teorema — uma regra da matemática que foi demonstrada, como o teorema de Pitágoras', german: 'Satz — eine bewiesene Regel der Mathematik, wie der Satz des Pythagoras', turkish: 'teorem — kanıtlanmış bir matematik kuralı, Pisagor teoremi gibi', indonesian: 'teorema — aturan matematika yang telah terbukti, seperti teorema Pythagoras', chinese: '定理 — 数学中已被证明的规则，如毕达哥拉斯定理' },
+  'root': { en: 'The number that, multiplied by itself, gives another number; the square root of 25 is 5.', roman: 'root — woh number jo khud se zarb ho kar doosra number de; 25 ka square root 5 hai', urdu: 'جذر — وہ عدد جو خود سے ضرب ہو کر دوسرا عدد دے؛ 25 کا مربع جذر 5 ہے', hindi: 'वर्गमूल — वह संख्या जो स्वयं से गुणा होकर दूसरी संख्या देती है; 25 का वर्गमूल 5 है', bengali: 'বর্গমূল — যে সংখ্যা নিজে দিয়ে গুণ হয়ে অন্য সংখ্যা দেয়; 25-এর বর্গমূল 5', arabic: 'الجذر التربيعي — العدد الذي إذا ضُرب في نفسه أعطى عددًا آخر؛ الجذر التربيعي لـ 25 هو 5', spanish: 'raíz cuadrada — el número que, multiplicado por sí mismo, da otro número; la raíz cuadrada de 25 es 5', french: 'racine carrée — le nombre qui, multiplié par lui-même, donne un autre nombre ; la racine carrée de 25 est 5', portuguese: 'raiz quadrada — o número que, multiplicado por ele mesmo, dá outro número; a raiz quadrada de 25 é 5', german: 'Quadratwurzel — die Zahl, die mit sich selbst multipliziert eine andere Zahl ergibt; die Quadratwurzel von 25 ist 5', turkish: 'karekök — kendisiyle çarpıldığında başka bir sayı veren sayı; 25’in karekökü 5’tir', indonesian: 'akar kuadrat — bilangan yang jika dikalikan dengan dirinya sendiri menghasilkan bilangan lain; akar kuadrat dari 25 adalah 5', chinese: '平方根 — 一个数乘以它本身得到另一个数；25 的平方根是 5' },
+  'nucleus': { en: 'The control centre of a cell; it holds the instructions for making proteins.', roman: 'nucleus — cell ka control centre; is mein proteins banane ki instructions hoti hain', urdu: 'مرکزہ — خلیے کا کنٹرول مرکز؛ اس میں پروٹین بنانے کی ہدایات ہوتی ہیں', hindi: 'केंद्रक — कोशिका का नियंत्रण केंद्र; इसमें प्रोटीन बनाने के निर्देश होते हैं', bengali: 'নিউক্লিয়াস — কোষের নিয়ন্ত্রণ কেন্দ্র; এতে প্রোটিন তৈরির নির্দেশ থাকে', arabic: 'النواة — مركز التحكم في الخلية؛ تحتوي على تعليمات صنع البروتينات', spanish: 'núcleo — el centro de control de una célula; contiene las instrucciones para fabricar proteínas', french: 'noyau — le centre de contrôle d’une cellule ; il contient les instructions pour fabriquer des protéines', portuguese: 'núcleo — o centro de controle de uma célula; contém as instruções para produzir proteínas', german: 'Zellkern — das Kontrollzentrum einer Zelle; er enthält die Anweisungen zur Herstellung von Proteinen', turkish: 'çekirdek — hücrenin kontrol merkezi; protein üretimi için talimatları içerir', indonesian: 'inti sel — pusat kendali sel; menyimpan instruksi untuk membuat protein', chinese: '细胞核 — 细胞的控制中心，含有制造蛋白质的指令' },
+  'membrane': { en: 'A thin skin around a cell that controls what enters and leaves.', roman: 'membrane — cell ke gird patli jhilli jo andar bahar jane wali cheezon ko control karti hai', urdu: 'جھلی — خلیے کے گرد پتلی جھلی جو اندر باہر جانے والی چیزوں کو کنٹرول کرتی ہے', hindi: 'झिल्ली — कोशिका के चारों ओर पतली परत जो अंदर-बाहर जाने वाली चीज़ों को नियंत्रित करती है', bengali: 'ঝিল্লি — কোষের চারপাশে পাতলা আবরণ যা ভেতরে-বাইরে যাওয়া নিয়ন্ত্রণ করে', arabic: 'الغشاء — غشاء رقيق حول الخلية يتحكم فيما يدخل ويخرج', spanish: 'membrana — una piel fina alrededor de una célula que controla lo que entra y sale', french: 'membrane — une fine peau autour d’une cellule qui contrôle ce qui entre et sort', portuguese: 'membrana — uma pele fina ao redor de uma célula que controla o que entra e sai', german: 'Membran — eine dünne Haut um eine Zelle, die steuert, was hinein- und hinausgeht', turkish: 'zar — hücrenin etrafındaki ince deri, girip çıkanı kontrol eder', indonesian: 'membran — selaput tipis di sekitar sel yang mengendalikan apa yang masuk dan keluar', chinese: '膜 — 细胞周围的薄层，控制进出物质' },
+  'cytoplasm': { en: 'The jelly-like substance inside a cell where most chemical reactions happen.', roman: 'cytoplasm — cell ke andar jelly jaisa maddeh jahan zyada tar chemical reactions hoti hain', urdu: 'سائٹو پلازم — خلیے کے اندر جیلی جیسا مادہ جہاں زیادہ تر کیمیائی تعامل ہوتے ہیں', hindi: 'कोशिकाद्रव्य — कोशिका के अंदर जेली जैसा पदार्थ जहाँ अधिकांश रासायनिक अभिक्रियाएँ होती हैं', bengali: 'সাইটোপ্লাজম — কোষের ভেতরে জেলির মতো পদার্থ যেখানে বেশিরভাগ রাসায়নিক বিক্রিয়া ঘটে', arabic: 'السيتوبلازم — مادة هلامية داخل الخلية تحدث فيها معظم التفاعلات الكيميائية', spanish: 'citoplasma — la sustancia gelatinosa dentro de una célula donde ocurren la mayoría de las reacciones químicas', french: 'cytoplasme — la substance gélatineuse à l’intérieur d’une cellule où se produisent la plupart des réactions chimiques', portuguese: 'citoplasma — a substância gelatinosa dentro de uma célula onde ocorre a maioria das reações químicas', german: 'Zytoplasma — die geleeartige Substanz in einer Zelle, in der die meisten chemischen Reaktionen stattfinden', turkish: 'sitoplazma — hücrenin içinde çoğu kimyasal tepkimenin gerçekleştiği jel benzeri madde', indonesian: 'sitoplasma — zat seperti jeli di dalam sel tempat sebagian besar reaksi kimia terjadi', chinese: '细胞质 — 细胞内大多数化学反应发生的胶状物质' },
+  'control': { en: 'To direct or manage something; the nucleus controls the cell.', roman: 'control — kisi cheez ko chalana ya sambhalna; nucleus cell ko control karta hai', urdu: 'کنٹرول — کسی چیز کو چلانا یا سنبھالنا؛ مرکزہ خلیے کو کنٹرول کرتا ہے', hindi: 'नियंत्रण — किसी चीज़ को चलाना या संभालना; केंद्रक कोशिका को नियंत्रित करता है', bengali: 'নিয়ন্ত্রণ — কোনো কিছু পরিচালনা করা; নিউক্লিয়াস কোষকে নিয়ন্ত্রণ করে', arabic: 'التحكم — توجيه شيء أو إدارته؛ النواة تتحكم في الخلية', spanish: 'control — dirigir o gestionar algo; el núcleo controla la célula', french: 'contrôle — diriger ou gérer quelque chose ; le noyau contrôle la cellule', portuguese: 'controle — dirigir ou gerenciar algo; o núcleo controla a célula', german: 'Steuerung — etwas lenken oder verwalten; der Zellkern steuert die Zelle', turkish: 'kontrol — bir şeyi yönetmek; çekirdek hücreyi kontrol eder', indonesian: 'kontrol — mengarahkan atau mengelola sesuatu; inti sel mengendalikan sel', chinese: '控制 — 指挥或管理某事；细胞核控制细胞' },
+  'cell': { en: 'The smallest unit of life; every living thing is made of cells.', roman: 'cell — zindagi ki sab se choti unit; har zinda cheez cells se bani hoti hai', urdu: 'خلیہ — زندگی کی سب سے چھوٹی اکائی؛ ہر زندہ چیز خلیوں سے بنی ہوتی ہے', hindi: 'कोशिका — जीवन की सबसे छोटी इकाई; हर जीवित चीज़ कोशिकाओं से बनी होती है', bengali: 'কোষ — জীবনের ক্ষুদ্রতম একক; প্রতিটি জীবিত জিনিস কোষ দিয়ে তৈরি', arabic: 'الخلية — أصغر وحدة في الحياة؛ كل كائن حي يتكون من خلايا', spanish: 'célula — la unidad más pequeña de la vida; todo ser vivo está hecho de células', french: 'cellule — la plus petite unité du vivant ; tout être vivant est fait de cellules', portuguese: 'célula — a menor unidade da vida; todo ser vivo é feito de células', german: 'Zelle — die kleinste Einheit des Lebens; jedes Lebewesen besteht aus Zellen', turkish: 'hücre — yaşamın en küçük birimi; her canlı hücrelerden oluşur', indonesian: 'sel — unit terkecil kehidupan; setiap makhluk hidup tersusun dari sel', chinese: '细胞 — 生命的最小单位；每个生物都由细胞构成' },
+  'protein': { en: 'A substance the cell builds using instructions from the nucleus.', roman: 'protein — woh maddeh jo cell nucleus ki instructions se banata hai', urdu: 'پروٹین — وہ مادہ جو خلیہ مرکزے کی ہدایات سے بناتا ہے', hindi: 'प्रोटीन — वह पदार्थ जो कोशिका केंद्रक के निर्देशों से बनाती है', bengali: 'প্রোটিন — সেই পদার্থ যা কোষ নিউক্লিয়াসের নির্দেশে তৈরি করে', arabic: 'البروتين — مادة تبنيها الخلية باتباع تعليمات النواة', spanish: 'proteína — una sustancia que la célula construye siguiendo las instrucciones del núcleo', french: 'protéine — une substance que la cellule construit en suivant les instructions du noyau', portuguese: 'proteína — uma substância que a célula constrói seguindo as instruções do núcleo', german: 'Protein — ein Stoff, den die Zelle nach den Anweisungen des Zellkerns aufbaut', turkish: 'protein — hücrenin çekirdeğin talimatlarıyla ürettiği madde', indonesian: 'protein — zat yang dibuat sel mengikuti instruksi dari inti sel', chinese: '蛋白质 — 细胞按照细胞核指令制造的物质' },
 };
 
 // ---------------------------------------------------------------------------
@@ -492,11 +509,17 @@ export function offlineEngine(passage, level = 'class9', language = 'english') {
     score: contentWords(s).reduce((sum, w) => sum + (freq.get(w) ?? 0), 0)
       + (/\d/.test(s) ? 4 : 0) + (/=|→/.test(s) ? 2 : 0),
   }));
-  const top = [...scored].sort((a, b) => b.score - a.score || a.index - b.index).slice(0, 3);
+  // Level changes how much of the passage the explanation uses. Class 9
+  // keeps it short (the definition + the worked example), Intermediate is
+  // the default, University uses the most sentences. The definition
+  // sentence and the best sentence carrying a number are always included,
+  // whatever the level.
+  const topCount = level === 'university' ? 5 : level === 'class9' ? 2 : 3;
+  const top = [...scored].sort((a, b) => b.score - a.score || a.index - b.index).slice(0, topCount);
   const chosen = new Map(top.map((t) => [t.index, t]));
   // A worked example (a sentence carrying a number) is usually the most
-  // useful sentence for a student, so include the best one if the top 3
-  // missed it. Explanation is then 3 sentences, or 4 when an example is added.
+  // useful sentence for a student, so include the best one if the top
+  // sentences missed it.
   const numeric = scored.filter((t) => /\d/.test(t.sentence) && !chosen.has(t.index))
     .sort((a, b) => b.score - a.score || a.index - b.index)[0];
   if (numeric) chosen.set(numeric.index, numeric);
@@ -699,7 +722,7 @@ function aiLanguageInstruction(language) {
 export function buildAiPrompt(passage, level, language) {
   return {
     system: 'You are Samajh, a study helper for Pakistani school students. Reply with valid JSON only. No markdown, no extra text, no code fences.',
-    user: `${aiLanguageInstruction(language)}\nLevel: ${level}.\nRules: use ONLY facts, numbers and formulas from the passage below. Do not add facts from outside it. Do not change any number or formula — copy them exactly as written. Keep the explanation to 2–4 short sentences.\nPassage:\n${passage}\n\nReply as JSON: {"explanation": "...", "takeaway": "..."} where takeaway is one sentence that sums the passage up.`,
+    user: `${aiLanguageInstruction(language)}\nLevel: ${level}.\nWrite EVERY sentence of the explanation and the takeaway in the requested language — do not write any sentence in English. Only STEM terms themselves may stay in English.\nRules: use ONLY facts, numbers and formulas from the passage below. Do not add facts from outside it. Do not change any number or formula — copy them exactly as written. Keep the explanation to 2–4 short sentences.\nPassage:\n${passage}\n\nReply as JSON: {"explanation": "...", "takeaway": "..."} where takeaway is one sentence that sums the passage up.`,
   };
 }
 
@@ -738,20 +761,68 @@ export async function callProvider(passage, level = 'class9', language = 'englis
   return parseAiResponse(text);
 }
 
+// For languages written in a non-Latin script, the AI explanation must
+// actually be in that script. If fewer than half of its letters are in the
+// target script, the AI wrote English (or another language) for most of it
+// and the offline explanation is kept. A good explanation still passes:
+// STEM terms and numbers stay in English, but they are only a small share
+// of the letters. Latin-script languages cannot be told apart this way, so
+// they rely on the prompt alone. English gets the same check in reverse:
+// an explanation in Urdu script for an English request is rejected too
+// (seen live in run 4: a cells/english explanation came back in Urdu).
+const SCRIPT_RANGES = {
+  urdu: [0x0600, 0x06ff], arabic: [0x0600, 0x06ff],
+  hindi: [0x0900, 0x097f], bengali: [0x0980, 0x09ff], chinese: [0x4e00, 0x9fff],
+  english: [0x0041, 0x007a],
+};
+export function checkLanguageScript(text, language) {
+  const range = SCRIPT_RANGES[language];
+  if (!range) return true;
+  // Brand names are not language content: "Pollinations" (12 Latin
+  // letters) would otherwise dominate short strings such as a mode chip.
+  const stripped = (text ?? '').replace(/pollinations/gi, '');
+  let letters = 0, inScript = 0;
+  for (const ch of stripped) {
+    const cp = ch.codePointAt(0);
+    if (/[A-Za-z\u0600-\u09ff\u4e00-\u9fff]/.test(ch)) {
+      letters++;
+      if (cp >= range[0] && cp <= range[1]) inScript++;
+    }
+  }
+  return letters === 0 || inScript / letters >= 0.5;
+}
+
 // AI engine: offline result as the base (quiz + glossary always offline),
-// AI explanation swapped in only if it passes the number check.
+// AI explanation swapped in only if it passes the number check and the
+// language check. A failed call OR a rejected output is retried once —
+// the free provider fails transiently, and a second attempt often
+// succeeds. Two failures are a real fallback, not a crash.
 export async function aiEngine(passage, level = 'class9', language = 'english', fetchImpl) {
   const base = offlineEngine(passage, level, language);
   let aiError = null;
-  try {
-    const ai = await callProvider(passage, level, language, fetchImpl);
+  let rejection = null;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    let ai = null;
+    try {
+      ai = await callProvider(passage, level, language, fetchImpl);
+    } catch (e) {
+      aiError = e && e.message ? e.message : 'AI call failed';
+      continue;
+    }
     const changed = checkNumbers(passage, ai.explanation);
     if (changed.length > 0) {
-      return {
-        ...base, mode: 'offline', aiAttempted: true,
+      rejection = {
         aiRejected: `AI changed number(s) ${changed.join(', ')} — offline explanation kept`,
         reason: `AI changed a number (${changed.join(', ')}), so the offline explanation was kept`,
       };
+      continue;
+    }
+    if (!checkLanguageScript(`${ai.explanation} ${ai.takeaway}`, language)) {
+      rejection = {
+        aiRejected: 'AI wrote the explanation in the wrong language — offline explanation kept',
+        reason: 'AI wrote the explanation in the wrong language, so the offline explanation was kept',
+      };
+      continue;
     }
     return {
       ...base, mode: 'ai', aiAttempted: true,
@@ -762,13 +833,14 @@ export async function aiEngine(passage, level = 'class9', language = 'english', 
       formulaPreserved: true,
       reason: 'AI explanation (Pollinations, free, no key); quiz and glossary checked offline',
     };
-  } catch (e) {
-    aiError = e && e.message ? e.message : 'AI call failed';
-    return {
-      ...base, mode: 'offline', aiAttempted: true, aiError,
-      reason: `AI call failed (${aiError}) — offline engine used`,
-    };
   }
+  if (rejection) {
+    return { ...base, mode: 'offline', aiAttempted: true, ...rejection };
+  }
+  return {
+    ...base, mode: 'offline', aiAttempted: true, aiError,
+    reason: `AI call failed (${aiError}) — offline engine used`,
+  };
 }
 
 export async function runPipeline(passage, level, language, opts = {}) {

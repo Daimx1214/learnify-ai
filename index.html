@@ -29,13 +29,13 @@
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <p class="kicker">For students anywhere who study STEM in English — and think in their own language</p>
+      <p class="kicker" data-ui="heroKicker">For students anywhere who study STEM in English — and think in their own language</p>
       <h1>STEM, in the language you think in.</h1>
-      <p class="lede">Paste a paragraph from your textbook. Samajh explains it in your language — 13 languages, from Urdu and Hindi to Spanish, French and Arabic — lists the key terms, and tests you — every answer points to the exact sentence that proves it.</p>
+      <p class="lede" data-ui="heroLede">Paste a paragraph from your textbook. Samajh explains it in your language — 13 languages, from Urdu and Hindi to Spanish, French and Arabic — lists the key terms, and tests you — every answer points to the exact sentence that proves it.</p>
       <p class="lang-strip" aria-label="Languages">Simple English · Roman Urdu · اردو · हिन्दी · বাংলা · العربية · Español · Français · Português · Deutsch · Türkçe · Bahasa Indonesia · 中文</p>
       <p>
-        <button class="btn btn-terracotta" id="hero-sample" type="button">Try a sample</button>
-        <a class="btn btn-secondary" href="#tool">Paste your own</a>
+        <button class="btn btn-terracotta" id="hero-sample" type="button" data-ui="heroTry">Try a sample</button>
+        <a class="btn btn-secondary" href="#tool" data-ui="heroPaste">Paste your own</a>
       </p>
       <div class="example" aria-label="Example">
         <p class="from">English: “Current is directly proportional to voltage.”</p>
@@ -58,19 +58,19 @@
       <h2>Try it</h2>
       <div class="tool-grid">
         <div class="card" aria-label="Input">
-          <label for="passage">Your STEM paragraph</label>
+          <label for="passage" data-ui="labelPassage">Your STEM paragraph</label>
           <textarea id="passage" rows="8" maxlength="2500" placeholder="Paste a paragraph from your textbook here — for example, the paragraph about Ohm's law, photosynthesis, or Newton's second law. 30 to 2,500 characters."></textarea>
           <p class="char-count"><span id="char-count">0</span> / 2,500 characters</p>
           <p class="field-error" id="input-error" role="alert" hidden></p>
 
-          <label for="level">Level</label>
+          <label for="level" data-ui="labelLevel">Level</label>
           <select id="level">
             <option value="class9">Class 9–10</option>
             <option value="intermediate">Intermediate</option>
             <option value="university">University</option>
           </select>
 
-          <label for="language">Language for terms and quiz</label>
+          <label for="language" data-ui="labelLanguage">Language for terms and quiz</label>
           <select id="language">
             <optgroup label="South Asia">
               <option value="english">Simple English</option>
@@ -95,17 +95,19 @@
             </optgroup>
           </select>
 
-          <p style="margin-top:16px"><label><input type="checkbox" id="ai-toggle" checked> AI mode — explanation by a free AI (no key). Untick for a fully offline run.</label></p>
+          <p style="margin-top:16px"><label><input type="checkbox" id="ai-toggle" checked> <span data-ui="aiToggle">AI mode — explanation by a free AI (no key). Untick for a fully offline run.</span></label></p>
 
-          <p style="margin-top:16px"><button class="btn btn-primary" id="explain-btn" type="button">Explain</button></p>
+          <p style="margin-top:16px"><button class="btn btn-primary" id="explain-btn" type="button" data-ui="explainBtn">Explain</button></p>
 
-          <p class="muted">Or start with a sample:</p>
+          <p class="muted" data-ui="orSample">Or start with a sample:</p>
           <div class="sample-row">
             <button class="sample-btn" type="button" data-sample="ohm">Ohm’s law</button>
             <button class="sample-btn" type="button" data-sample="photosynthesis">Photosynthesis</button>
             <button class="sample-btn" type="button" data-sample="newton2">Newton’s second law</button>
+            <button class="sample-btn" type="button" data-sample="pythagoras">Pythagoras’ theorem</button>
+            <button class="sample-btn" type="button" data-sample="cells">Cells</button>
           </div>
-          <p class="muted" style="margin-top:16px">Samples are original passages written for this project — no textbook text was copied.</p>
+          <p class="muted" style="margin-top:16px" data-ui="samplesNote">Samples are original passages written for this project — no textbook text was copied.</p>
         </div>
 
         <div class="card" aria-label="Results" id="results-card">
@@ -114,20 +116,20 @@
             <span class="muted" id="mode-note">AI mode is on by default. If the AI call fails, the offline engine takes over automatically.</span>
           </div>
           <div id="loading" hidden aria-live="polite">
-            <p role="status">Reading your passage…</p>
+            <p role="status" data-ui="loadingText">Reading your passage…</p>
             <div class="skeleton" style="height:24px"></div>
             <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton" style="width:60%"></div>
           </div>
           <div id="empty-state">
-            <p class="muted">No result yet. Paste a paragraph or tap a sample, then tap <strong>Explain</strong>.</p>
+            <p class="muted" data-ui="emptyState">No result yet. Paste a paragraph or tap a sample, then tap <strong>Explain</strong>.</p>
           </div>
 
           <div id="results" hidden>
             <div class="tabs" role="tablist" aria-label="Results">
-              <button class="tab" role="tab" id="tab-explain" aria-selected="true" aria-controls="panel-explain" type="button">Explain</button>
-              <button class="tab" role="tab" id="tab-terms" aria-selected="false" aria-controls="panel-terms" type="button" tabindex="-1">Terms</button>
-              <button class="tab" role="tab" id="tab-quiz" aria-selected="false" aria-controls="panel-quiz" type="button" tabindex="-1">Quiz</button>
-              <button class="tab" role="tab" id="tab-cards" aria-selected="false" aria-controls="panel-cards" type="button" tabindex="-1">Cards</button>
+              <button class="tab" role="tab" id="tab-explain" aria-selected="true" aria-controls="panel-explain" type="button" data-ui="tabExplain">Explain</button>
+              <button class="tab" role="tab" id="tab-terms" aria-selected="false" aria-controls="panel-terms" type="button" tabindex="-1" data-ui="tabTerms">Terms</button>
+              <button class="tab" role="tab" id="tab-quiz" aria-selected="false" aria-controls="panel-quiz" type="button" tabindex="-1" data-ui="tabQuiz">Quiz</button>
+              <button class="tab" role="tab" id="tab-cards" aria-selected="false" aria-controls="panel-cards" type="button" tabindex="-1" data-ui="tabCards">Cards</button>
             </div>
 
             <div class="tabpanel" id="panel-explain" role="tabpanel" aria-labelledby="tab-explain">
@@ -138,11 +140,11 @@
               <h3>Original passage</h3>
               <p class="muted">Tap “Show in passage” on a quiz answer to highlight its sentence here.</p>
               <p class="passage-original" id="original"></p>
-              <p><button class="btn btn-secondary" id="download-btn" type="button">Download study sheet (.md)</button></p>
+              <p><button class="btn btn-secondary" id="download-btn" type="button" data-ui="downloadBtn">Download study sheet (.md)</button></p>
             </div>
 
             <div class="tabpanel" id="panel-terms" role="tabpanel" aria-labelledby="tab-terms" hidden>
-              <p class="muted">Key terms from your passage. Translations come from a small checked glossary — if a term is not in it, only the English meaning is shown. Nothing is guessed.</p>
+              <p class="muted" data-ui="termsNote">Key terms from your passage. Translations come from a small checked glossary — if a term is not in it, only the English meaning is shown. Nothing is guessed.</p>
               <div class="glossary" id="glossary"></div>
             </div>
 
@@ -156,20 +158,20 @@
             </div>
 
             <div class="tabpanel" id="panel-cards" role="tabpanel" aria-labelledby="tab-cards" hidden>
-              <p class="muted">Flashcards from the glossary terms. Tap a card to flip it. Progress lasts for this tab only — nothing is saved.</p>
+              <p class="muted" data-ui="cardsNote">Flashcards from the glossary terms. Tap a card to flip it. Progress lasts for this tab only — nothing is saved.</p>
               <p class="progress" id="card-progress" role="status"></p>
               <div class="flash-wrap">
                 <button class="flashcard" id="flashcard" type="button" aria-label="Flashcard, tap to flip">
                   <span class="flash-inner">
-                    <span class="flash-face flash-front"><span class="flash-term" id="card-front"></span><span class="muted">Tap to flip</span></span>
+                    <span class="flash-face flash-front"><span class="flash-term" id="card-front"></span><span class="muted" data-ui="tapToFlip">Tap to flip</span></span>
                     <span class="flash-face flash-back"><span id="card-back"></span><span class="muted" id="card-back-local"></span></span>
                   </span>
                 </button>
                 <p>
-                  <button class="btn btn-secondary" id="card-again" type="button">Again</button>
-                  <button class="btn btn-primary" id="card-know" type="button">Know it ✓</button>
+                  <button class="btn btn-secondary" id="card-again" type="button" data-ui="cardAgain">Again</button>
+                  <button class="btn btn-primary" id="card-know" type="button" data-ui="cardKnow">Know it ✓</button>
                 </p>
-                <p><button class="link-btn" id="card-prev" type="button">← Previous card</button> · <button class="link-btn" id="card-next" type="button">Next card →</button></p>
+                <p><button class="link-btn" id="card-prev" type="button" data-ui="cardPrev">← Previous card</button> · <button class="link-btn" id="card-next" type="button" data-ui="cardNext">Next card →</button></p>
               </div>
             </div>
           </div>
@@ -201,7 +203,7 @@
           <li>New-language glossary meanings (beyond Urdu and Roman Urdu) are standard dictionary translations of common STEM terms — they have not yet been reviewed by native speakers.</li>
         </ul>
         <h3>Measured results — 21 November 2026</h3>
-        <p class="muted">Measured by running the offline engine on the 3 sample passages × 13 languages (39 runs), and the AI mode live twice (18 runs). Full detail: <code>eval/results.md</code> in the repo.</p>
+        <p class="muted">Measured by running the offline engine on the 5 sample passages × 13 languages (65 runs), and the AI mode live five times (187 runs). Full detail: <code>eval/results.md</code> in the repo.</p>
         <table class="results">
           <tr><th>Measure</th><th>Offline mode</th><th>AI mode (live)</th></tr>
           <tr><td>Quiz items with evidence verified</td><td id="eval-verified">195 of 195 (100%)</td><td>285 of 285 (100%)</td></tr>

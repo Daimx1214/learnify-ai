@@ -98,24 +98,25 @@ Tie-break: higher Problem and Impact score wins. All judging decisions are final
 - [x] ✅ 21 Nov 2026 13:02 PKT — Devpost email: deadline EXTENDED to 29 Nov 2026
 - [ ] ⏳ **30 Nov 2026, 9:59 AM PKT — submission deadline (target: submit 60–90 min early)**
 - [ ] ⏳ Judges review complete submissions (dates move with the extension — check Devpost /updates)
-- [ ] ⏳ **Demo Day — was Tue 24 Nov 2026 (EST) before the extension; new date to confirm in the STEM2Connect AI Hackathon Discord.** Times, meeting links, order and prerecorded instructions are announced in the Discord — check Discord for your slot.
+- [ ] ⏳ **Demo Day — was Tue 24 Nov 2026 (EST) before the extension; new date to confirm in the STEM2Connect AI Hackathon Discord.** Times, meeting links, order and prerecorded instructions are announced in the Discord — check Discord for your slot. (Checked Devpost /updates 21 Nov ~18:40 PKT: the extension post confirms 29 Nov but gives no new Demo Day date; Discord is the only source.)
 
 ## 11. Measured results (real numbers only, 21 Nov 2026)
 
-- Tests: **40/40 pass, 0 fail** (`node --test tests/samajh.test.mjs`) — 18 original + 9 added in the second fix round + 8 added with AI mode (fake-fetch AI tests) + 7 added with the 13-language round (seed completeness, localized quiz/deck/study sheet, AI prompt per language)
-- Eval: 3 samples × 13 languages = 39 runs — **195/195 quiz items evidence-verified (100%)**, **45/45 unique quiz answers manually checked correct**, **0 explanations changed a number/formula**, median engine time **about 1–2 ms (varies run to run; latest median of medians 1.15 ms)**
-- AI mode (measured live, three runs on 21 Nov): run 1 — AI 6/9, fallback 3/9; run 2 — AI 8/9, fallback 1/9; run 3 (all 13 languages) — AI 26/39, fallback 13/39; **0 numbers changed in 57 runs, quiz 285/285 verified**, AI answers in about 0.3–7 s. One Roman Urdu AI explanation had a garbled phrase; numbers still exact.
+- Tests: **52/52 pass, 0 fail** (`node --test tests/samajh.test.mjs`) — 40 after the 13-language round + 1 level + 1 UI strings + 5 AI fixes + 2 new samples + 1 script audit + 2 retry/English-check
+- Eval: 5 samples × 13 languages = 65 runs — **325/325 quiz items evidence-verified (100%)**, **75/75 unique quiz answers manually checked correct**, **0 explanations changed a number/formula**, median engine time **about 1–2 ms (varies run to run; latest median of medians 1.24 ms)**
+- AI mode (measured live, five runs on 21 Nov): run 1 — AI 6/9, fallback 3/9; run 2 — AI 8/9, fallback 1/9; run 3 (all 13 languages) — AI 26/39, fallback 13/39; run 4 (all 13 languages, 5 samples, retry + language check) — AI 63/65, fallback 2/65; run 5 (same, retry-after-rejection + English script check) — AI 59/65, fallback 6/65; **0 numbers changed in 187 runs, quiz 935/935 verified**, AI answers in about 0.3–7 s. Quirks: one Roman Urdu AI explanation had a garbled phrase; one cells/english explanation came back in Urdu script (this motivated the English script check); one Hindi cells explanation had a grammar slip. Numbers still exact in all cases.
 - Student clarity rating: **not measured** (no student test)
 - Serving check: live site https://daimx1214.github.io/samajh/ HTTP 200; repo public at https://github.com/Daimx1214/samajh; demo video https://www.youtube.com/watch?v=vswKBBOw1RE (4:02, unlisted, playback verified). In AI mode the app calls text.pollinations.ai (free, no key); offline mode sends nothing anywhere. No keys, no personal data (secrets scan: zero hits). Live click-through 21 Nov ~18:15 PKT (Spanish + Arabic, browser task): dropdown shows all 13 options in 4 groups; Spanish quiz Q1 "Completa el espacio en blanco: …" + glossary "corriente — …" correct, AI explanation in Spanish; Arabic quiz Q1 "املأ الفراغ: …" + glossary "التيار الكهربائي — …" correct, RTL right-aligned, flashcards flip with Arabic progress line. One quirk: the AI explanation's middle sentences stayed in English in both languages (free-AI wording, not a code bug); section headings stay in English by design.
 
 ## 12. Honest limits — must stay in README / Devpost / video (do not hide)
 
-- AI mode sends the passage to the free Pollinations text API; untick AI mode for a fully offline run. The free AI sometimes fails (17 fallbacks in 57 measured runs) and its Roman Urdu wording can be rough — numbers and formulas are checked, never trusted blindly.
+- AI mode sends the passage to the free Pollinations text API; untick AI mode for a fully offline run. The free AI sometimes fails (25 fallbacks in 187 measured runs — 2 in run 4, 6 in run 5, after the retry was added) and its Roman Urdu wording can be rough — numbers and formulas are checked, never trusted blindly.
 - In offline mode the explanation stays in English (extractive sentences from the passage); only glossary and quiz wording are in the chosen language.
 - Cloze questions test sentence-matching, not deep comprehension.
 - No student test run (0 students).
 - Urdu seed-glossary spellings have not been personally verified by Daim yet.
 - New-language glossary meanings (beyond Urdu and Roman Urdu) are standard dictionary translations of common STEM terms, not yet reviewed by native speakers.
+- The demo video (4:02) was recorded before the 13-language round and the two new samples — it shows Roman Urdu and 3 samples only. Re-record after everything is final, per Daim's order (21 Nov evening).
 
 ## 13. QA fixes already applied (21 Nov, re-tested)
 
@@ -147,9 +148,18 @@ Fourth fix round (21 Nov evening — 13 languages for the international hackatho
 17. **Languages grew from 3 to 13** (`LANGUAGES` registry in `samajh.js`: English, Roman Urdu, Urdu, Hindi, Bengali, Arabic, Spanish, French, Portuguese, German, Turkish, Indonesian, Chinese). Every one of the 33 seed glossary terms now has a meaning in every language (a unit test enforces no gaps); quiz questions/reasons, the "in simple words" intro, flashcard progress and the AI prompt are all per-language; Urdu and Arabic lay out right-to-left with the right fonts (Noto Naskh Arabic, Noto Sans Bengali/Devanagari/SC added). The language picker shows native names in regional groups. Validation now accepts all 13 languages and the non-Latin-script passage rejection covers Arabic script too (error code renamed `urdu_script` → `non_latin_script`).
 18. **Re-measured across all 13 languages**: offline eval 39 runs — 195/195 quiz verified, 0 numbers changed; AI eval run 3 — AI 26/39, fallback 13/39, 0 numbers changed, quiz 195/195; every new language produced an AI explanation in that language at least once. 7 new unit tests — **40/40 tests pass**. README, Devpost draft, index.html trust table and this checklist updated to the new numbers.
 
+Fifth fix round (21 Nov evening — Daim's gap list, one by one; video deferred until everything is final):
+
+19. **Level now changes the offline explanation** (`samajh.js`: Class 9 keeps it short — definition + worked example; University uses the most sentences). Tested: explanation length grows with level, definition + a numbered sentence always in. Offline eval re-run: 65 runs, 325/325 verified.
+20. **Whole tool chrome in all 13 languages** (new `ui-strings.js`: hero, labels, tabs, buttons, quiz feedback, flashcards, mode chip; `app.js` applies it on language change and sets dir/lang for RTL). Static sections (How it works, Trust & limits, About, privacy notice) stay in English — translating disclosure text without a native review would risk errors. A unit test enforces every language has every key.
+21. **AI fixes**: the prompt now says every sentence must be in the chosen language; a script check (`checkLanguageScript()`) discards an English explanation for a non-Latin language — and, after run 4 showed a cells/english explanation come back in Urdu script, the same check in reverse for English; a failed call OR a rejected output is retried once. AI eval run 4 (65 runs): **AI 63/65, fallback 2/65** (was 26/39 before the retry), 0 numbers changed, quiz 325/325. 5 new tests + 2 more for the retry-after-rejection and English-check.
+22. **Two more sample passages**: Pythagoras' theorem (3² + 4² = 25) and cells (37 trillion cells, 10 micrometres) — 5 samples total, 12 new seed terms in all 13 languages (45 terms total), 2 new tests. Offline eval re-run: 65 runs, 325/325 verified; all 30 new unique quiz items read by hand — **75/75 correct** (one weak item: cells Q5 blanks the filler word "about" — unambiguous, but it tests a filler word, not understanding).
+23. **Script audit**: a permanent test checks every seed meaning and every UI string is written in its own language's script. It caught one real issue — the Chinese mode chip was mostly the Latin brand name "Pollinations" — fixed by excluding brand names from the script count.
+24. **Cleanup + Demo Day check**: the video-recording proxy process was killed (Chrome + recorder kept for the re-record). Devpost /updates checked 21 Nov ~18:40 PKT: the extension to 29 Nov is confirmed, but no new Demo Day date is posted — Discord is the only source.
+
 ## 14. What is left — in order
 
-1. **Repo, live site and video — DONE**: public GitHub repo, GitHub Pages live, demo video on YouTube unlisted (links in README + Devpost draft).
+1. **Repo and live site — DONE**: public GitHub repo, GitHub Pages live. **Demo video — OUTDATED, re-record after everything is final** (per Daim's order, 21 Nov evening): the current video (4:02, unlisted) shows Roman Urdu and 3 samples only; the app now has 13 languages and 5 samples.
 2. **Daim's own review** (review-before-submit rule): especially the Urdu seed-glossary spellings, the new-language meanings, and the "What I learned" wording.
 3. **Submit on Devpost** by 30 Nov 9:59 AM PKT (aim 60–90 min early), reopen and verify "submitted", not draft.
 4. **Demo Day**: check Discord for the new date/slot/link (was 24 Nov before the extension); present live or prerecorded; then request the Certificate of Participation and follow the private .xyz domain instructions.

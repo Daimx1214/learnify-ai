@@ -1,8 +1,8 @@
 # Samajh — quiz dump for manual correctness check
 
-Every quiz item from the 39 evaluation runs. The 45 unique items (3 samples × 5 questions × 3 original languages) were read by a human and marked whether the correct option is the only sensible answer for the blank, given the evidence sentence. The 10 added languages reuse the same items with localized question/reason wording only — options, answers and evidence are identical.
+Every quiz item from the 65 evaluation runs. The 75 unique items (5 samples × 5 questions × 3 original languages) were read by a human and marked whether the correct option is the only sensible answer for the blank, given the evidence sentence. The 10 added languages reuse the same items with localized question/reason wording only — options, answers and evidence are identical.
 
-## ohm — english (median 2.94 ms)
+## ohm — english (median 2.74 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -60,7 +60,7 @@ Reason: The passage says the missing word is “circuit”.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — roman (median 3.19 ms)
+## ohm — roman (median 1.95 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -118,7 +118,7 @@ Reason: Passage mein khaali jagah par “circuit” hai.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — urdu (median 1.57 ms)
+## ohm — urdu (median 1.32 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -176,7 +176,7 @@ Reason: عبارت میں خالی جگہ پر “circuit” ہے۔
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — hindi (median 1.76 ms)
+## ohm — hindi (median 1.24 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -234,7 +234,7 @@ Reason: गद्यांश में खाली जगह पर “circuit
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — bengali (median 1.26 ms)
+## ohm — bengali (median 1.51 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -292,7 +292,7 @@ Reason: অনুচ্ছেদে খালি জায়গায় “cir
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — arabic (median 1.25 ms)
+## ohm — arabic (median 1.27 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -350,7 +350,7 @@ Reason: تقول الفقرة إن الكلمة الناقصة هي “circuit�
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — spanish (median 1.29 ms)
+## ohm — spanish (median 1.31 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -408,7 +408,7 @@ Reason: El pasaje dice que la palabra que falta es “circuit”.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — french (median 1.27 ms)
+## ohm — french (median 1.29 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -466,7 +466,7 @@ Reason: Le passage dit que le mot manquant est « circuit ».
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — portuguese (median 1.09 ms)
+## ohm — portuguese (median 1.33 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -524,7 +524,7 @@ Reason: O texto diz que a palavra que falta é “circuit”.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — german (median 1.25 ms)
+## ohm — german (median 1.17 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -582,7 +582,7 @@ Reason: Im Text steht, dass das fehlende Wort „circuit“ ist.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — turkish (median 1.15 ms)
+## ohm — turkish (median 1.11 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -640,7 +640,7 @@ Reason: Metinde eksik kelimenin “circuit” olduğu yazıyor.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — indonesian (median 1.16 ms)
+## ohm — indonesian (median 1.13 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -698,7 +698,7 @@ Reason: Bacaan itu mengatakan kata yang hilang adalah “circuit”.
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## ohm — chinese (median 1.16 ms)
+## ohm — chinese (median 1.33 ms)
 
 Explanation: Ohm's law describes how current, voltage and resistance are related in a simple circuit. If the temperature of a metal wire stays constant, the current flowing through it is directly proportional to the voltage across it. This relationship is written as V = I × R, where V is voltage in volts, I is current in amperes and R is resistance in ohms. For example, a 12 V battery connected across a 4 ohm resistor drives a current of 3 A.
 
@@ -756,7 +756,7 @@ Reason: 文章中空缺的词是“circuit”。
 
 Evidence: "Ohm's law describes how current, voltage and resistance are related in a simple circuit."
 
-## photosynthesis — english (median 1.28 ms)
+## photosynthesis — english (median 1.26 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -814,7 +814,7 @@ Reason: The passage says the missing word is “reaction”.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — roman (median 1.05 ms)
+## photosynthesis — roman (median 1.14 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -872,7 +872,7 @@ Reason: Passage mein khaali jagah par “reaction” hai.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — urdu (median 1.07 ms)
+## photosynthesis — urdu (median 1.31 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -930,7 +930,7 @@ Reason: عبارت میں خالی جگہ پر “reaction” ہے۔
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — hindi (median 1.15 ms)
+## photosynthesis — hindi (median 1.48 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -988,7 +988,7 @@ Reason: गद्यांश में खाली जगह पर “reactio
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — bengali (median 1.03 ms)
+## photosynthesis — bengali (median 1.07 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1046,7 +1046,7 @@ Reason: অনুচ্ছেদে খালি জায়গায় “rea
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — arabic (median 1.07 ms)
+## photosynthesis — arabic (median 1.06 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1104,7 +1104,7 @@ Reason: تقول الفقرة إن الكلمة الناقصة هي “reaction�
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — spanish (median 1.02 ms)
+## photosynthesis — spanish (median 1.05 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1162,7 +1162,7 @@ Reason: El pasaje dice que la palabra que falta es “reaction”.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — french (median 1.22 ms)
+## photosynthesis — french (median 1.14 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1220,7 +1220,7 @@ Reason: Le passage dit que le mot manquant est « reaction ».
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — portuguese (median 1.25 ms)
+## photosynthesis — portuguese (median 1.12 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1278,7 +1278,7 @@ Reason: O texto diz que a palavra que falta é “reaction”.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — german (median 1.14 ms)
+## photosynthesis — german (median 1.12 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1336,7 +1336,7 @@ Reason: Im Text steht, dass das fehlende Wort „reaction“ ist.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — turkish (median 1.02 ms)
+## photosynthesis — turkish (median 1.12 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1394,7 +1394,7 @@ Reason: Metinde eksik kelimenin “reaction” olduğu yazıyor.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — indonesian (median 1.12 ms)
+## photosynthesis — indonesian (median 1.26 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1452,7 +1452,7 @@ Reason: Bacaan itu mengatakan kata yang hilang adalah “reaction”.
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## photosynthesis — chinese (median 1.19 ms)
+## photosynthesis — chinese (median 1.20 ms)
 
 Explanation: Photosynthesis is the process by which green plants make their own food. The plant uses this energy to turn carbon dioxide from the air and water from the soil into glucose and oxygen. The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light. Oxygen is released through tiny pores called stomata, while glucose is used for growth or stored as starch.
 
@@ -1510,9 +1510,9 @@ Reason: 文章中空缺的词是“reaction”。
 
 Evidence: "The overall reaction is 6CO2 + 6H2O → C6H12O6 + 6O2, which requires light."
 
-## newton2 — english (median 1.09 ms)
+## newton2 — english (median 1.38 ms)
 
-Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
+Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
 Takeaway: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a.
 
@@ -1568,9 +1568,9 @@ Reason: The passage says the missing word is “object”.
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2 — roman (median 1.13 ms)
+## newton2 — roman (median 1.19 ms)
 
-Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
+Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
 Takeaway: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a.
 
@@ -1626,9 +1626,9 @@ Reason: Passage mein khaali jagah par “object” hai.
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2 — urdu (median 1.03 ms)
+## newton2 — urdu (median 1.19 ms)
 
-Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
+Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
 Takeaway: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a.
 
@@ -1684,9 +1684,9 @@ Reason: عبارت میں خالی جگہ پر “object” ہے۔
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2 — hindi (median 1.05 ms)
+## newton2 — hindi (median 1.24 ms)
 
-Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
+Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
 Takeaway: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a.
 
@@ -1742,9 +1742,9 @@ Reason: गद्यांश में खाली जगह पर “object�
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2 — bengali (median 1.04 ms)
+## newton2 — bengali (median 1.39 ms)
 
-Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
+Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
 Takeaway: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a.
 
@@ -1800,9 +1800,9 @@ Reason: অনুচ্ছেদে খালি জায়গায় “obj
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2 — arabic (median 1.03 ms)
+## newton2 — arabic (median 1.76 ms)
 
-Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
+Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
 Takeaway: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a.
 
@@ -1858,9 +1858,9 @@ Reason: تقول الفقرة إن الكلمة الناقصة هي “object”
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2 — spanish (median 1.04 ms)
+## newton2 — spanish (median 1.42 ms)
 
-Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
+Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
 Takeaway: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a.
 
@@ -1916,9 +1916,9 @@ Reason: El pasaje dice que la palabra que falta es “object”.
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2 — french (median 1.09 ms)
+## newton2 — french (median 1.88 ms)
 
-Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
+Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
 Takeaway: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a.
 
@@ -1974,9 +1974,9 @@ Reason: Le passage dit que le mot manquant est « object ».
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2 — portuguese (median 1.24 ms)
+## newton2 — portuguese (median 2.29 ms)
 
-Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
+Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
 Takeaway: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a.
 
@@ -2032,9 +2032,9 @@ Reason: O texto diz que a palavra que falta é “object”.
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2 — german (median 1.31 ms)
+## newton2 — german (median 1.65 ms)
 
-Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
+Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
 Takeaway: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a.
 
@@ -2090,9 +2090,9 @@ Reason: Im Text steht, dass das fehlende Wort „object“ ist.
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2 — turkish (median 1.22 ms)
+## newton2 — turkish (median 1.76 ms)
 
-Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
+Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
 Takeaway: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a.
 
@@ -2148,9 +2148,9 @@ Reason: Metinde eksik kelimenin “object” olduğu yazıyor.
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2 — indonesian (median 0.97 ms)
+## newton2 — indonesian (median 1.10 ms)
 
-Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
+Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
 Takeaway: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a.
 
@@ -2206,9 +2206,9 @@ Reason: Bacaan itu mengatakan kata yang hilang adalah “object”.
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
 
-## newton2 — chinese (median 1.19 ms)
+## newton2 — chinese (median 1.20 ms)
 
-Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
+Explanation: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².
 
 Takeaway: Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a.
 
@@ -2263,3 +2263,1511 @@ Options: a) newtons | b) trolley | c) object | d) kilograms
 Reason: 文章中空缺的词是“object”。
 
 Evidence: "Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a."
+
+## pythagoras — english (median 1.29 ms)
+
+Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
+
+Takeaway: Pythagoras' theorem describes a right-angled triangle.
+
+Terms: hypotenuse, triangle, square, root, theorem, right-angled triangle, right-angled, rule
+
+### Q1 — correct: "hypotenuse" (verified: true)
+
+Question: Fill in the blank: “The rule is written as a² + b² = c², where c is the ______.”
+
+Options: a) square | b) root | c) hypotenuse | d) triangle
+
+Reason: The passage says the missing word is “hypotenuse”.
+
+Evidence: "The rule is written as a² + b² = c², where c is the hypotenuse."
+
+### Q2 — correct: "triangle" (verified: true)
+
+Question: Fill in the blank: “Pythagoras' theorem describes a right-angled ______.”
+
+Options: a) triangle | b) hypotenuse | c) root | d) square
+
+Reason: The passage says the missing word is “triangle”.
+
+Evidence: "Pythagoras' theorem describes a right-angled triangle."
+
+### Q3 — correct: "square" (verified: true)
+
+Question: Fill in the blank: “For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the ______ root of 25 is 5.”
+
+Options: a) right-angled | b) square | c) theorem | d) right-angled triangle
+
+Reason: The passage says the missing word is “square”.
+
+Evidence: "For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5."
+
+### Q4 — correct: "right-angled triangle" (verified: true)
+
+Question: Fill in the blank: “In a ______, the square of the hypotenuse is equal to the sum of the squares of the other two sides.”
+
+Options: a) rule | b) theorem | c) root | d) right-angled triangle
+
+Reason: The passage says the missing word is “right-angled triangle”.
+
+Evidence: "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides."
+
+### Q5 — correct: "rule" (verified: true)
+
+Question: Fill in the blank: “Builders use this ______ to check that a corner is exactly 90 degrees.”
+
+Options: a) square | b) triangle | c) rule | d) hypotenuse
+
+Reason: The passage says the missing word is “rule”.
+
+Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
+
+## pythagoras — roman (median 1.13 ms)
+
+Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
+
+Takeaway: Pythagoras' theorem describes a right-angled triangle.
+
+Terms: hypotenuse, triangle, square, root, theorem, right-angled triangle, right-angled, rule
+
+### Q1 — correct: "hypotenuse" (verified: true)
+
+Question: Khaali jagah bharein: “The rule is written as a² + b² = c², where c is the ______.”
+
+Options: a) square | b) root | c) hypotenuse | d) triangle
+
+Reason: Passage mein khaali jagah par “hypotenuse” hai.
+
+Evidence: "The rule is written as a² + b² = c², where c is the hypotenuse."
+
+### Q2 — correct: "triangle" (verified: true)
+
+Question: Khaali jagah bharein: “Pythagoras' theorem describes a right-angled ______.”
+
+Options: a) triangle | b) hypotenuse | c) root | d) square
+
+Reason: Passage mein khaali jagah par “triangle” hai.
+
+Evidence: "Pythagoras' theorem describes a right-angled triangle."
+
+### Q3 — correct: "square" (verified: true)
+
+Question: Khaali jagah bharein: “For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the ______ root of 25 is 5.”
+
+Options: a) right-angled | b) square | c) theorem | d) right-angled triangle
+
+Reason: Passage mein khaali jagah par “square” hai.
+
+Evidence: "For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5."
+
+### Q4 — correct: "right-angled triangle" (verified: true)
+
+Question: Khaali jagah bharein: “In a ______, the square of the hypotenuse is equal to the sum of the squares of the other two sides.”
+
+Options: a) rule | b) theorem | c) root | d) right-angled triangle
+
+Reason: Passage mein khaali jagah par “right-angled triangle” hai.
+
+Evidence: "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides."
+
+### Q5 — correct: "rule" (verified: true)
+
+Question: Khaali jagah bharein: “Builders use this ______ to check that a corner is exactly 90 degrees.”
+
+Options: a) square | b) triangle | c) rule | d) hypotenuse
+
+Reason: Passage mein khaali jagah par “rule” hai.
+
+Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
+
+## pythagoras — urdu (median 1.18 ms)
+
+Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
+
+Takeaway: Pythagoras' theorem describes a right-angled triangle.
+
+Terms: hypotenuse, triangle, square, root, theorem, right-angled triangle, right-angled, rule
+
+### Q1 — correct: "hypotenuse" (verified: true)
+
+Question: خالی جگہ بھریں: “The rule is written as a² + b² = c², where c is the ______.”
+
+Options: a) square | b) root | c) hypotenuse | d) triangle
+
+Reason: عبارت میں خالی جگہ پر “hypotenuse” ہے۔
+
+Evidence: "The rule is written as a² + b² = c², where c is the hypotenuse."
+
+### Q2 — correct: "triangle" (verified: true)
+
+Question: خالی جگہ بھریں: “Pythagoras' theorem describes a right-angled ______.”
+
+Options: a) triangle | b) hypotenuse | c) root | d) square
+
+Reason: عبارت میں خالی جگہ پر “triangle” ہے۔
+
+Evidence: "Pythagoras' theorem describes a right-angled triangle."
+
+### Q3 — correct: "square" (verified: true)
+
+Question: خالی جگہ بھریں: “For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the ______ root of 25 is 5.”
+
+Options: a) right-angled | b) square | c) theorem | d) right-angled triangle
+
+Reason: عبارت میں خالی جگہ پر “square” ہے۔
+
+Evidence: "For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5."
+
+### Q4 — correct: "right-angled triangle" (verified: true)
+
+Question: خالی جگہ بھریں: “In a ______, the square of the hypotenuse is equal to the sum of the squares of the other two sides.”
+
+Options: a) rule | b) theorem | c) root | d) right-angled triangle
+
+Reason: عبارت میں خالی جگہ پر “right-angled triangle” ہے۔
+
+Evidence: "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides."
+
+### Q5 — correct: "rule" (verified: true)
+
+Question: خالی جگہ بھریں: “Builders use this ______ to check that a corner is exactly 90 degrees.”
+
+Options: a) square | b) triangle | c) rule | d) hypotenuse
+
+Reason: عبارت میں خالی جگہ پر “rule” ہے۔
+
+Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
+
+## pythagoras — hindi (median 1.06 ms)
+
+Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
+
+Takeaway: Pythagoras' theorem describes a right-angled triangle.
+
+Terms: hypotenuse, triangle, square, root, theorem, right-angled triangle, right-angled, rule
+
+### Q1 — correct: "hypotenuse" (verified: true)
+
+Question: खाली जगह भरें: “The rule is written as a² + b² = c², where c is the ______.”
+
+Options: a) square | b) root | c) hypotenuse | d) triangle
+
+Reason: गद्यांश में खाली जगह पर “hypotenuse” है।
+
+Evidence: "The rule is written as a² + b² = c², where c is the hypotenuse."
+
+### Q2 — correct: "triangle" (verified: true)
+
+Question: खाली जगह भरें: “Pythagoras' theorem describes a right-angled ______.”
+
+Options: a) triangle | b) hypotenuse | c) root | d) square
+
+Reason: गद्यांश में खाली जगह पर “triangle” है।
+
+Evidence: "Pythagoras' theorem describes a right-angled triangle."
+
+### Q3 — correct: "square" (verified: true)
+
+Question: खाली जगह भरें: “For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the ______ root of 25 is 5.”
+
+Options: a) right-angled | b) square | c) theorem | d) right-angled triangle
+
+Reason: गद्यांश में खाली जगह पर “square” है।
+
+Evidence: "For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5."
+
+### Q4 — correct: "right-angled triangle" (verified: true)
+
+Question: खाली जगह भरें: “In a ______, the square of the hypotenuse is equal to the sum of the squares of the other two sides.”
+
+Options: a) rule | b) theorem | c) root | d) right-angled triangle
+
+Reason: गद्यांश में खाली जगह पर “right-angled triangle” है।
+
+Evidence: "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides."
+
+### Q5 — correct: "rule" (verified: true)
+
+Question: खाली जगह भरें: “Builders use this ______ to check that a corner is exactly 90 degrees.”
+
+Options: a) square | b) triangle | c) rule | d) hypotenuse
+
+Reason: गद्यांश में खाली जगह पर “rule” है।
+
+Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
+
+## pythagoras — bengali (median 1.04 ms)
+
+Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
+
+Takeaway: Pythagoras' theorem describes a right-angled triangle.
+
+Terms: hypotenuse, triangle, square, root, theorem, right-angled triangle, right-angled, rule
+
+### Q1 — correct: "hypotenuse" (verified: true)
+
+Question: খালি জায়গা পূরণ করুন: “The rule is written as a² + b² = c², where c is the ______.”
+
+Options: a) square | b) root | c) hypotenuse | d) triangle
+
+Reason: অনুচ্ছেদে খালি জায়গায় “hypotenuse” আছে।
+
+Evidence: "The rule is written as a² + b² = c², where c is the hypotenuse."
+
+### Q2 — correct: "triangle" (verified: true)
+
+Question: খালি জায়গা পূরণ করুন: “Pythagoras' theorem describes a right-angled ______.”
+
+Options: a) triangle | b) hypotenuse | c) root | d) square
+
+Reason: অনুচ্ছেদে খালি জায়গায় “triangle” আছে।
+
+Evidence: "Pythagoras' theorem describes a right-angled triangle."
+
+### Q3 — correct: "square" (verified: true)
+
+Question: খালি জায়গা পূরণ করুন: “For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the ______ root of 25 is 5.”
+
+Options: a) right-angled | b) square | c) theorem | d) right-angled triangle
+
+Reason: অনুচ্ছেদে খালি জায়গায় “square” আছে।
+
+Evidence: "For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5."
+
+### Q4 — correct: "right-angled triangle" (verified: true)
+
+Question: খালি জায়গা পূরণ করুন: “In a ______, the square of the hypotenuse is equal to the sum of the squares of the other two sides.”
+
+Options: a) rule | b) theorem | c) root | d) right-angled triangle
+
+Reason: অনুচ্ছেদে খালি জায়গায় “right-angled triangle” আছে।
+
+Evidence: "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides."
+
+### Q5 — correct: "rule" (verified: true)
+
+Question: খালি জায়গা পূরণ করুন: “Builders use this ______ to check that a corner is exactly 90 degrees.”
+
+Options: a) square | b) triangle | c) rule | d) hypotenuse
+
+Reason: অনুচ্ছেদে খালি জায়গায় “rule” আছে।
+
+Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
+
+## pythagoras — arabic (median 1.03 ms)
+
+Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
+
+Takeaway: Pythagoras' theorem describes a right-angled triangle.
+
+Terms: hypotenuse, triangle, square, root, theorem, right-angled triangle, right-angled, rule
+
+### Q1 — correct: "hypotenuse" (verified: true)
+
+Question: املأ الفراغ: “The rule is written as a² + b² = c², where c is the ______.”
+
+Options: a) square | b) root | c) hypotenuse | d) triangle
+
+Reason: تقول الفقرة إن الكلمة الناقصة هي “hypotenuse”.
+
+Evidence: "The rule is written as a² + b² = c², where c is the hypotenuse."
+
+### Q2 — correct: "triangle" (verified: true)
+
+Question: املأ الفراغ: “Pythagoras' theorem describes a right-angled ______.”
+
+Options: a) triangle | b) hypotenuse | c) root | d) square
+
+Reason: تقول الفقرة إن الكلمة الناقصة هي “triangle”.
+
+Evidence: "Pythagoras' theorem describes a right-angled triangle."
+
+### Q3 — correct: "square" (verified: true)
+
+Question: املأ الفراغ: “For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the ______ root of 25 is 5.”
+
+Options: a) right-angled | b) square | c) theorem | d) right-angled triangle
+
+Reason: تقول الفقرة إن الكلمة الناقصة هي “square”.
+
+Evidence: "For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5."
+
+### Q4 — correct: "right-angled triangle" (verified: true)
+
+Question: املأ الفراغ: “In a ______, the square of the hypotenuse is equal to the sum of the squares of the other two sides.”
+
+Options: a) rule | b) theorem | c) root | d) right-angled triangle
+
+Reason: تقول الفقرة إن الكلمة الناقصة هي “right-angled triangle”.
+
+Evidence: "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides."
+
+### Q5 — correct: "rule" (verified: true)
+
+Question: املأ الفراغ: “Builders use this ______ to check that a corner is exactly 90 degrees.”
+
+Options: a) square | b) triangle | c) rule | d) hypotenuse
+
+Reason: تقول الفقرة إن الكلمة الناقصة هي “rule”.
+
+Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
+
+## pythagoras — spanish (median 1.07 ms)
+
+Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
+
+Takeaway: Pythagoras' theorem describes a right-angled triangle.
+
+Terms: hypotenuse, triangle, square, root, theorem, right-angled triangle, right-angled, rule
+
+### Q1 — correct: "hypotenuse" (verified: true)
+
+Question: Completa el espacio en blanco: “The rule is written as a² + b² = c², where c is the ______.”
+
+Options: a) square | b) root | c) hypotenuse | d) triangle
+
+Reason: El pasaje dice que la palabra que falta es “hypotenuse”.
+
+Evidence: "The rule is written as a² + b² = c², where c is the hypotenuse."
+
+### Q2 — correct: "triangle" (verified: true)
+
+Question: Completa el espacio en blanco: “Pythagoras' theorem describes a right-angled ______.”
+
+Options: a) triangle | b) hypotenuse | c) root | d) square
+
+Reason: El pasaje dice que la palabra que falta es “triangle”.
+
+Evidence: "Pythagoras' theorem describes a right-angled triangle."
+
+### Q3 — correct: "square" (verified: true)
+
+Question: Completa el espacio en blanco: “For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the ______ root of 25 is 5.”
+
+Options: a) right-angled | b) square | c) theorem | d) right-angled triangle
+
+Reason: El pasaje dice que la palabra que falta es “square”.
+
+Evidence: "For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5."
+
+### Q4 — correct: "right-angled triangle" (verified: true)
+
+Question: Completa el espacio en blanco: “In a ______, the square of the hypotenuse is equal to the sum of the squares of the other two sides.”
+
+Options: a) rule | b) theorem | c) root | d) right-angled triangle
+
+Reason: El pasaje dice que la palabra que falta es “right-angled triangle”.
+
+Evidence: "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides."
+
+### Q5 — correct: "rule" (verified: true)
+
+Question: Completa el espacio en blanco: “Builders use this ______ to check that a corner is exactly 90 degrees.”
+
+Options: a) square | b) triangle | c) rule | d) hypotenuse
+
+Reason: El pasaje dice que la palabra que falta es “rule”.
+
+Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
+
+## pythagoras — french (median 1.07 ms)
+
+Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
+
+Takeaway: Pythagoras' theorem describes a right-angled triangle.
+
+Terms: hypotenuse, triangle, square, root, theorem, right-angled triangle, right-angled, rule
+
+### Q1 — correct: "hypotenuse" (verified: true)
+
+Question: Complétez le blanc : “The rule is written as a² + b² = c², where c is the ______.”
+
+Options: a) square | b) root | c) hypotenuse | d) triangle
+
+Reason: Le passage dit que le mot manquant est « hypotenuse ».
+
+Evidence: "The rule is written as a² + b² = c², where c is the hypotenuse."
+
+### Q2 — correct: "triangle" (verified: true)
+
+Question: Complétez le blanc : “Pythagoras' theorem describes a right-angled ______.”
+
+Options: a) triangle | b) hypotenuse | c) root | d) square
+
+Reason: Le passage dit que le mot manquant est « triangle ».
+
+Evidence: "Pythagoras' theorem describes a right-angled triangle."
+
+### Q3 — correct: "square" (verified: true)
+
+Question: Complétez le blanc : “For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the ______ root of 25 is 5.”
+
+Options: a) right-angled | b) square | c) theorem | d) right-angled triangle
+
+Reason: Le passage dit que le mot manquant est « square ».
+
+Evidence: "For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5."
+
+### Q4 — correct: "right-angled triangle" (verified: true)
+
+Question: Complétez le blanc : “In a ______, the square of the hypotenuse is equal to the sum of the squares of the other two sides.”
+
+Options: a) rule | b) theorem | c) root | d) right-angled triangle
+
+Reason: Le passage dit que le mot manquant est « right-angled triangle ».
+
+Evidence: "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides."
+
+### Q5 — correct: "rule" (verified: true)
+
+Question: Complétez le blanc : “Builders use this ______ to check that a corner is exactly 90 degrees.”
+
+Options: a) square | b) triangle | c) rule | d) hypotenuse
+
+Reason: Le passage dit que le mot manquant est « rule ».
+
+Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
+
+## pythagoras — portuguese (median 1.05 ms)
+
+Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
+
+Takeaway: Pythagoras' theorem describes a right-angled triangle.
+
+Terms: hypotenuse, triangle, square, root, theorem, right-angled triangle, right-angled, rule
+
+### Q1 — correct: "hypotenuse" (verified: true)
+
+Question: Preencha o espaço em branco: “The rule is written as a² + b² = c², where c is the ______.”
+
+Options: a) square | b) root | c) hypotenuse | d) triangle
+
+Reason: O texto diz que a palavra que falta é “hypotenuse”.
+
+Evidence: "The rule is written as a² + b² = c², where c is the hypotenuse."
+
+### Q2 — correct: "triangle" (verified: true)
+
+Question: Preencha o espaço em branco: “Pythagoras' theorem describes a right-angled ______.”
+
+Options: a) triangle | b) hypotenuse | c) root | d) square
+
+Reason: O texto diz que a palavra que falta é “triangle”.
+
+Evidence: "Pythagoras' theorem describes a right-angled triangle."
+
+### Q3 — correct: "square" (verified: true)
+
+Question: Preencha o espaço em branco: “For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the ______ root of 25 is 5.”
+
+Options: a) right-angled | b) square | c) theorem | d) right-angled triangle
+
+Reason: O texto diz que a palavra que falta é “square”.
+
+Evidence: "For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5."
+
+### Q4 — correct: "right-angled triangle" (verified: true)
+
+Question: Preencha o espaço em branco: “In a ______, the square of the hypotenuse is equal to the sum of the squares of the other two sides.”
+
+Options: a) rule | b) theorem | c) root | d) right-angled triangle
+
+Reason: O texto diz que a palavra que falta é “right-angled triangle”.
+
+Evidence: "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides."
+
+### Q5 — correct: "rule" (verified: true)
+
+Question: Preencha o espaço em branco: “Builders use this ______ to check that a corner is exactly 90 degrees.”
+
+Options: a) square | b) triangle | c) rule | d) hypotenuse
+
+Reason: O texto diz que a palavra que falta é “rule”.
+
+Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
+
+## pythagoras — german (median 1.04 ms)
+
+Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
+
+Takeaway: Pythagoras' theorem describes a right-angled triangle.
+
+Terms: hypotenuse, triangle, square, root, theorem, right-angled triangle, right-angled, rule
+
+### Q1 — correct: "hypotenuse" (verified: true)
+
+Question: Fülle die Lücke aus: “The rule is written as a² + b² = c², where c is the ______.”
+
+Options: a) square | b) root | c) hypotenuse | d) triangle
+
+Reason: Im Text steht, dass das fehlende Wort „hypotenuse“ ist.
+
+Evidence: "The rule is written as a² + b² = c², where c is the hypotenuse."
+
+### Q2 — correct: "triangle" (verified: true)
+
+Question: Fülle die Lücke aus: “Pythagoras' theorem describes a right-angled ______.”
+
+Options: a) triangle | b) hypotenuse | c) root | d) square
+
+Reason: Im Text steht, dass das fehlende Wort „triangle“ ist.
+
+Evidence: "Pythagoras' theorem describes a right-angled triangle."
+
+### Q3 — correct: "square" (verified: true)
+
+Question: Fülle die Lücke aus: “For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the ______ root of 25 is 5.”
+
+Options: a) right-angled | b) square | c) theorem | d) right-angled triangle
+
+Reason: Im Text steht, dass das fehlende Wort „square“ ist.
+
+Evidence: "For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5."
+
+### Q4 — correct: "right-angled triangle" (verified: true)
+
+Question: Fülle die Lücke aus: “In a ______, the square of the hypotenuse is equal to the sum of the squares of the other two sides.”
+
+Options: a) rule | b) theorem | c) root | d) right-angled triangle
+
+Reason: Im Text steht, dass das fehlende Wort „right-angled triangle“ ist.
+
+Evidence: "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides."
+
+### Q5 — correct: "rule" (verified: true)
+
+Question: Fülle die Lücke aus: “Builders use this ______ to check that a corner is exactly 90 degrees.”
+
+Options: a) square | b) triangle | c) rule | d) hypotenuse
+
+Reason: Im Text steht, dass das fehlende Wort „rule“ ist.
+
+Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
+
+## pythagoras — turkish (median 1.08 ms)
+
+Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
+
+Takeaway: Pythagoras' theorem describes a right-angled triangle.
+
+Terms: hypotenuse, triangle, square, root, theorem, right-angled triangle, right-angled, rule
+
+### Q1 — correct: "hypotenuse" (verified: true)
+
+Question: Boşluğu doldurun: “The rule is written as a² + b² = c², where c is the ______.”
+
+Options: a) square | b) root | c) hypotenuse | d) triangle
+
+Reason: Metinde eksik kelimenin “hypotenuse” olduğu yazıyor.
+
+Evidence: "The rule is written as a² + b² = c², where c is the hypotenuse."
+
+### Q2 — correct: "triangle" (verified: true)
+
+Question: Boşluğu doldurun: “Pythagoras' theorem describes a right-angled ______.”
+
+Options: a) triangle | b) hypotenuse | c) root | d) square
+
+Reason: Metinde eksik kelimenin “triangle” olduğu yazıyor.
+
+Evidence: "Pythagoras' theorem describes a right-angled triangle."
+
+### Q3 — correct: "square" (verified: true)
+
+Question: Boşluğu doldurun: “For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the ______ root of 25 is 5.”
+
+Options: a) right-angled | b) square | c) theorem | d) right-angled triangle
+
+Reason: Metinde eksik kelimenin “square” olduğu yazıyor.
+
+Evidence: "For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5."
+
+### Q4 — correct: "right-angled triangle" (verified: true)
+
+Question: Boşluğu doldurun: “In a ______, the square of the hypotenuse is equal to the sum of the squares of the other two sides.”
+
+Options: a) rule | b) theorem | c) root | d) right-angled triangle
+
+Reason: Metinde eksik kelimenin “right-angled triangle” olduğu yazıyor.
+
+Evidence: "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides."
+
+### Q5 — correct: "rule" (verified: true)
+
+Question: Boşluğu doldurun: “Builders use this ______ to check that a corner is exactly 90 degrees.”
+
+Options: a) square | b) triangle | c) rule | d) hypotenuse
+
+Reason: Metinde eksik kelimenin “rule” olduğu yazıyor.
+
+Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
+
+## pythagoras — indonesian (median 1.08 ms)
+
+Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
+
+Takeaway: Pythagoras' theorem describes a right-angled triangle.
+
+Terms: hypotenuse, triangle, square, root, theorem, right-angled triangle, right-angled, rule
+
+### Q1 — correct: "hypotenuse" (verified: true)
+
+Question: Isi bagian yang kosong: “The rule is written as a² + b² = c², where c is the ______.”
+
+Options: a) square | b) root | c) hypotenuse | d) triangle
+
+Reason: Bacaan itu mengatakan kata yang hilang adalah “hypotenuse”.
+
+Evidence: "The rule is written as a² + b² = c², where c is the hypotenuse."
+
+### Q2 — correct: "triangle" (verified: true)
+
+Question: Isi bagian yang kosong: “Pythagoras' theorem describes a right-angled ______.”
+
+Options: a) triangle | b) hypotenuse | c) root | d) square
+
+Reason: Bacaan itu mengatakan kata yang hilang adalah “triangle”.
+
+Evidence: "Pythagoras' theorem describes a right-angled triangle."
+
+### Q3 — correct: "square" (verified: true)
+
+Question: Isi bagian yang kosong: “For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the ______ root of 25 is 5.”
+
+Options: a) right-angled | b) square | c) theorem | d) right-angled triangle
+
+Reason: Bacaan itu mengatakan kata yang hilang adalah “square”.
+
+Evidence: "For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5."
+
+### Q4 — correct: "right-angled triangle" (verified: true)
+
+Question: Isi bagian yang kosong: “In a ______, the square of the hypotenuse is equal to the sum of the squares of the other two sides.”
+
+Options: a) rule | b) theorem | c) root | d) right-angled triangle
+
+Reason: Bacaan itu mengatakan kata yang hilang adalah “right-angled triangle”.
+
+Evidence: "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides."
+
+### Q5 — correct: "rule" (verified: true)
+
+Question: Isi bagian yang kosong: “Builders use this ______ to check that a corner is exactly 90 degrees.”
+
+Options: a) square | b) triangle | c) rule | d) hypotenuse
+
+Reason: Bacaan itu mengatakan kata yang hilang adalah “rule”.
+
+Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
+
+## pythagoras — chinese (median 1.11 ms)
+
+Explanation: Pythagoras' theorem describes a right-angled triangle. In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides. For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5. Builders use this rule to check that a corner is exactly 90 degrees.
+
+Takeaway: Pythagoras' theorem describes a right-angled triangle.
+
+Terms: hypotenuse, triangle, square, root, theorem, right-angled triangle, right-angled, rule
+
+### Q1 — correct: "hypotenuse" (verified: true)
+
+Question: 填空：“The rule is written as a² + b² = c², where c is the ______.”
+
+Options: a) square | b) root | c) hypotenuse | d) triangle
+
+Reason: 文章中空缺的词是“hypotenuse”。
+
+Evidence: "The rule is written as a² + b² = c², where c is the hypotenuse."
+
+### Q2 — correct: "triangle" (verified: true)
+
+Question: 填空：“Pythagoras' theorem describes a right-angled ______.”
+
+Options: a) triangle | b) hypotenuse | c) root | d) square
+
+Reason: 文章中空缺的词是“triangle”。
+
+Evidence: "Pythagoras' theorem describes a right-angled triangle."
+
+### Q3 — correct: "square" (verified: true)
+
+Question: 填空：“For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the ______ root of 25 is 5.”
+
+Options: a) right-angled | b) square | c) theorem | d) right-angled triangle
+
+Reason: 文章中空缺的词是“square”。
+
+Evidence: "For a triangle with sides of 3 cm and 4 cm, the hypotenuse is 5 cm, because 3² + 4² = 9 + 16 = 25, and the square root of 25 is 5."
+
+### Q4 — correct: "right-angled triangle" (verified: true)
+
+Question: 填空：“In a ______, the square of the hypotenuse is equal to the sum of the squares of the other two sides.”
+
+Options: a) rule | b) theorem | c) root | d) right-angled triangle
+
+Reason: 文章中空缺的词是“right-angled triangle”。
+
+Evidence: "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides."
+
+### Q5 — correct: "rule" (verified: true)
+
+Question: 填空：“Builders use this ______ to check that a corner is exactly 90 degrees.”
+
+Options: a) square | b) triangle | c) rule | d) hypotenuse
+
+Reason: 文章中空缺的词是“rule”。
+
+Evidence: "Builders use this rule to check that a corner is exactly 90 degrees."
+
+## cells — english (median 2.12 ms)
+
+Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
+
+Takeaway: A cell is the smallest unit of life.
+
+Terms: cell, cytoplasm, membrane, control, nucleus, proteins, reactions, about
+
+### Q1 — correct: "cell" (verified: true)
+
+Question: Fill in the blank: “A ______ is the smallest unit of life.”
+
+Options: a) cytoplasm | b) control | c) cell | d) membrane
+
+Reason: The passage says the missing word is “cell”.
+
+Evidence: "A cell is the smallest unit of life."
+
+### Q2 — correct: "cytoplasm" (verified: true)
+
+Question: Fill in the blank: “Inside the cell, the ______ is a jelly-like substance where most chemical reactions happen.”
+
+Options: a) control | b) nucleus | c) membrane | d) cytoplasm
+
+Reason: The passage says the missing word is “cytoplasm”.
+
+Evidence: "Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen."
+
+### Q3 — correct: "membrane" (verified: true)
+
+Question: Fill in the blank: “The cell ______ is a thin skin around the cell that controls what enters and leaves.”
+
+Options: a) membrane | b) proteins | c) cytoplasm | d) nucleus
+
+Reason: The passage says the missing word is “membrane”.
+
+Evidence: "The cell membrane is a thin skin around the cell that controls what enters and leaves."
+
+### Q4 — correct: "control" (verified: true)
+
+Question: Fill in the blank: “The nucleus is the ______ centre of the cell and holds the instructions for making proteins.”
+
+Options: a) control | b) cytoplasm | c) reactions | d) membrane
+
+Reason: The passage says the missing word is “control”.
+
+Evidence: "The nucleus is the control centre of the cell and holds the instructions for making proteins."
+
+### Q5 — correct: "about" (verified: true)
+
+Question: Fill in the blank: “A human body has ______ 37 trillion cells, and a single cell is about 10 micrometres across.”
+
+Options: a) about | b) control | c) cytoplasm | d) membrane
+
+Reason: The passage says the missing word is “about”.
+
+Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
+
+## cells — roman (median 1.30 ms)
+
+Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
+
+Takeaway: A cell is the smallest unit of life.
+
+Terms: cell, cytoplasm, membrane, control, nucleus, proteins, reactions, about
+
+### Q1 — correct: "cell" (verified: true)
+
+Question: Khaali jagah bharein: “A ______ is the smallest unit of life.”
+
+Options: a) cytoplasm | b) control | c) cell | d) membrane
+
+Reason: Passage mein khaali jagah par “cell” hai.
+
+Evidence: "A cell is the smallest unit of life."
+
+### Q2 — correct: "cytoplasm" (verified: true)
+
+Question: Khaali jagah bharein: “Inside the cell, the ______ is a jelly-like substance where most chemical reactions happen.”
+
+Options: a) control | b) nucleus | c) membrane | d) cytoplasm
+
+Reason: Passage mein khaali jagah par “cytoplasm” hai.
+
+Evidence: "Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen."
+
+### Q3 — correct: "membrane" (verified: true)
+
+Question: Khaali jagah bharein: “The cell ______ is a thin skin around the cell that controls what enters and leaves.”
+
+Options: a) membrane | b) proteins | c) cytoplasm | d) nucleus
+
+Reason: Passage mein khaali jagah par “membrane” hai.
+
+Evidence: "The cell membrane is a thin skin around the cell that controls what enters and leaves."
+
+### Q4 — correct: "control" (verified: true)
+
+Question: Khaali jagah bharein: “The nucleus is the ______ centre of the cell and holds the instructions for making proteins.”
+
+Options: a) control | b) cytoplasm | c) reactions | d) membrane
+
+Reason: Passage mein khaali jagah par “control” hai.
+
+Evidence: "The nucleus is the control centre of the cell and holds the instructions for making proteins."
+
+### Q5 — correct: "about" (verified: true)
+
+Question: Khaali jagah bharein: “A human body has ______ 37 trillion cells, and a single cell is about 10 micrometres across.”
+
+Options: a) about | b) control | c) cytoplasm | d) membrane
+
+Reason: Passage mein khaali jagah par “about” hai.
+
+Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
+
+## cells — urdu (median 1.28 ms)
+
+Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
+
+Takeaway: A cell is the smallest unit of life.
+
+Terms: cell, cytoplasm, membrane, control, nucleus, proteins, reactions, about
+
+### Q1 — correct: "cell" (verified: true)
+
+Question: خالی جگہ بھریں: “A ______ is the smallest unit of life.”
+
+Options: a) cytoplasm | b) control | c) cell | d) membrane
+
+Reason: عبارت میں خالی جگہ پر “cell” ہے۔
+
+Evidence: "A cell is the smallest unit of life."
+
+### Q2 — correct: "cytoplasm" (verified: true)
+
+Question: خالی جگہ بھریں: “Inside the cell, the ______ is a jelly-like substance where most chemical reactions happen.”
+
+Options: a) control | b) nucleus | c) membrane | d) cytoplasm
+
+Reason: عبارت میں خالی جگہ پر “cytoplasm” ہے۔
+
+Evidence: "Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen."
+
+### Q3 — correct: "membrane" (verified: true)
+
+Question: خالی جگہ بھریں: “The cell ______ is a thin skin around the cell that controls what enters and leaves.”
+
+Options: a) membrane | b) proteins | c) cytoplasm | d) nucleus
+
+Reason: عبارت میں خالی جگہ پر “membrane” ہے۔
+
+Evidence: "The cell membrane is a thin skin around the cell that controls what enters and leaves."
+
+### Q4 — correct: "control" (verified: true)
+
+Question: خالی جگہ بھریں: “The nucleus is the ______ centre of the cell and holds the instructions for making proteins.”
+
+Options: a) control | b) cytoplasm | c) reactions | d) membrane
+
+Reason: عبارت میں خالی جگہ پر “control” ہے۔
+
+Evidence: "The nucleus is the control centre of the cell and holds the instructions for making proteins."
+
+### Q5 — correct: "about" (verified: true)
+
+Question: خالی جگہ بھریں: “A human body has ______ 37 trillion cells, and a single cell is about 10 micrometres across.”
+
+Options: a) about | b) control | c) cytoplasm | d) membrane
+
+Reason: عبارت میں خالی جگہ پر “about” ہے۔
+
+Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
+
+## cells — hindi (median 1.32 ms)
+
+Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
+
+Takeaway: A cell is the smallest unit of life.
+
+Terms: cell, cytoplasm, membrane, control, nucleus, proteins, reactions, about
+
+### Q1 — correct: "cell" (verified: true)
+
+Question: खाली जगह भरें: “A ______ is the smallest unit of life.”
+
+Options: a) cytoplasm | b) control | c) cell | d) membrane
+
+Reason: गद्यांश में खाली जगह पर “cell” है।
+
+Evidence: "A cell is the smallest unit of life."
+
+### Q2 — correct: "cytoplasm" (verified: true)
+
+Question: खाली जगह भरें: “Inside the cell, the ______ is a jelly-like substance where most chemical reactions happen.”
+
+Options: a) control | b) nucleus | c) membrane | d) cytoplasm
+
+Reason: गद्यांश में खाली जगह पर “cytoplasm” है।
+
+Evidence: "Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen."
+
+### Q3 — correct: "membrane" (verified: true)
+
+Question: खाली जगह भरें: “The cell ______ is a thin skin around the cell that controls what enters and leaves.”
+
+Options: a) membrane | b) proteins | c) cytoplasm | d) nucleus
+
+Reason: गद्यांश में खाली जगह पर “membrane” है।
+
+Evidence: "The cell membrane is a thin skin around the cell that controls what enters and leaves."
+
+### Q4 — correct: "control" (verified: true)
+
+Question: खाली जगह भरें: “The nucleus is the ______ centre of the cell and holds the instructions for making proteins.”
+
+Options: a) control | b) cytoplasm | c) reactions | d) membrane
+
+Reason: गद्यांश में खाली जगह पर “control” है।
+
+Evidence: "The nucleus is the control centre of the cell and holds the instructions for making proteins."
+
+### Q5 — correct: "about" (verified: true)
+
+Question: खाली जगह भरें: “A human body has ______ 37 trillion cells, and a single cell is about 10 micrometres across.”
+
+Options: a) about | b) control | c) cytoplasm | d) membrane
+
+Reason: गद्यांश में खाली जगह पर “about” है।
+
+Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
+
+## cells — bengali (median 1.33 ms)
+
+Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
+
+Takeaway: A cell is the smallest unit of life.
+
+Terms: cell, cytoplasm, membrane, control, nucleus, proteins, reactions, about
+
+### Q1 — correct: "cell" (verified: true)
+
+Question: খালি জায়গা পূরণ করুন: “A ______ is the smallest unit of life.”
+
+Options: a) cytoplasm | b) control | c) cell | d) membrane
+
+Reason: অনুচ্ছেদে খালি জায়গায় “cell” আছে।
+
+Evidence: "A cell is the smallest unit of life."
+
+### Q2 — correct: "cytoplasm" (verified: true)
+
+Question: খালি জায়গা পূরণ করুন: “Inside the cell, the ______ is a jelly-like substance where most chemical reactions happen.”
+
+Options: a) control | b) nucleus | c) membrane | d) cytoplasm
+
+Reason: অনুচ্ছেদে খালি জায়গায় “cytoplasm” আছে।
+
+Evidence: "Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen."
+
+### Q3 — correct: "membrane" (verified: true)
+
+Question: খালি জায়গা পূরণ করুন: “The cell ______ is a thin skin around the cell that controls what enters and leaves.”
+
+Options: a) membrane | b) proteins | c) cytoplasm | d) nucleus
+
+Reason: অনুচ্ছেদে খালি জায়গায় “membrane” আছে।
+
+Evidence: "The cell membrane is a thin skin around the cell that controls what enters and leaves."
+
+### Q4 — correct: "control" (verified: true)
+
+Question: খালি জায়গা পূরণ করুন: “The nucleus is the ______ centre of the cell and holds the instructions for making proteins.”
+
+Options: a) control | b) cytoplasm | c) reactions | d) membrane
+
+Reason: অনুচ্ছেদে খালি জায়গায় “control” আছে।
+
+Evidence: "The nucleus is the control centre of the cell and holds the instructions for making proteins."
+
+### Q5 — correct: "about" (verified: true)
+
+Question: খালি জায়গা পূরণ করুন: “A human body has ______ 37 trillion cells, and a single cell is about 10 micrometres across.”
+
+Options: a) about | b) control | c) cytoplasm | d) membrane
+
+Reason: অনুচ্ছেদে খালি জায়গায় “about” আছে।
+
+Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
+
+## cells — arabic (median 1.30 ms)
+
+Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
+
+Takeaway: A cell is the smallest unit of life.
+
+Terms: cell, cytoplasm, membrane, control, nucleus, proteins, reactions, about
+
+### Q1 — correct: "cell" (verified: true)
+
+Question: املأ الفراغ: “A ______ is the smallest unit of life.”
+
+Options: a) cytoplasm | b) control | c) cell | d) membrane
+
+Reason: تقول الفقرة إن الكلمة الناقصة هي “cell”.
+
+Evidence: "A cell is the smallest unit of life."
+
+### Q2 — correct: "cytoplasm" (verified: true)
+
+Question: املأ الفراغ: “Inside the cell, the ______ is a jelly-like substance where most chemical reactions happen.”
+
+Options: a) control | b) nucleus | c) membrane | d) cytoplasm
+
+Reason: تقول الفقرة إن الكلمة الناقصة هي “cytoplasm”.
+
+Evidence: "Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen."
+
+### Q3 — correct: "membrane" (verified: true)
+
+Question: املأ الفراغ: “The cell ______ is a thin skin around the cell that controls what enters and leaves.”
+
+Options: a) membrane | b) proteins | c) cytoplasm | d) nucleus
+
+Reason: تقول الفقرة إن الكلمة الناقصة هي “membrane”.
+
+Evidence: "The cell membrane is a thin skin around the cell that controls what enters and leaves."
+
+### Q4 — correct: "control" (verified: true)
+
+Question: املأ الفراغ: “The nucleus is the ______ centre of the cell and holds the instructions for making proteins.”
+
+Options: a) control | b) cytoplasm | c) reactions | d) membrane
+
+Reason: تقول الفقرة إن الكلمة الناقصة هي “control”.
+
+Evidence: "The nucleus is the control centre of the cell and holds the instructions for making proteins."
+
+### Q5 — correct: "about" (verified: true)
+
+Question: املأ الفراغ: “A human body has ______ 37 trillion cells, and a single cell is about 10 micrometres across.”
+
+Options: a) about | b) control | c) cytoplasm | d) membrane
+
+Reason: تقول الفقرة إن الكلمة الناقصة هي “about”.
+
+Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
+
+## cells — spanish (median 1.19 ms)
+
+Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
+
+Takeaway: A cell is the smallest unit of life.
+
+Terms: cell, cytoplasm, membrane, control, nucleus, proteins, reactions, about
+
+### Q1 — correct: "cell" (verified: true)
+
+Question: Completa el espacio en blanco: “A ______ is the smallest unit of life.”
+
+Options: a) cytoplasm | b) control | c) cell | d) membrane
+
+Reason: El pasaje dice que la palabra que falta es “cell”.
+
+Evidence: "A cell is the smallest unit of life."
+
+### Q2 — correct: "cytoplasm" (verified: true)
+
+Question: Completa el espacio en blanco: “Inside the cell, the ______ is a jelly-like substance where most chemical reactions happen.”
+
+Options: a) control | b) nucleus | c) membrane | d) cytoplasm
+
+Reason: El pasaje dice que la palabra que falta es “cytoplasm”.
+
+Evidence: "Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen."
+
+### Q3 — correct: "membrane" (verified: true)
+
+Question: Completa el espacio en blanco: “The cell ______ is a thin skin around the cell that controls what enters and leaves.”
+
+Options: a) membrane | b) proteins | c) cytoplasm | d) nucleus
+
+Reason: El pasaje dice que la palabra que falta es “membrane”.
+
+Evidence: "The cell membrane is a thin skin around the cell that controls what enters and leaves."
+
+### Q4 — correct: "control" (verified: true)
+
+Question: Completa el espacio en blanco: “The nucleus is the ______ centre of the cell and holds the instructions for making proteins.”
+
+Options: a) control | b) cytoplasm | c) reactions | d) membrane
+
+Reason: El pasaje dice que la palabra que falta es “control”.
+
+Evidence: "The nucleus is the control centre of the cell and holds the instructions for making proteins."
+
+### Q5 — correct: "about" (verified: true)
+
+Question: Completa el espacio en blanco: “A human body has ______ 37 trillion cells, and a single cell is about 10 micrometres across.”
+
+Options: a) about | b) control | c) cytoplasm | d) membrane
+
+Reason: El pasaje dice que la palabra que falta es “about”.
+
+Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
+
+## cells — french (median 1.24 ms)
+
+Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
+
+Takeaway: A cell is the smallest unit of life.
+
+Terms: cell, cytoplasm, membrane, control, nucleus, proteins, reactions, about
+
+### Q1 — correct: "cell" (verified: true)
+
+Question: Complétez le blanc : “A ______ is the smallest unit of life.”
+
+Options: a) cytoplasm | b) control | c) cell | d) membrane
+
+Reason: Le passage dit que le mot manquant est « cell ».
+
+Evidence: "A cell is the smallest unit of life."
+
+### Q2 — correct: "cytoplasm" (verified: true)
+
+Question: Complétez le blanc : “Inside the cell, the ______ is a jelly-like substance where most chemical reactions happen.”
+
+Options: a) control | b) nucleus | c) membrane | d) cytoplasm
+
+Reason: Le passage dit que le mot manquant est « cytoplasm ».
+
+Evidence: "Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen."
+
+### Q3 — correct: "membrane" (verified: true)
+
+Question: Complétez le blanc : “The cell ______ is a thin skin around the cell that controls what enters and leaves.”
+
+Options: a) membrane | b) proteins | c) cytoplasm | d) nucleus
+
+Reason: Le passage dit que le mot manquant est « membrane ».
+
+Evidence: "The cell membrane is a thin skin around the cell that controls what enters and leaves."
+
+### Q4 — correct: "control" (verified: true)
+
+Question: Complétez le blanc : “The nucleus is the ______ centre of the cell and holds the instructions for making proteins.”
+
+Options: a) control | b) cytoplasm | c) reactions | d) membrane
+
+Reason: Le passage dit que le mot manquant est « control ».
+
+Evidence: "The nucleus is the control centre of the cell and holds the instructions for making proteins."
+
+### Q5 — correct: "about" (verified: true)
+
+Question: Complétez le blanc : “A human body has ______ 37 trillion cells, and a single cell is about 10 micrometres across.”
+
+Options: a) about | b) control | c) cytoplasm | d) membrane
+
+Reason: Le passage dit que le mot manquant est « about ».
+
+Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
+
+## cells — portuguese (median 1.32 ms)
+
+Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
+
+Takeaway: A cell is the smallest unit of life.
+
+Terms: cell, cytoplasm, membrane, control, nucleus, proteins, reactions, about
+
+### Q1 — correct: "cell" (verified: true)
+
+Question: Preencha o espaço em branco: “A ______ is the smallest unit of life.”
+
+Options: a) cytoplasm | b) control | c) cell | d) membrane
+
+Reason: O texto diz que a palavra que falta é “cell”.
+
+Evidence: "A cell is the smallest unit of life."
+
+### Q2 — correct: "cytoplasm" (verified: true)
+
+Question: Preencha o espaço em branco: “Inside the cell, the ______ is a jelly-like substance where most chemical reactions happen.”
+
+Options: a) control | b) nucleus | c) membrane | d) cytoplasm
+
+Reason: O texto diz que a palavra que falta é “cytoplasm”.
+
+Evidence: "Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen."
+
+### Q3 — correct: "membrane" (verified: true)
+
+Question: Preencha o espaço em branco: “The cell ______ is a thin skin around the cell that controls what enters and leaves.”
+
+Options: a) membrane | b) proteins | c) cytoplasm | d) nucleus
+
+Reason: O texto diz que a palavra que falta é “membrane”.
+
+Evidence: "The cell membrane is a thin skin around the cell that controls what enters and leaves."
+
+### Q4 — correct: "control" (verified: true)
+
+Question: Preencha o espaço em branco: “The nucleus is the ______ centre of the cell and holds the instructions for making proteins.”
+
+Options: a) control | b) cytoplasm | c) reactions | d) membrane
+
+Reason: O texto diz que a palavra que falta é “control”.
+
+Evidence: "The nucleus is the control centre of the cell and holds the instructions for making proteins."
+
+### Q5 — correct: "about" (verified: true)
+
+Question: Preencha o espaço em branco: “A human body has ______ 37 trillion cells, and a single cell is about 10 micrometres across.”
+
+Options: a) about | b) control | c) cytoplasm | d) membrane
+
+Reason: O texto diz que a palavra que falta é “about”.
+
+Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
+
+## cells — german (median 2.13 ms)
+
+Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
+
+Takeaway: A cell is the smallest unit of life.
+
+Terms: cell, cytoplasm, membrane, control, nucleus, proteins, reactions, about
+
+### Q1 — correct: "cell" (verified: true)
+
+Question: Fülle die Lücke aus: “A ______ is the smallest unit of life.”
+
+Options: a) cytoplasm | b) control | c) cell | d) membrane
+
+Reason: Im Text steht, dass das fehlende Wort „cell“ ist.
+
+Evidence: "A cell is the smallest unit of life."
+
+### Q2 — correct: "cytoplasm" (verified: true)
+
+Question: Fülle die Lücke aus: “Inside the cell, the ______ is a jelly-like substance where most chemical reactions happen.”
+
+Options: a) control | b) nucleus | c) membrane | d) cytoplasm
+
+Reason: Im Text steht, dass das fehlende Wort „cytoplasm“ ist.
+
+Evidence: "Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen."
+
+### Q3 — correct: "membrane" (verified: true)
+
+Question: Fülle die Lücke aus: “The cell ______ is a thin skin around the cell that controls what enters and leaves.”
+
+Options: a) membrane | b) proteins | c) cytoplasm | d) nucleus
+
+Reason: Im Text steht, dass das fehlende Wort „membrane“ ist.
+
+Evidence: "The cell membrane is a thin skin around the cell that controls what enters and leaves."
+
+### Q4 — correct: "control" (verified: true)
+
+Question: Fülle die Lücke aus: “The nucleus is the ______ centre of the cell and holds the instructions for making proteins.”
+
+Options: a) control | b) cytoplasm | c) reactions | d) membrane
+
+Reason: Im Text steht, dass das fehlende Wort „control“ ist.
+
+Evidence: "The nucleus is the control centre of the cell and holds the instructions for making proteins."
+
+### Q5 — correct: "about" (verified: true)
+
+Question: Fülle die Lücke aus: “A human body has ______ 37 trillion cells, and a single cell is about 10 micrometres across.”
+
+Options: a) about | b) control | c) cytoplasm | d) membrane
+
+Reason: Im Text steht, dass das fehlende Wort „about“ ist.
+
+Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
+
+## cells — turkish (median 1.21 ms)
+
+Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
+
+Takeaway: A cell is the smallest unit of life.
+
+Terms: cell, cytoplasm, membrane, control, nucleus, proteins, reactions, about
+
+### Q1 — correct: "cell" (verified: true)
+
+Question: Boşluğu doldurun: “A ______ is the smallest unit of life.”
+
+Options: a) cytoplasm | b) control | c) cell | d) membrane
+
+Reason: Metinde eksik kelimenin “cell” olduğu yazıyor.
+
+Evidence: "A cell is the smallest unit of life."
+
+### Q2 — correct: "cytoplasm" (verified: true)
+
+Question: Boşluğu doldurun: “Inside the cell, the ______ is a jelly-like substance where most chemical reactions happen.”
+
+Options: a) control | b) nucleus | c) membrane | d) cytoplasm
+
+Reason: Metinde eksik kelimenin “cytoplasm” olduğu yazıyor.
+
+Evidence: "Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen."
+
+### Q3 — correct: "membrane" (verified: true)
+
+Question: Boşluğu doldurun: “The cell ______ is a thin skin around the cell that controls what enters and leaves.”
+
+Options: a) membrane | b) proteins | c) cytoplasm | d) nucleus
+
+Reason: Metinde eksik kelimenin “membrane” olduğu yazıyor.
+
+Evidence: "The cell membrane is a thin skin around the cell that controls what enters and leaves."
+
+### Q4 — correct: "control" (verified: true)
+
+Question: Boşluğu doldurun: “The nucleus is the ______ centre of the cell and holds the instructions for making proteins.”
+
+Options: a) control | b) cytoplasm | c) reactions | d) membrane
+
+Reason: Metinde eksik kelimenin “control” olduğu yazıyor.
+
+Evidence: "The nucleus is the control centre of the cell and holds the instructions for making proteins."
+
+### Q5 — correct: "about" (verified: true)
+
+Question: Boşluğu doldurun: “A human body has ______ 37 trillion cells, and a single cell is about 10 micrometres across.”
+
+Options: a) about | b) control | c) cytoplasm | d) membrane
+
+Reason: Metinde eksik kelimenin “about” olduğu yazıyor.
+
+Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
+
+## cells — indonesian (median 1.22 ms)
+
+Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
+
+Takeaway: A cell is the smallest unit of life.
+
+Terms: cell, cytoplasm, membrane, control, nucleus, proteins, reactions, about
+
+### Q1 — correct: "cell" (verified: true)
+
+Question: Isi bagian yang kosong: “A ______ is the smallest unit of life.”
+
+Options: a) cytoplasm | b) control | c) cell | d) membrane
+
+Reason: Bacaan itu mengatakan kata yang hilang adalah “cell”.
+
+Evidence: "A cell is the smallest unit of life."
+
+### Q2 — correct: "cytoplasm" (verified: true)
+
+Question: Isi bagian yang kosong: “Inside the cell, the ______ is a jelly-like substance where most chemical reactions happen.”
+
+Options: a) control | b) nucleus | c) membrane | d) cytoplasm
+
+Reason: Bacaan itu mengatakan kata yang hilang adalah “cytoplasm”.
+
+Evidence: "Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen."
+
+### Q3 — correct: "membrane" (verified: true)
+
+Question: Isi bagian yang kosong: “The cell ______ is a thin skin around the cell that controls what enters and leaves.”
+
+Options: a) membrane | b) proteins | c) cytoplasm | d) nucleus
+
+Reason: Bacaan itu mengatakan kata yang hilang adalah “membrane”.
+
+Evidence: "The cell membrane is a thin skin around the cell that controls what enters and leaves."
+
+### Q4 — correct: "control" (verified: true)
+
+Question: Isi bagian yang kosong: “The nucleus is the ______ centre of the cell and holds the instructions for making proteins.”
+
+Options: a) control | b) cytoplasm | c) reactions | d) membrane
+
+Reason: Bacaan itu mengatakan kata yang hilang adalah “control”.
+
+Evidence: "The nucleus is the control centre of the cell and holds the instructions for making proteins."
+
+### Q5 — correct: "about" (verified: true)
+
+Question: Isi bagian yang kosong: “A human body has ______ 37 trillion cells, and a single cell is about 10 micrometres across.”
+
+Options: a) about | b) control | c) cytoplasm | d) membrane
+
+Reason: Bacaan itu mengatakan kata yang hilang adalah “about”.
+
+Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."
+
+## cells — chinese (median 1.25 ms)
+
+Explanation: A cell is the smallest unit of life. The cell membrane is a thin skin around the cell that controls what enters and leaves. A human body has about 37 trillion cells, and a single cell is about 10 micrometres across.
+
+Takeaway: A cell is the smallest unit of life.
+
+Terms: cell, cytoplasm, membrane, control, nucleus, proteins, reactions, about
+
+### Q1 — correct: "cell" (verified: true)
+
+Question: 填空：“A ______ is the smallest unit of life.”
+
+Options: a) cytoplasm | b) control | c) cell | d) membrane
+
+Reason: 文章中空缺的词是“cell”。
+
+Evidence: "A cell is the smallest unit of life."
+
+### Q2 — correct: "cytoplasm" (verified: true)
+
+Question: 填空：“Inside the cell, the ______ is a jelly-like substance where most chemical reactions happen.”
+
+Options: a) control | b) nucleus | c) membrane | d) cytoplasm
+
+Reason: 文章中空缺的词是“cytoplasm”。
+
+Evidence: "Inside the cell, the cytoplasm is a jelly-like substance where most chemical reactions happen."
+
+### Q3 — correct: "membrane" (verified: true)
+
+Question: 填空：“The cell ______ is a thin skin around the cell that controls what enters and leaves.”
+
+Options: a) membrane | b) proteins | c) cytoplasm | d) nucleus
+
+Reason: 文章中空缺的词是“membrane”。
+
+Evidence: "The cell membrane is a thin skin around the cell that controls what enters and leaves."
+
+### Q4 — correct: "control" (verified: true)
+
+Question: 填空：“The nucleus is the ______ centre of the cell and holds the instructions for making proteins.”
+
+Options: a) control | b) cytoplasm | c) reactions | d) membrane
+
+Reason: 文章中空缺的词是“control”。
+
+Evidence: "The nucleus is the control centre of the cell and holds the instructions for making proteins."
+
+### Q5 — correct: "about" (verified: true)
+
+Question: 填空：“A human body has ______ 37 trillion cells, and a single cell is about 10 micrometres across.”
+
+Options: a) about | b) control | c) cytoplasm | d) membrane
+
+Reason: 文章中空缺的词是“about”。
+
+Evidence: "A human body has about 37 trillion cells, and a single cell is about 10 micrometres across."

@@ -30,16 +30,16 @@ python3 -m http.server 8000
 Tests and evaluation (Node 18+; no dependencies):
 
 ```sh
-node --test tests/samajh.test.mjs   # 40 tests
-node eval/run_eval.mjs              # 3 samples × 13 languages, writes eval/results.md
-node eval/run_ai_eval.mjs           # same 39 runs with AI mode on (live Pollinations calls), prints the AI-mode summary
+node --test tests/samajh.test.mjs   # 50 tests
+node eval/run_eval.mjs              # 5 samples × 13 languages, writes eval/results.md
+node eval/run_ai_eval.mjs           # same 65 runs with AI mode on (live Pollinations calls), prints the AI-mode summary
 ```
 
 ## AI tools and services used (disclosure)
 
-**Inside the product: a real AI feature.** The explanation and one-line takeaway are written by the Pollinations text API (model "openai", free, no API key, no sign-up). Before the AI text is shown, Samajh checks it: any number or formula not in the passage discards it and the offline explanation is used instead. The quiz and glossary are always built offline by the rule-based engine in `samajh.js` (extractive sentences, a checked seed glossary, cloze questions), so the AI never invents a quiz answer or a translation. If the AI call fails, the offline engine takes over automatically — measured live 21 Nov 2026 across 3 runs (57 runs total): AI used in 40, offline fallback in 17, 0 numbers changed, quiz 285/285 verified (see `eval/results.md`). AI mode can be switched off in the UI for a fully offline run that sends nothing anywhere. Full log: `docs/AI_LOG.md`.
+**Inside the product: a real AI feature.** The explanation and one-line takeaway are written by the Pollinations text API (model "openai", free, no API key, no sign-up). Before the AI text is shown, Samajh checks it: any number or formula not in the passage discards it, and for languages written in a non-Latin script (Urdu, Arabic, Hindi, Bengali, Chinese) the text must actually be in that script — an English explanation for Arabic is discarded too. The AI call is retried once on a transient failure. The quiz and glossary are always built offline by the rule-based engine in `samajh.js` (extractive sentences, a checked seed glossary, cloze questions), so the AI never invents a quiz answer or a translation. If the AI call fails, the offline engine takes over automatically — measured live 21 Nov 2026 across 5 runs (187 runs total): AI used in 162, offline fallback in 25, 0 numbers changed, quiz 935/935 verified (see `eval/results.md`). A fourth live run (65 runs, with the retry and the language check) is in progress. AI mode can be switched off in the UI for a fully offline run that sends nothing anywhere. Full log: `docs/AI_LOG.md`.
 
-**AI coding assistant:** Muse (Meta's Muse Spark) helped write the code in this repo. The code was run and tested before submission (40/40 tests; all 45 unique quiz items checked by hand — see "Results"), the quiz and explanation bugs the tests found were fixed, and the three sample passages were written for this project. The full log is in `docs/AI_LOG.md`.
+**AI coding assistant:** Muse (Meta's Muse Spark) helped write the code in this repo. The code was run and tested before submission (50/50 tests; all 75 unique quiz items checked by hand — see "Results"), the quiz and explanation bugs the tests found were fixed, and the five sample passages were written for this project. The full log is in `docs/AI_LOG.md`.
 
 **What the offline engine cannot do:** it cannot translate a whole passage into your language — it re-uses sentences from the passage in English, and gives the glossary and quiz wording in the chosen language. In AI mode the explanation is written in your chosen language. The app says this plainly before first use.
 
@@ -51,14 +51,14 @@ node eval/run_ai_eval.mjs           # same 39 runs with AI mode on (live Pollina
 
 ## Results (measured, 21 November 2026)
 
-Offline engine and AI mode, both measured. 3 sample passages × 13 languages = 39 runs each (offline) and 57 AI runs across three live runs; each offline run timed 5 times, median shown. Full tables: `eval/results.md`. Quiz correctness was checked by reading every unique item in `eval/quiz_dump.md` by hand (45 unique items; the 13-language runs reuse the same items with localized question/reason wording).
+Offline engine and AI mode, both measured. 5 sample passages × 13 languages = 65 runs each (offline) and 187 AI runs across five live runs; each offline run timed 5 times, median shown. Full tables: `eval/results.md`. Quiz correctness was checked by reading every unique item in `eval/quiz_dump.md` by hand (75 unique items; the 13-language runs reuse the same items with localized question/reason wording).
 
 | Measure | Offline mode | AI mode (live, Pollinations) |
 |---|---|---|
-| Quiz items with evidence verified | 195 of 195 (100%) | 285 of 285 (100%, three runs) |
+| Quiz items with evidence verified | 325 of 325 (100%) | 935 of 935 (100%, five runs) |
 | Quiz answers manually checked as correct | 45 of 45 unique items (100%) | 45 of 45 unique items (100%) |
-| Explanations that changed a number or formula | 0 of 39 runs | 0 of 57 runs |
-| AI used vs offline fallback | — | Run 1: AI 6/9, fallback 3/9. Run 2 (re-check): AI 8/9, fallback 1/9. Run 3 (13 languages): AI 26/39, fallback 13/39 |
+| Explanations that changed a number or formula | 0 of 65 runs | 0 of 187 runs |
+| AI used vs offline fallback | — | Run 1: AI 6/9, fallback 3/9. Run 2 (re-check): AI 8/9, fallback 1/9. Run 3 (13 languages): AI 26/39, fallback 13/39. Run 4 (13 languages, 5 samples, retry + language check): AI 63/65, fallback 2/65. Run 5 (same, retry-after-rejection + English script check): AI 59/65, fallback 6/65 |
 | Median time to result | about 1–2 ms (engine only; the page shows a 400 ms loading state — the exact median varies run to run, see eval/results.md) | about 0.3–7 s per explanation (API call; fallback is instant) |
 | Student clarity rating (1–5) | not measured | not measured |
 
@@ -67,6 +67,8 @@ Honest failure found and fixed during the check: the first Newton quiz had an am
 Second fix round (21 Nov): the number warning is now wired into the Explain tab (amber, icon + words) and tested with a hand-built result — it never triggers in offline mode, because the explanation is extractive. New tests cover Urdu-script input rejection, prompt-injection passages, quiz scoring, flashcard reset and Urdu study-sheet meanings (33 tests total, all passing — 8 more were added with AI mode for the fake-fetch AI tests). Newton quiz reuse was spread: with 4 sentences for 5 questions one sentence is still used twice, but no longer Q1's sentence.
 
 Third fix round (21 Nov evening): the hackathon is international, so Samajh grew from 3 languages to 13 — Hindi, Bengali, Arabic, Spanish, French, Portuguese, German, Turkish, Indonesian and Chinese, with the full seed glossary translated for every term, localized quiz questions/reasons, localized flashcard progress, right-to-left layout for Urdu and Arabic, and the AI prompted to explain in the chosen language. 7 new tests (40 total, all passing) enforce that every seed term has a meaning in every language. Measured again: offline 39 runs, 195/195 quiz verified, 0 numbers changed; AI run 3 across all 13 languages, AI 26/39, fallback 13/39, 0 numbers changed, quiz 195/195.
+
+Fourth fix round (21 Nov evening, after the gap list): level now changes the offline explanation — Class 9 keeps it short (definition + worked example), University uses the most sentences. The whole tool chrome (hero, labels, tabs, buttons, quiz feedback, flashcards) is now in all 13 languages, with a script audit test that every translation is written in its own language's script. The AI prompt now says every sentence must be in the chosen language; a script check discards an English explanation for a non-Latin language; and a failed AI call is retried once. Two more sample passages were added — Pythagoras' theorem (3² + 4² = 25) and cells (37 trillion cells, 10 micrometres) — with 12 new seed terms in all 13 languages (45 terms total). 12 new tests (52 total, all passing). Measured again: offline 65 runs, 325/325 quiz verified, 0 numbers changed; all 75 unique quiz items read by hand, 75/75 correct (one weak item: cells Q5 blanks the filler word "about" — unambiguous, but it tests a filler word, not understanding). AI runs 4–5 (65 runs each, with the retry, the language check and the English script check): AI 63/65 then 59/65, 0 numbers changed, quiz 325/325 each time.
 
 Limitation: these are cloze questions, not deep-comprehension questions — the answer is found by matching the sentence, which is the point of the evidence check, but it does not test whether the student understood the idea in their own words. No student test was run before the deadline (0 students, not 3).
 
@@ -92,7 +94,7 @@ No accounts. Nothing is stored — results live in memory in the tab and disappe
 ## Credits
 
 - Fonts: Source Serif 4, Noto Sans, Noto Nastaliq Urdu, Noto Naskh Arabic, Noto Sans Bengali, Noto Sans Devanagari, Noto Sans SC, Noto Sans Mono (Google Fonts, open licences).
-- No datasets, no third-party libraries, no copied text. The three sample passages are original, written for this project; their arithmetic was checked (12 V ÷ 4 ohm = 3 A; 10 N ÷ 2 kg = 5 m/s²; 6CO2 + 6H2O → C6H12O6 + 6O2).
+- No datasets, no third-party libraries, no copied text. The five sample passages are original, written for this project; their arithmetic was checked (12 V ÷ 4 ohm = 3 A; 10 N ÷ 2 kg = 5 m/s²; 6CO2 + 6H2O → C6H12O6 + 6O2; 3² + 4² = 9 + 16 = 25; 37 trillion cells, 10 micrometres across).
 - Design palette: cobalt and Kashi teal on paper cream, after Multan tilework.
 
 ## Licence

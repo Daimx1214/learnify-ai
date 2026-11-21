@@ -7,7 +7,7 @@ import {
   validateInput, normalise, checkEvidence, offlineEngine, runPipeline,
   getProviderInfo, callProvider, aiEngine, parseAiResponse, buildAiPrompt,
   buildStudySheet, extractKeyTerms, LANGUAGES, GLOSSARY_SEED, languageMeta, explainIntro,
-  splitSentences, checkNumbers, numberWarningText, scoreQuiz,
+  splitSentences, checkNumbers, checkLanguageScript, numberWarningText, scoreQuiz,
   createFlashcardDeck, resetDeck, deckProgress, MIN_CHARS, MAX_CHARS,
 } from '../samajh.js';
 
@@ -384,4 +384,153 @@ test('languages: AI prompt asks for the chosen language (Hindi, French)', () => 
   assert.ok(pHi.user.includes('Hindi (Devanagari script)'));
   const pFr = buildAiPrompt(ohm, 'class9', 'french');
   assert.ok(pFr.user.includes('in French'));
+});
+
+// --- Level (fixed 21 Nov evening — level now changes the offline explanation) ---
+test('level: offline explanation grows with level, definition + example always in', () => {
+  const c9 = offlineEngine(ohm, 'class9', 'english');
+  const inter = offlineEngine(ohm, 'intermediate', 'english');
+  const uni = offlineEngine(ohm, 'university', 'english');
+  assert.equal(c9.level, 'class9');
+  assert.equal(uni.level, 'university');
+  const n = (r) => r.explanationSentences.length;
+  assert.ok(n(c9) <= n(inter), `class9 (${n(c9)}) should be shortest`);
+  assert.ok(n(inter) <= n(uni), `intermediate (${n(inter)}) should be <= university (${n(uni)})`);
+  // Definition sentence (first) and a sentence carrying a number are in
+  // every level's explanation.
+  for (const r of [c9, inter, uni]) {
+    assert.ok(r.explanationSentences.includes(splitSentences(ohm)[0]), 'definition sentence included');
+    assert.ok(r.explanationSentences.some((s) => /\d/.test(s)), 'worked-example sentence included');
+  }
+  // Quiz is the same at every level (5 questions, all verified).
+  assert.equal(c9.quiz.length, 5);
+  assert.equal(c9.verifiedCount, 5);
+  assert.deepEqual(c9.quiz.map((q) => q.answer_index), inter.quiz.map((q) => q.answer_index));
+});
+
+// --- UI strings (fixed 21 Nov evening — whole tool chrome in 13 languages) ---
+test('ui_strings: every language has every key, non-empty', async () => {
+  const { UI_STRINGS, UI_KEYS, uiText } = await import('../ui-strings.js');
+  const codes = Object.keys(LANGUAGES);
+  assert.equal(Object.keys(UI_STRINGS).length, 13);
+  assert.ok(UI_KEYS.length >= 30, `expected 30+ UI keys, got ${UI_KEYS.length}`);
+  for (const code of codes) {
+    for (const key of UI_KEYS) {
+      const s = UI_STRINGS[code][key];
+      assert.ok(typeof s === 'string' && s.length > 0, `${code} is missing UI key "${key}"`);
+    }
+  }
+  // Placeholders substitute; unknown language/key falls back to English.
+  assert.equal(uiText('spanish', 'quizAnswered', { a: 2, t: 5 }), 'Respondidas 2 de 5');
+  assert.equal(uiText('arabic', 'feedbackWrong', { answer: 'current' }), '✕ ليس تمامًا — الإجابة هي “current”.');
+  assert.equal(uiText('klingon', 'explainBtn'), 'Explain');
+  assert.equal(uiText('english', 'no_such_key'), 'no_such_key');
+});
+
+// --- AI fixes (21 Nov evening — prompt, script check, retry) ---
+test('ai: prompt tells the AI every sentence must be in the chosen language', () => {
+  const p = buildAiPrompt(ohm, 'class9', 'arabic');
+  assert.ok(p.user.includes('EVERY sentence'));
+  assert.ok(p.user.includes('Arabic'));
+});
+test('ai: script check catches English text for non-Latin languages', () => {
+  assert.equal(checkLanguageScript('Current flows through a wire and the voltage is 12 V.', 'arabic'), false);
+  assert.equal(checkLanguageScript('التيار الكهربائي يتدفق في السلك والجهد 12 فولت.', 'arabic'), true);
+  assert.equal(checkLanguageScript('विद्युत धारा तार में बहती है और वोल्टेज 12 वोल्ट है।', 'hindi'), true);
+  assert.equal(checkLanguageScript('电流通过导线流动，电压为 12 伏。', 'chinese'), true);
+  // English gets the check in reverse (run 4: a cells/english explanation
+  // came back in Urdu script).
+  assert.equal(checkLanguageScript('Current flows through a wire and the voltage is 12 V.', 'english'), true);
+  assert.equal(checkLanguageScript('ایک خلیہ زندگی کا سب سے چھوٹا حصہ ہے۔', 'english'), false);
+  // Latin-script languages cannot be told apart this way — always pass.
+  assert.equal(checkLanguageScript('Anything at all', 'spanish'), true);
+  assert.equal(checkLanguageScript('Anything at all', 'roman'), true);
+});
+test('ai: one retry — first call fails, second succeeds, AI is used', async () => {
+  let calls = 0;
+  const flaky = async () => {
+    calls++;
+    if (calls === 1) throw new Error('network down');
+    return { ok: true, text: async () => JSON.stringify(GOOD_AI) };
+  };
+  const r = await aiEngine(ohm, 'class9', 'roman', flaky);
+  assert.equal(calls, 2, 'exactly one retry');
+  assert.equal(r.mode, 'ai');
+});
+test('ai: two failures still fall back to offline, never crash', async () => {
+  let calls = 0;
+  const failing = async () => { calls++; throw new Error('network down'); };
+  const r = await aiEngine(photo, 'class9', 'english', failing);
+  assert.equal(calls, 2, 'tried twice, then gave up');
+  assert.equal(r.mode, 'offline');
+  assert.equal(r.quiz.length, 5);
+});
+test('ai: English explanation for Arabic is discarded, offline kept', async () => {
+  const englishAi = { explanation: 'Current flows through a wire. Voltage is 12 V. Resistance is 4 ohms. So current is 3 A.', takeaway: 'Ohm law says current is voltage divided by resistance.' };
+  const r = await aiEngine(ohm, 'class9', 'arabic', fakeAiFetch(englishAi));
+  assert.equal(r.mode, 'offline');
+  assert.ok(r.aiRejected && r.aiRejected.includes('wrong language'));
+  assert.ok(!r.explanation.includes('Current flows'), 'offline explanation must be the English passage sentences, not the AI text');
+});
+
+// --- New samples (21 Nov evening — Pythagoras + cells) ---
+test('samples: Pythagoras and cells produce 5 verified quiz items each', () => {
+  for (const name of ['pythagoras', 'cells']) {
+    const text = readFileSync(join(dir, `../samples/${name}.txt`), 'utf8').trim();
+    const r = offlineEngine(text, 'class9', 'english');
+    assert.equal(r.quiz.length, 5, `${name}: 5 questions`);
+    assert.equal(r.verifiedCount, 5, `${name}: every quiz answer verified in the passage`);
+    assert.equal(r.changedNumbers.length, 0, `${name}: no number changed`);
+    assert.ok(r.keyTerms.length >= 4, `${name}: at least 4 glossary terms, got ${r.keyTerms.length}`);
+  }
+});
+test('samples: new seed terms exist in every language', () => {
+  for (const term of ['triangle', 'hypotenuse', 'square', 'angle', 'theorem', 'root', 'nucleus', 'membrane', 'cytoplasm', 'control', 'cell', 'protein']) {
+    assert.ok(GLOSSARY_SEED[term], `seed missing term "${term}"`);
+    assert.equal(Object.keys(GLOSSARY_SEED[term]).length, 13, `"${term}" must have all 13 languages`);
+  }
+});
+
+// --- Translation script audit (21 Nov evening — every meaning in its own script) ---
+test('audit: every seed + UI translation is written in its own language’s script', async () => {
+  const { UI_STRINGS } = await import('../ui-strings.js');
+  const latinLetters = (s) => (s.match(/[A-Za-zÀ-ÿĀ-ſ]/g) || []).length;
+  const anyLetters = (s) => (s.match(/[A-Za-zÀ-ÿĀ-ſ\u0600-\u09ff\u4e00-\u9fff]/g) || []).length;
+  const checkMeaning = (tableName, key, lang, meaning) => {
+    if (['urdu', 'arabic', 'hindi', 'bengali', 'chinese'].includes(lang)) {
+      assert.ok(checkLanguageScript(meaning, lang), `${tableName} "${key}" ${lang} is not mostly in its own script: ${meaning}`);
+    } else if (['roman', 'spanish', 'french', 'portuguese', 'german', 'turkish', 'indonesian'].includes(lang)) {
+      const total = anyLetters(meaning);
+      assert.ok(total === 0 || latinLetters(meaning) / total >= 0.9, `${tableName} "${key}" ${lang} has non-Latin letters: ${meaning}`);
+    }
+  };
+  // Seed glossary is term-major: seed[term][language].
+  for (const [term, meanings] of Object.entries(GLOSSARY_SEED)) {
+    for (const [lang, meaning] of Object.entries(meanings)) checkMeaning('seed', term, lang, meaning);
+  }
+  // UI strings are language-major: ui[language][key].
+  for (const [lang, strings] of Object.entries(UI_STRINGS)) {
+    for (const [key, meaning] of Object.entries(strings)) checkMeaning('ui', key, lang, meaning);
+  }
+});
+
+test('ai: a rejected output is retried once, and a good second try is used', async () => {
+  let calls = 0;
+  const badThenGood = async () => {
+    calls++;
+    const payload = calls === 1 ? BAD_NUMBER_AI : GOOD_AI;
+    return { ok: true, text: async () => JSON.stringify(payload) };
+  };
+  // First try changes a number (3 A → 9 A) — rejected, retried; the
+  // second try is good and is used.
+  const r = await aiEngine(ohm, 'class9', 'roman', badThenGood);
+  assert.equal(calls, 2, 'one retry after a rejected output');
+  assert.equal(r.mode, 'ai');
+  assert.ok(r.explanation.includes('12 V'));
+});
+test('ai: Urdu explanation for an English request is discarded', async () => {
+  const urduAi = { explanation: 'ایک خلیہ زندگی کا سب سے چھوٹا حصہ ہے۔ ہر زندہ چیز ایک یا زیادہ خلیوں سے بنی ہوتی ہے۔', takeaway: 'خلیہ زندگی کی سب سے چھوٹی اکائی ہے۔' };
+  const r = await aiEngine(ohm, 'class9', 'english', fakeAiFetch(urduAi));
+  assert.equal(r.mode, 'offline');
+  assert.ok(r.aiRejected && r.aiRejected.includes('wrong language'));
 });

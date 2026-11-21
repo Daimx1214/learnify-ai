@@ -1,6 +1,6 @@
 /**
  * eval/run_eval.mjs — measure the offline engine, honestly.
- * Runs the 3 sample passages × 13 languages (39 runs), times each run,
+ * Runs the 5 sample passages × 13 languages (65 runs), times each run,
  * counts verified quiz items and explanations that changed a number or
  * formula. Quiz-answer correctness is NOT judged by this script: it dumps
  * every quiz item to eval/quiz_dump.md for a human to check, and the
@@ -16,7 +16,7 @@ import { offlineEngine, LANGUAGES } from '../samajh.js';
 
 const dir = dirname(fileURLToPath(import.meta.url));
 const root = join(dir, '..');
-const samples = ['ohm', 'photosynthesis', 'newton2'];
+const samples = ['ohm', 'photosynthesis', 'newton2', 'pythagoras', 'cells'];
 const languages = Object.keys(LANGUAGES);
 const runCount = samples.length * languages.length;
 
@@ -26,7 +26,7 @@ function median(arr) {
 }
 
 const rows = [];
-const dump = ['# Samajh — quiz dump for manual correctness check', '', `Every quiz item from the ${runCount} evaluation runs. The 45 unique items (3 samples × 5 questions × 3 original languages) were read by a human and marked whether the correct option is the only sensible answer for the blank, given the evidence sentence. The 10 added languages reuse the same items with localized question/reason wording only — options, answers and evidence are identical.`, ''];
+const dump = ['# Samajh — quiz dump for manual correctness check', '', `Every quiz item from the ${runCount} evaluation runs. The 75 unique items (5 samples × 5 questions × 3 original languages) were read by a human and marked whether the correct option is the only sensible answer for the blank, given the evidence sentence. The 10 added languages reuse the same items with localized question/reason wording only — options, answers and evidence are identical.`, ''];
 let totalItems = 0;
 let totalVerified = 0;
 let totalChanged = 0;
@@ -83,7 +83,7 @@ if (existsSync(resultsPath)) {
 const table = [
   '# Samajh — evaluation results (measured 21 November 2026)',
   '',
-  `Offline engine only (PROVIDER=none). 3 sample passages × ${languages.length} languages = ${runCount} runs. Each run timed 5 times; the median is shown.`,
+  `Offline engine only (PROVIDER=none). 5 sample passages × ${languages.length} languages = ${runCount} runs. Each run timed 5 times; the median is shown.`,
   '',
   '| Sample | Language | Median time (ms) | Quiz items | Verified | Terms | Numbers changed |',
   '|---|---|---|---|---|---|---|',
