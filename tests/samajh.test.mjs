@@ -93,7 +93,7 @@ test('offline_engine: numbers and formulas are never changed', () => {
   assert.ok(r.explanation.includes('V = I × R'));
   assert.ok(r.explanation.includes('12 V'));
 });
-test('offline_engine: glossary has 4–8 terms, seed terms have local meanings', () => {
+test('offline_engine: glossary has 4 to 8 terms, seed terms have local meanings', () => {
   for (const p of [ohm, photo, newton]) {
     const r = offlineEngine(p, 'class9', 'urdu');
     assert.ok(r.keyTerms.length >= 4 && r.keyTerms.length <= 8, `got ${r.keyTerms.length} terms`);
@@ -115,7 +115,7 @@ test('offline_engine: works in all three languages', () => {
 });
 
 // --- F7 AI provider (Pollinations, free, no key) --------------------------
-// All AI tests use a fake fetch — no network call in the test suite.
+// All AI tests use a fake fetch, no network call in the test suite.
 const fakeAiFetch = (reply) => async (url, opts) => ({
   ok: true, status: 200,
   text: async () => JSON.stringify(reply),
@@ -198,8 +198,8 @@ test('buildStudySheet: contains explanation, terms and quiz with evidence', () =
 
 // --- Number warning (QA gap #1) --------------------------------------------
 // The warning path is tested with hand-built results: in offline mode the
-// explanation is extractive, so a changed number can never occur there —
-// the test proves the warning fires when it SHOULD, not that it fired.
+// explanation is extractive, so a changed number can never occur there.
+// The test proves the warning fires when it SHOULD, not that it fired.
 test('number_warning: checkNumbers finds numbers not in the passage', () => {
   assert.deepEqual(checkNumbers(ohm, 'The current is 9 A and the voltage is 12 V.'), ['9']);
   assert.deepEqual(checkNumbers(ohm, 'The current is 3 A.'), []);
@@ -208,7 +208,7 @@ test('number_warning: checkNumbers finds numbers not in the passage', () => {
 test('number_warning: numberWarningText fires on a hand-built changed result', () => {
   const warn = numberWarningText({ changedNumbers: ['9'], formulaPreserved: true });
   assert.ok(warn && warn.includes('9'), 'warning must name the changed number');
-  assert.ok(warn.includes('does not appear in your passage'));
+  assert.ok(warn.includes('not in your passage'));
   const formulaWarn = numberWarningText({ changedNumbers: [], formulaPreserved: false });
   assert.ok(formulaWarn && formulaWarn.includes('formula'));
   assert.equal(numberWarningText({ changedNumbers: [], formulaPreserved: true }), null);
@@ -299,7 +299,7 @@ test('buildStudySheet: Urdu meanings in Urdu mode, Roman meanings in Roman mode'
   assert.ok(!mdEn.includes('barqi rau') && !mdEn.includes('برقی رو'), 'English sheet carries no local meanings');
 });
 
-// --- 13 languages (added 21 Nov 2026 — international use) -------------------
+// --- 13 languages (added 21 Nov 2026, international use) -------------------
 test('languages: all 13 are registered with native names, direction and templates', () => {
   const codes = Object.keys(LANGUAGES);
   assert.equal(codes.length, 13);
@@ -339,7 +339,7 @@ test('languages: validateInput accepts all 13, rejects a bogus one', () => {
   assert.equal(validateInput(ohm, 'class9', 'klingon').ok, false);
 });
 
-test('languages: offline engine works in Spanish and Arabic — quiz and glossary localized', () => {
+test('languages: offline engine works in Spanish and Arabic, quiz and glossary localized', () => {
   const es = offlineEngine(ohm, 'class9', 'spanish');
   assert.equal(es.quiz.length, 5);
   assert.ok(es.quiz[0].question.startsWith('Completa el espacio en blanco:'));
@@ -386,7 +386,7 @@ test('languages: AI prompt asks for the chosen language (Hindi, French)', () => 
   assert.ok(pFr.user.includes('in French'));
 });
 
-// --- Level (fixed 21 Nov evening — level now changes the offline explanation) ---
+// --- Level (fixed 21 Nov evening, level now changes the offline explanation) ---
 test('level: offline explanation grows with level, definition + example always in', () => {
   const c9 = offlineEngine(ohm, 'class9', 'english');
   const inter = offlineEngine(ohm, 'intermediate', 'english');
@@ -408,7 +408,7 @@ test('level: offline explanation grows with level, definition + example always i
   assert.deepEqual(c9.quiz.map((q) => q.answer_index), inter.quiz.map((q) => q.answer_index));
 });
 
-// --- UI strings (fixed 21 Nov evening — whole tool chrome in 13 languages) ---
+// --- UI strings (fixed 21 Nov evening, whole tool chrome in 13 languages) ---
 test('ui_strings: every language has every key, non-empty', async () => {
   const { UI_STRINGS, UI_KEYS, uiText } = await import('../ui-strings.js');
   const codes = Object.keys(LANGUAGES);
@@ -422,12 +422,12 @@ test('ui_strings: every language has every key, non-empty', async () => {
   }
   // Placeholders substitute; unknown language/key falls back to English.
   assert.equal(uiText('spanish', 'quizAnswered', { a: 2, t: 5 }), 'Respondidas 2 de 5');
-  assert.equal(uiText('arabic', 'feedbackWrong', { answer: 'current' }), '✕ ليس تمامًا — الإجابة هي “current”.');
+  assert.equal(uiText('arabic', 'feedbackWrong', { answer: 'current' }), '✕ ليس تمامًا: الإجابة هي “current”.');
   assert.equal(uiText('klingon', 'explainBtn'), 'Explain');
   assert.equal(uiText('english', 'no_such_key'), 'no_such_key');
 });
 
-// --- AI fixes (21 Nov evening — prompt, script check, retry) ---
+// --- AI fixes (21 Nov evening, prompt, script check, retry) ---
 test('ai: prompt tells the AI every sentence must be in the chosen language', () => {
   const p = buildAiPrompt(ohm, 'class9', 'arabic');
   assert.ok(p.user.includes('EVERY sentence'));
@@ -442,11 +442,11 @@ test('ai: script check catches English text for non-Latin languages', () => {
   // came back in Urdu script).
   assert.equal(checkLanguageScript('Current flows through a wire and the voltage is 12 V.', 'english'), true);
   assert.equal(checkLanguageScript('ایک خلیہ زندگی کا سب سے چھوٹا حصہ ہے۔', 'english'), false);
-  // Latin-script languages cannot be told apart this way — always pass.
+  // Latin-script languages cannot be told apart this way, always pass.
   assert.equal(checkLanguageScript('Anything at all', 'spanish'), true);
   assert.equal(checkLanguageScript('Anything at all', 'roman'), true);
 });
-test('ai: one retry — first call fails, second succeeds, AI is used', async () => {
+test('ai: one retry, first call fails, second succeeds, AI is used', async () => {
   let calls = 0;
   const flaky = async () => {
     calls++;
@@ -473,7 +473,7 @@ test('ai: English explanation for Arabic is discarded, offline kept', async () =
   assert.ok(!r.explanation.includes('Current flows'), 'offline explanation must be the English passage sentences, not the AI text');
 });
 
-// --- New samples (21 Nov evening — Pythagoras + cells) ---
+// --- New samples (21 Nov evening, Pythagoras + cells) ---
 test('samples: Pythagoras and cells produce 5 verified quiz items each', () => {
   for (const name of ['pythagoras', 'cells']) {
     const text = readFileSync(join(dir, `../samples/${name}.txt`), 'utf8').trim();
@@ -491,7 +491,7 @@ test('samples: new seed terms exist in every language', () => {
   }
 });
 
-// --- Translation script audit (21 Nov evening — every meaning in its own script) ---
+// --- Translation script audit (21 Nov evening, every meaning in its own script) ---
 test('audit: every seed + UI translation is written in its own language’s script', async () => {
   const { UI_STRINGS } = await import('../ui-strings.js');
   const latinLetters = (s) => (s.match(/[A-Za-zÀ-ÿĀ-ſ]/g) || []).length;
@@ -521,7 +521,7 @@ test('ai: a rejected output is retried once, and a good second try is used', asy
     const payload = calls === 1 ? BAD_NUMBER_AI : GOOD_AI;
     return { ok: true, text: async () => JSON.stringify(payload) };
   };
-  // First try changes a number (3 A → 9 A) — rejected, retried; the
+  // First try changes a number (3 A → 9 A), rejected, retried; the
   // second try is good and is used.
   const r = await aiEngine(ohm, 'class9', 'roman', badThenGood);
   assert.equal(calls, 2, 'one retry after a rejected output');
@@ -535,7 +535,7 @@ test('ai: Urdu explanation for an English request is discarded', async () => {
   assert.ok(r.aiRejected && r.aiRejected.includes('wrong language'));
 });
 
-// --- Bigram bug (21 Nov evening — live click-through found "squared squared") ---
+// --- Bigram bug (21 Nov evening, live click-through found "squared squared") ---
 test('terms: no invented bigram from a repeated word or a sentence boundary', () => {
   const repeated = "The rule is a squared + b squared = c squared. The rule is a squared + b squared = c squared. Builders use this rule to check a corner.";
   const r1 = offlineEngine(repeated, 'class9', 'english');
@@ -548,4 +548,26 @@ test('terms: no invented bigram from a repeated word or a sentence boundary', ()
   const pyth = readFileSync(join(dir, '../samples/pythagoras.txt'), 'utf8').trim();
   const real = offlineEngine(pyth, 'class9', 'english');
   assert.ok(real.keyTerms.some((t) => t.lower === 'right-angled triangle'), 'real in-sentence bigram "right-angled triangle" still extracted');
+});
+
+// --- No em dashes (21 Nov evening, user: remove all AI vibes, humanize) ---
+test('copy: no em dash or en dash in user-facing strings or the page', async () => {
+  const { UI_STRINGS } = await import('../ui-strings.js');
+  for (const [code, strings] of Object.entries(UI_STRINGS)) {
+    for (const [key, value] of Object.entries(strings)) {
+      assert.ok(!/[—–]/.test(value), `${code}.${key} has an em/en dash`);
+    }
+  }
+  // Seed glossary meanings, through the engine output.
+  const pyth = readFileSync(join(dir, '../samples/pythagoras.txt'), 'utf8').trim();
+  const r = offlineEngine(pyth, 'class9', 'arabic');
+  for (const t of r.keyTerms) {
+    for (const m of Object.values(t.meanings || {})) {
+      if (m) assert.ok(!/[—–]/.test(m), `seed meaning for ${t.term} has an em/en dash`);
+    }
+    assert.ok(!/[—–]/.test(t.meaning_en), `meaning_en for ${t.term} has an em/en dash`);
+  }
+  // The page itself (hero, privacy notice, trust table, footer).
+  const html = readFileSync(join(dir, '../index.html'), 'utf8');
+  assert.ok(!/[—–]/.test(html), 'index.html has an em/en dash');
 });

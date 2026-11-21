@@ -3,7 +3,7 @@ import { uiText } from './ui-strings.js';
 
 // Apply the chosen language to every static UI string (hero, labels,
 // tabs, buttons) and set dir/lang so RTL languages lay out correctly.
-// Called on load and whenever the language picker changes — before any
+// Called on load and whenever the language picker changes, before any
 // result exists, so the whole tool already speaks the student's language.
 // (Uses document.getElementById directly: this block runs before the $
 // helper below is defined.)
@@ -42,7 +42,7 @@ const explainBtn = $('explain-btn');
 
 let current = null; // { result, passage, level, language }
 let quizAnswers = [];
-let deck = null; // flashcard deck { terms, index, known } — see samajh.js
+let deck = null; // flashcard deck { terms, index, known }, see samajh.js
 let cardFlipped = false;
 
 function escapeHtml(s) {
@@ -142,7 +142,7 @@ function render(result, mode, reason) {
 
   // Number warning: if the explanation contains a number or formula that
   // is not in the passage, say so in amber (icon + words). It cannot
-  // trigger in offline mode — the explanation is extractive — but the
+  // trigger in offline mode, because the explanation is extractive, but the
   // same check guards a future AI provider's output, and the path is
   // unit-tested with a hand-built result (see tests).
   const warning = numberWarningText(result);
@@ -185,7 +185,7 @@ function renderGlossary(result) {
     const local = localMeaning(t, lang);
     const localHtml = local
       ? `<p${localAttrs(lang)}${lang === 'urdu' ? ' class="urdu"' : ''}>${escapeHtml(local)}</p>`
-      : '<p class="muted">English meaning only — this term is not in the checked glossary, so no translation is guessed.</p>';
+      : '<p class="muted">English meaning only. This term is not in the checked glossary, so no translation is guessed.</p>';
     return `<article><h3>${escapeHtml(t.term)}</h3><p>${escapeHtml(t.meaning_en)}</p>${localHtml}</article>`;
   }).join('');
 }

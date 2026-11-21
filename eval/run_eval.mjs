@@ -1,5 +1,5 @@
 /**
- * eval/run_eval.mjs — measure the offline engine, honestly.
+ * eval/run_eval.mjs: measure the offline engine, honestly.
  * Runs the 5 sample passages × 13 languages (65 runs), times each run,
  * counts verified quiz items and explanations that changed a number or
  * formula. Quiz-answer correctness is NOT judged by this script: it dumps
@@ -26,7 +26,7 @@ function median(arr) {
 }
 
 const rows = [];
-const dump = ['# Samajh — quiz dump for manual correctness check', '', `Every quiz item from the ${runCount} evaluation runs. The 75 unique items (5 samples × 5 questions × 3 original languages) were read by a human and marked whether the correct option is the only sensible answer for the blank, given the evidence sentence. The 10 added languages reuse the same items with localized question/reason wording only — options, answers and evidence are identical.`, ''];
+const dump = ['# Samajh: quiz dump for manual correctness check', '', `Every quiz item from the ${runCount} evaluation runs. The 75 unique items (5 samples × 5 questions × 3 original languages) were read by a human and marked whether the correct option is the only sensible answer for the blank, given the evidence sentence. The 10 added languages reuse the same items with localized question/reason wording only. Options, answers and evidence are identical.`, ''];
 let totalItems = 0;
 let totalVerified = 0;
 let totalChanged = 0;
@@ -50,12 +50,12 @@ for (const sample of samples) {
     totalChanged += result.changedNumbers.length;
     rows.push({ sample, lang, medianMs: med.toFixed(2), quiz: result.quiz.length, verified: result.verifiedCount, terms: result.keyTerms.length, changedNumbers: result.changedNumbers.length });
 
-    dump.push(`## ${sample} — ${lang} (median ${med.toFixed(2)} ms)`, '');
+    dump.push(`## ${sample}: ${lang} (median ${med.toFixed(2)} ms)`, '');
     dump.push(`Explanation: ${result.explanation}`, '');
     dump.push(`Takeaway: ${result.oneLine}`, '');
     dump.push(`Terms: ${result.keyTerms.map((t) => t.term).join(', ')}`, '');
     result.quiz.forEach((q, i) => {
-      dump.push(`### Q${i + 1} — correct: "${q.options[q.answer_index]}" (verified: ${q.verified})`, '');
+      dump.push(`### Q${i + 1}: correct: "${q.options[q.answer_index]}" (verified: ${q.verified})`, '');
       dump.push(`Question: ${q.question}`, '');
       dump.push(`Options: ${q.options.map((o, j) => `${String.fromCharCode(97 + j)}) ${o}`).join(' | ')}`, '');
       dump.push(`Reason: ${q.reason}`, '');
@@ -67,7 +67,7 @@ for (const sample of samples) {
 const verifiedPct = ((totalVerified / totalItems) * 100).toFixed(1);
 // Keep the hand-written manual-correctness line across re-runs; a script
 // must never invent that number. If none exists yet, leave a placeholder.
-let manualLine = '- Quiz answers manually checked as correct: **not yet checked — read eval/quiz_dump.md and fill in by hand**';
+let manualLine = '- Quiz answers manually checked as correct: **not yet checked. Read eval/quiz_dump.md and fill in by hand**';
 // Keep the hand-written AI-mode section across re-runs too: the offline
 // script must not wipe the live AI measurements.
 let aiSection = '';
@@ -81,7 +81,7 @@ if (existsSync(resultsPath)) {
   if (aiStart >= 0 && aiEnd > aiStart) aiSection = prev.slice(aiStart, aiEnd).trimEnd();
 }
 const table = [
-  '# Samajh — evaluation results (measured 21 November 2026)',
+  '# Samajh: evaluation results (measured 21 November 2026)',
   '',
   `Offline engine only (PROVIDER=none). 5 sample passages × ${languages.length} languages = ${runCount} runs. Each run timed 5 times; the median is shown.`,
   '',
@@ -95,8 +95,8 @@ const table = [
   manualLine,
   `- Explanations that changed a number or formula: **${totalChanged} of ${runCount} runs**`,
   `- Median time to result (median of the ${runCount} run-medians): **${median(allTimes).toFixed(2)} ms** (in-process engine time only; excludes the 400 ms skeleton pause in the UI)`,
-  '- Student clarity rating (1–5): **not measured** (no student test was run before the deadline)',
-  aiSection ? '- AI mode: **measured live — see the AI mode section below**' : '- AI mode: **not measured in this file** (see the live AI runs in docs/AI_LOG.md)',
+  '- Student clarity rating (1 to 5): **not measured** (no student test was run before the deadline)',
+  aiSection ? '- AI mode: **measured live, see the AI mode section below**' : '- AI mode: **not measured in this file** (see the live AI runs in docs/AI_LOG.md)',
   '',
   ...(aiSection ? [aiSection, ''] : []),
   '## What the numbers mean',

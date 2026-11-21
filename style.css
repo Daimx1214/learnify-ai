@@ -1,4 +1,4 @@
-/* Samajh — palette from the plan (§7): Multan tile cobalt + Kashi teal on paper cream.
+/* Samajh palette, from the plan (section 7): Multan tile cobalt and Kashi teal on paper cream.
    No purple gradients. Status is never colour alone: every badge has an icon + word. */
 :root {
   --cobalt: #1d4e89;
@@ -168,7 +168,7 @@ textarea[aria-invalid="true"] { border: 2px solid var(--error); }
 }
 .score-ring span { background: var(--white); width: 92px; height: 92px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-/* Flashcards — plain show/hide flip (no 3D transform: 3D flips do not
+/* Flashcards: plain show/hide flip (no 3D transform. 3D flips do not
    render reliably inside a <button> in some browsers, and the back face
    never became visible in the 21 Nov live click-through). */
 .flash-wrap { text-align: center; }
