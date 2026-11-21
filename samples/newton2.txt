@@ -1,0 +1,1 @@
+Newton's second law states that the net force acting on an object equals its mass multiplied by its acceleration, F = m × a. Force is measured in newtons, mass in kilograms and acceleration in metres per second squared. If the same force acts on two objects, the lighter object accelerates more. For example, a net force of 10 N on a 2 kg trolley gives an acceleration of 5 m/s².

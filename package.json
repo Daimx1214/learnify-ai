@@ -1,0 +1,1 @@
+{"description":"STEM, in the language you think in — STEM2Connect AI Hackathon 2026, Education track","name":"samajh","private":true,"scripts":{"eval":"node eval/run_eval.mjs","test":"node --test tests/samajh.test.mjs"},"type":"module","version":"1.0.0"}
