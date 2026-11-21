@@ -132,6 +132,13 @@ textarea[aria-invalid="true"] { border: 2px solid var(--error); }
 .term { border-bottom: 2px solid var(--teal); font-weight: 700; }
 .urdu { font-family: "Noto Nastaliq Urdu", "Noto Sans", serif; font-size: 18px; line-height: 2; }
 [dir="rtl"] { text-align: right; }
+/* Non-Latin scripts get their own font, picked up from the lang attribute
+   the app sets on local-meaning text (Urdu, Arabic, Bengali, Hindi, Chinese). */
+[lang="ar"] { font-family: "Noto Naskh Arabic", "Noto Sans", serif; }
+[lang="bn"] { font-family: "Noto Sans Bengali", "Noto Sans", sans-serif; }
+[lang="hi"] { font-family: "Noto Sans Devanagari", "Noto Sans", sans-serif; }
+[lang="zh"] { font-family: "Noto Sans SC", "Noto Sans", sans-serif; }
+.lang-strip { margin-top: 12px; font-size: 14px; color: var(--muted); letter-spacing: .2px; }
 
 .glossary { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 @media (max-width: 599px) { .glossary { grid-template-columns: 1fr; } }

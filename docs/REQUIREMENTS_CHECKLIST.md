@@ -42,7 +42,7 @@ Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Dev
 
 ## 5. Samajh features (plan §5.3, F1–F10) — all built and QA-passed
 
-- [x] ✅ F1 Input & options — paste 30–2,500 chars or pick a sample; level (Class 9–10 / Intermediate / University); language (Simple English / Roman Urdu / Urdu script); clear inline errors
+- [x] ✅ F1 Input & options — paste 30–2,500 chars or pick a sample; level (Class 9–10 / Intermediate / University); language (13 languages: Simple English, Roman Urdu, Urdu script, Hindi, Bengali, Arabic, Spanish, French, Portuguese, German, Turkish, Indonesian, Chinese); clear inline errors
 - [x] ✅ F2 Simple explanation — plain-language restatement + one-line takeaway; numbers, formulas and units kept exactly as written
 - [x] ✅ F3 Bilingual glossary — 4–8 key terms, each with English meaning + meaning in the chosen language (8 terms on all samples; unseeded terms show English only, never a guessed translation)
 - [x] ✅ F4 Quiz with evidence — 5 multiple-choice questions from the passage only, 4 options each, correct index, one-line reason, evidence sentence copied exactly from the passage; immediate feedback + final score
@@ -76,7 +76,7 @@ Status key: ✅ Done · ⏳ Pending · ⚠️ Honest limit (stated in README/Dev
 
 - [x] ✅ Problem and Impact (20%) — clear local problem (English STEM text is hard for Urdu-thinking students), real user group, before/after example in hero
 - [x] ✅ Use of AI (20%) — disclosed coding assistance + offline baseline + evidence check + measured comparison (45/45 verified, 0 numbers changed)
-- [x] ✅ Functionality (20%) — works as shown; 33/33 tests pass; offline fallback so it never breaks on camera; live browser click-through passed (quiz 5/5, evidence highlight, flashcards, download); demo video recorded from the live site
+- [x] ✅ Functionality (20%) — works as shown; 40/40 tests pass; offline fallback so it never breaks on camera; live browser click-through passed (quiz 5/5, evidence highlight, flashcards, download); demo video recorded from the live site
 - [ ] ⚠️ Learning and Growth (20%) — concrete "what I learned" in README/Devpost (5 points, incl. real bugs found); **no student test run yet (0 students, not 3)** — honestly stated everywhere; weakens this score but is not a disqualifier
 - [ ] ⏳ Presentation (20%) — demo video recorded + uploaded (4:02, unlisted) + Demo Day presentation (see §10)
 
@@ -102,19 +102,20 @@ Tie-break: higher Problem and Impact score wins. All judging decisions are final
 
 ## 11. Measured results (real numbers only, 21 Nov 2026)
 
-- Tests: **33/33 pass, 0 fail** (`node --test tests/samajh.test.mjs`) — 18 original + 9 added in the second fix round + 8 added with AI mode (fake-fetch AI tests)
-- Eval: 3 samples × 3 languages = 9 runs — **45/45 quiz items evidence-verified (100%)**, **45/45 quiz answers manually checked correct**, **0 explanations changed a number/formula**, median engine time **about 1–2 ms (varies run to run; latest medians of medians 1.25 ms)**
-- AI mode (measured live, two runs of 9 on 21 Nov): run 1 — AI 6/9, fallback 3/9; run 2 — AI 8/9, fallback 1/9; **0 numbers changed in 18 runs, quiz 90/90 verified**, AI answers in about 0.3–6 s. One Roman Urdu AI explanation had a garbled phrase; numbers still exact.
+- Tests: **40/40 pass, 0 fail** (`node --test tests/samajh.test.mjs`) — 18 original + 9 added in the second fix round + 8 added with AI mode (fake-fetch AI tests) + 7 added with the 13-language round (seed completeness, localized quiz/deck/study sheet, AI prompt per language)
+- Eval: 3 samples × 13 languages = 39 runs — **195/195 quiz items evidence-verified (100%)**, **45/45 unique quiz answers manually checked correct**, **0 explanations changed a number/formula**, median engine time **about 1–2 ms (varies run to run; latest median of medians 1.15 ms)**
+- AI mode (measured live, three runs on 21 Nov): run 1 — AI 6/9, fallback 3/9; run 2 — AI 8/9, fallback 1/9; run 3 (all 13 languages) — AI 26/39, fallback 13/39; **0 numbers changed in 57 runs, quiz 285/285 verified**, AI answers in about 0.3–7 s. One Roman Urdu AI explanation had a garbled phrase; numbers still exact.
 - Student clarity rating: **not measured** (no student test)
 - Serving check: live site https://daimx1214.github.io/samajh/ HTTP 200; repo public at https://github.com/Daimx1214/samajh; demo video https://www.youtube.com/watch?v=vswKBBOw1RE (4:02, unlisted, playback verified). In AI mode the app calls text.pollinations.ai (free, no key); offline mode sends nothing anywhere. No keys, no personal data (secrets scan: zero hits)
 
 ## 12. Honest limits — must stay in README / Devpost / video (do not hide)
 
-- AI mode sends the passage to the free Pollinations text API; untick AI mode for a fully offline run. The free AI sometimes fails (4 fallbacks in 18 measured runs) and its Roman Urdu wording can be rough — numbers and formulas are checked, never trusted blindly.
-- In offline mode the explanation stays in English (extractive sentences from the passage); only glossary and quiz wording are in Roman Urdu / Urdu script.
+- AI mode sends the passage to the free Pollinations text API; untick AI mode for a fully offline run. The free AI sometimes fails (17 fallbacks in 57 measured runs) and its Roman Urdu wording can be rough — numbers and formulas are checked, never trusted blindly.
+- In offline mode the explanation stays in English (extractive sentences from the passage); only glossary and quiz wording are in the chosen language.
 - Cloze questions test sentence-matching, not deep comprehension.
 - No student test run (0 students).
 - Urdu seed-glossary spellings have not been personally verified by Daim yet.
+- New-language glossary meanings (beyond Urdu and Roman Urdu) are standard dictionary translations of common STEM terms, not yet reviewed by native speakers.
 
 ## 13. QA fixes already applied (21 Nov, re-tested)
 
@@ -141,9 +142,14 @@ Third fix round (21 Nov evening — AI mode added, then a full QA re-check found
 15. **Demo video recorded, muxed and uploaded**: Playwright recording of the live site (3 attempts: flashcard click blocked, then GitHub `networkidle` timeout — fixed with `domcontentloaded` + try/finally so the video file always finalises), narration (242 s) muxed with ffmpeg, 4 frames visually verified, uploaded to YouTube unlisted (4:02, playback confirmed).
 16. **Stale pre-AI wording removed from the docs** (found in the final QA pass): README said "27 tests", "AI mode: not measured (no provider connected)", "a real AI provider" as a next step, and "the pasted text is never sent anywhere"; the Devpost draft said "In-product AI: none"; `eval/results.md` said "AI mode: not measured"; this checklist still listed the old 22 Nov deadline, a blocked GitHub push, an unrecorded video and "no live hosting". All corrected to the measured numbers and the extended 30 Nov deadline.
 
+Fourth fix round (21 Nov evening — 13 languages for the international hackathon):
+
+17. **Languages grew from 3 to 13** (`LANGUAGES` registry in `samajh.js`: English, Roman Urdu, Urdu, Hindi, Bengali, Arabic, Spanish, French, Portuguese, German, Turkish, Indonesian, Chinese). Every one of the 33 seed glossary terms now has a meaning in every language (a unit test enforces no gaps); quiz questions/reasons, the "in simple words" intro, flashcard progress and the AI prompt are all per-language; Urdu and Arabic lay out right-to-left with the right fonts (Noto Naskh Arabic, Noto Sans Bengali/Devanagari/SC added). The language picker shows native names in regional groups. Validation now accepts all 13 languages and the non-Latin-script passage rejection covers Arabic script too (error code renamed `urdu_script` → `non_latin_script`).
+18. **Re-measured across all 13 languages**: offline eval 39 runs — 195/195 quiz verified, 0 numbers changed; AI eval run 3 — AI 26/39, fallback 13/39, 0 numbers changed, quiz 195/195; every new language produced an AI explanation in that language at least once. 7 new unit tests — **40/40 tests pass**. README, Devpost draft, index.html trust table and this checklist updated to the new numbers.
+
 ## 14. What is left — in order
 
 1. **Repo, live site and video — DONE**: public GitHub repo, GitHub Pages live, demo video on YouTube unlisted (links in README + Devpost draft).
-2. **Daim's own review** (review-before-submit rule): especially the Urdu seed-glossary spellings and the "What I learned" wording.
+2. **Daim's own review** (review-before-submit rule): especially the Urdu seed-glossary spellings, the new-language meanings, and the "What I learned" wording.
 3. **Submit on Devpost** by 30 Nov 9:59 AM PKT (aim 60–90 min early), reopen and verify "submitted", not draft.
 4. **Demo Day**: check Discord for the new date/slot/link (was 24 Nov before the extension); present live or prerecorded; then request the Certificate of Participation and follow the private .xyz domain instructions.

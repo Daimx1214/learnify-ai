@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Samajh — STEM, in the language you think in</title>
-<meta name="description" content="Paste a STEM paragraph. Samajh explains it in simple English, with key terms and quiz in Roman Urdu or Urdu script, and gives a 5-question quiz where every answer points to the exact sentence that proves it.">
+<meta name="description" content="Paste a STEM paragraph. Samajh explains it in your language — 13 languages, from Urdu and Hindi to Spanish, French and Arabic — with key terms and a 5-question quiz where every answer points to the exact sentence that proves it.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231D4E89'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='white' font-family='Georgia'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Noto+Sans:wght@400;700&family=Noto+Sans+Mono&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Noto+Sans:wght@400;700&family=Noto+Sans+Mono&family=Noto+Nastaliq+Urdu&family=Noto+Naskh+Arabic&family=Noto+Sans+Bengali&family=Noto+Sans+Devanagari&family=Noto+Sans+SC&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,9 +29,10 @@
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <p class="kicker">For students who study STEM in English — and think in Urdu</p>
+      <p class="kicker">For students anywhere who study STEM in English — and think in their own language</p>
       <h1>STEM, in the language you think in.</h1>
-      <p class="lede">Paste a paragraph from your textbook. Samajh explains it in your language, lists the key terms, and tests you in Roman Urdu or Urdu script — every answer points to the exact sentence that proves it.</p>
+      <p class="lede">Paste a paragraph from your textbook. Samajh explains it in your language — 13 languages, from Urdu and Hindi to Spanish, French and Arabic — lists the key terms, and tests you — every answer points to the exact sentence that proves it.</p>
+      <p class="lang-strip" aria-label="Languages">Simple English · Roman Urdu · اردو · हिन्दी · বাংলা · العربية · Español · Français · Português · Deutsch · Türkçe · Bahasa Indonesia · 中文</p>
       <p>
         <button class="btn btn-terracotta" id="hero-sample" type="button">Try a sample</button>
         <a class="btn btn-secondary" href="#tool">Paste your own</a>
@@ -71,9 +72,27 @@
 
           <label for="language">Language for terms and quiz</label>
           <select id="language">
-            <option value="english">Simple English</option>
-            <option value="roman">Roman Urdu</option>
-            <option value="urdu">Urdu script</option>
+            <optgroup label="South Asia">
+              <option value="english">Simple English</option>
+              <option value="roman">Roman Urdu</option>
+              <option value="urdu">Urdu — اردو</option>
+              <option value="hindi">Hindi — हिन्दी</option>
+              <option value="bengali">Bengali — বাংলা</option>
+            </optgroup>
+            <optgroup label="Middle East &amp; West Asia">
+              <option value="arabic">Arabic — العربية</option>
+              <option value="turkish">Turkish — Türkçe</option>
+            </optgroup>
+            <optgroup label="Europe &amp; the Americas">
+              <option value="spanish">Spanish — Español</option>
+              <option value="french">French — Français</option>
+              <option value="portuguese">Portuguese — Português</option>
+              <option value="german">German — Deutsch</option>
+            </optgroup>
+            <optgroup label="East &amp; Southeast Asia">
+              <option value="indonesian">Indonesian — Bahasa Indonesia</option>
+              <option value="chinese">Chinese — 中文</option>
+            </optgroup>
           </select>
 
           <p style="margin-top:16px"><label><input type="checkbox" id="ai-toggle" checked> AI mode — explanation by a free AI (no key). Untick for a fully offline run.</label></p>
@@ -177,18 +196,20 @@
         <h3>What Samajh does not do</h3>
         <ul>
           <li>It is not a teacher and not a textbook. If a badge says “Could not verify — check yourself”, check the passage yourself.</li>
-          <li>In offline mode it cannot translate a whole passage into Urdu — it re-uses your English sentences and gives the glossary and quiz in your chosen language.</li>
+          <li>In offline mode it cannot translate a whole passage into your language — it re-uses your English sentences and gives the glossary and quiz in your chosen language. In AI mode the explanation is written in your chosen language.</li>
           <li>It does not store anything, does not know who you are, and does not work on photos or handwriting.</li>
+          <li>New-language glossary meanings (beyond Urdu and Roman Urdu) are standard dictionary translations of common STEM terms — they have not yet been reviewed by native speakers.</li>
         </ul>
         <h3>Measured results — 21 November 2026</h3>
-        <p class="muted">Measured by running the offline engine on the 3 sample passages × 3 languages (9 runs). Full detail: <code>eval/results.md</code> in the repo.</p>
+        <p class="muted">Measured by running the offline engine on the 3 sample passages × 13 languages (39 runs), and the AI mode live twice (18 runs). Full detail: <code>eval/results.md</code> in the repo.</p>
         <table class="results">
-          <tr><th>Measure</th><th>Offline mode</th></tr>
-          <tr><td>Quiz items with evidence verified</td><td id="eval-verified">45 of 45 (100%)</td></tr>
-          <tr><td>Quiz answers manually checked as correct</td><td id="eval-correct">45 of 45 (100%) — read in full in eval/quiz_dump.md</td></tr>
-          <tr><td>Explanations that changed a number or formula</td><td id="eval-numbers">0 of 9 runs</td></tr>
-          <tr><td>Median time to result</td><td id="eval-time">about 1–2 ms (engine only; varies run to run — see eval/results.md)</td></tr>
-          <tr><td>Student clarity rating (1–5)</td><td>not measured</td></tr>
+          <tr><th>Measure</th><th>Offline mode</th><th>AI mode (live)</th></tr>
+          <tr><td>Quiz items with evidence verified</td><td id="eval-verified">195 of 195 (100%)</td><td>285 of 285 (100%)</td></tr>
+          <tr><td>Quiz answers manually checked as correct</td><td id="eval-correct">45 of 45 unique items (100%) — read in full in eval/quiz_dump.md</td><td>45 of 45 unique items (100%)</td></tr>
+          <tr><td>Explanations that changed a number or formula</td><td id="eval-numbers">0 of 39 runs</td><td>0 of 57 runs</td></tr>
+          <tr><td>AI used vs offline fallback</td><td>—</td><td>AI 40 of 57, fallback 17 of 57</td></tr>
+          <tr><td>Median time to result</td><td id="eval-time">about 1–2 ms (engine only; varies run to run — see eval/results.md)</td><td>about 0.3–6 s per explanation</td></tr>
+          <tr><td>Student clarity rating (1–5)</td><td>not measured</td><td>not measured</td></tr>
         </table>
       </div>
     </div>
@@ -200,8 +221,8 @@
       <div class="card">
         <p>Samajh was built by <strong>Daim Ali</strong>, a university student in Multan, for the STEM2Connect AI Hackathon 2026 (Education track), between 11 and 21 November 2026.</p>
         <p><strong>AI disclosure.</strong> Inside the product there is a real AI feature: the explanation and one-line takeaway are written by the Pollinations text API (model “openai”, free, no API key, no sign-up), tested live on 21 November 2026. Before the AI text is shown, Samajh checks it — any number or formula not in the passage discards it and the offline explanation is used instead. The quiz and glossary are always built offline by the rule-based engine (extractive sentences, a checked seed glossary, cloze questions), so the AI never invents a quiz answer or a translation. If the AI call fails, the offline engine takes over automatically. An AI coding assistant (Muse) helped write the code; the code was run and tested before submission, the quiz and explanation bugs the tests found were fixed, and the sample passages were written for this project. The full log is in <code>docs/AI_LOG.md</code>.</p>
-        <p><strong>Credits.</strong> Fonts: Source Serif 4, Noto Sans, Noto Nastaliq Urdu (Google Fonts, open licences). No datasets were used. Sample passages are original. Licence: MIT.</p>
-        <p><strong>What’s next:</strong> teacher mode, photo input, and spaced repetition for flashcards.</p>
+        <p><strong>Credits.</strong> Fonts: Source Serif 4, Noto Sans, Noto Nastaliq Urdu, Noto Naskh Arabic, Noto Sans Bengali, Noto Sans Devanagari, Noto Sans SC (Google Fonts, open licences). No datasets were used. Sample passages are original. Licence: MIT.</p>
+        <p><strong>What’s next:</strong> a more reliable paid AI provider, teacher mode, photo input, and spaced repetition for flashcards — plus a real test with 3 students.</p>
       </div>
     </div>
   </section>

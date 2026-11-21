@@ -26,6 +26,133 @@ export const AI_ENDPOINT = 'https://text.pollinations.ai/';
 export const AI_MODEL = 'openai';
 
 // ---------------------------------------------------------------------------
+// Languages — 13, so a student anywhere can use Samajh in the language
+// they think in. Glossary meanings come only from the checked seed list
+// below (a missing meaning shows English only — never a guessed
+// translation). The quiz question/reason, the "in simple words" intro,
+// the flashcard progress line and the AI prompt are all per-language.
+// `dir: 'rtl'` marks right-to-left languages (Urdu, Arabic).
+// New-language meanings are standard dictionary translations of common
+// STEM terms; they have not yet been reviewed by native speakers — see
+// README "Honest limits".
+// ---------------------------------------------------------------------------
+
+export const LANGUAGES = {
+  english: {
+    label: 'Simple English', native: 'Simple English', dir: 'ltr', lang: 'en',
+    question: (cloze) => `Fill in the blank: “${cloze}”`,
+    reason: (answer) => `The passage says the missing word is “${answer}”.`,
+    intro: 'In simple words:',
+    deck: (known, total, index) => `Know ${known} of ${total} · Card ${index} of ${total} · session only`,
+    ai: 'Write the explanation and takeaway in simple English, short sentences, Class 9 level.',
+  },
+  roman: {
+    label: 'Roman Urdu', native: 'Roman Urdu', dir: 'ltr', lang: 'ur-Latn',
+    question: (cloze) => `Khaali jagah bharein: “${cloze}”`,
+    reason: (answer) => `Passage mein khaali jagah par “${answer}” hai.`,
+    intro: 'Seedha matlab yeh hai:',
+    deck: (known, total, index) => `Know ${known} of ${total} · Card ${index} of ${total} · session only`,
+    ai: 'Write the explanation and takeaway in Roman Urdu (Urdu written in Latin letters, as Pakistani students speak it). Keep STEM terms in English where students normally say them in English (current, voltage, resistance).',
+  },
+  urdu: {
+    label: 'Urdu script', native: 'اردو', dir: 'rtl', lang: 'ur',
+    question: (cloze) => `خالی جگہ بھریں: “${cloze}”`,
+    reason: (answer) => `عبارت میں خالی جگہ پر “${answer}” ہے۔`,
+    intro: 'سادہ مطلب یہ ہے:',
+    deck: (known, total, index) => `معلوم ${known} از ${total} · کارڈ ${index} از ${total} · صرف اس سیشن کے لیے`,
+    ai: 'Write the explanation and takeaway in Urdu script (Nastaliq). Keep STEM terms in English where students normally say them in English.',
+  },
+  hindi: {
+    label: 'Hindi', native: 'हिन्दी', dir: 'ltr', lang: 'hi',
+    question: (cloze) => `खाली जगह भरें: “${cloze}”`,
+    reason: (answer) => `गद्यांश में खाली जगह पर “${answer}” है।`,
+    intro: 'सीधे शब्दों में:',
+    deck: (known, total, index) => `${total} में से ${known} जानते हैं · कार्ड ${index} / ${total} · सिर्फ़ इसी सत्र के लिए`,
+    ai: 'Write the explanation and takeaway in Hindi (Devanagari script), simple language for a Class 9 student. Keep STEM terms in English where Indian students normally say them in English (current, voltage, resistance).',
+  },
+  bengali: {
+    label: 'Bengali', native: 'বাংলা', dir: 'ltr', lang: 'bn',
+    question: (cloze) => `খালি জায়গা পূরণ করুন: “${cloze}”`,
+    reason: (answer) => `অনুচ্ছেদে খালি জায়গায় “${answer}” আছে।`,
+    intro: 'সহজ কথায়:',
+    deck: (known, total, index) => `${total}-এর মধ্যে ${known} জানেন · কার্ড ${index} / ${total} · শুধু এই সেশনের জন্য`,
+    ai: 'Write the explanation and takeaway in Bengali (Bengali script), simple language for a Class 9 student. Keep STEM terms in English where Bangladeshi students normally say them in English (current, voltage, resistance).',
+  },
+  arabic: {
+    label: 'Arabic', native: 'العربية', dir: 'rtl', lang: 'ar',
+    question: (cloze) => `املأ الفراغ: “${cloze}”`,
+    reason: (answer) => `تقول الفقرة إن الكلمة الناقصة هي “${answer}”.`,
+    intro: 'بكلمات بسيطة:',
+    deck: (known, total, index) => `تعرف ${known} من ${total} · البطاقة ${index} من ${total} · لهذه الجلسة فقط`,
+    ai: 'Write the explanation and takeaway in Arabic, simple language for a Grade 9 student. Keep STEM terms in English where students normally say them in English (current, voltage, resistance).',
+  },
+  spanish: {
+    label: 'Spanish', native: 'Español', dir: 'ltr', lang: 'es',
+    question: (cloze) => `Completa el espacio en blanco: “${cloze}”`,
+    reason: (answer) => `El pasaje dice que la palabra que falta es “${answer}”.`,
+    intro: 'En palabras simples:',
+    deck: (known, total, index) => `Sabes ${known} de ${total} · Tarjeta ${index} de ${total} · solo para esta sesión`,
+    ai: 'Write the explanation and takeaway in Spanish, simple language for a Grade 9 student. Keep STEM terms in English where students normally say them in English (current, voltage, resistance).',
+  },
+  french: {
+    label: 'French', native: 'Français', dir: 'ltr', lang: 'fr',
+    question: (cloze) => `Complétez le blanc : “${cloze}”`,
+    reason: (answer) => `Le passage dit que le mot manquant est « ${answer} ».`,
+    intro: 'En mots simples :',
+    deck: (known, total, index) => `Connus : ${known} sur ${total} · Carte ${index} sur ${total} · session seulement`,
+    ai: 'Write the explanation and takeaway in French, simple language for a Grade 9 student. Keep STEM terms in English where students normally say them in English (current, voltage, resistance).',
+  },
+  portuguese: {
+    label: 'Portuguese', native: 'Português', dir: 'ltr', lang: 'pt',
+    question: (cloze) => `Preencha o espaço em branco: “${cloze}”`,
+    reason: (answer) => `O texto diz que a palavra que falta é “${answer}”.`,
+    intro: 'Em palavras simples:',
+    deck: (known, total, index) => `Você sabe ${known} de ${total} · Cartão ${index} de ${total} · só para esta sessão`,
+    ai: 'Write the explanation and takeaway in Portuguese, simple language for a Grade 9 student. Keep STEM terms in English where students normally say them in English (current, voltage, resistance).',
+  },
+  german: {
+    label: 'German', native: 'Deutsch', dir: 'ltr', lang: 'de',
+    question: (cloze) => `Fülle die Lücke aus: “${cloze}”`,
+    reason: (answer) => `Im Text steht, dass das fehlende Wort „${answer}“ ist.`,
+    intro: 'In einfachen Worten:',
+    deck: (known, total, index) => `Gewusst: ${known} von ${total} · Karte ${index} von ${total} · nur für diese Sitzung`,
+    ai: 'Write the explanation and takeaway in German, simple language for a Grade 9 student. Keep STEM terms in English where students normally say them in English (current, voltage, resistance).',
+  },
+  turkish: {
+    label: 'Turkish', native: 'Türkçe', dir: 'ltr', lang: 'tr',
+    question: (cloze) => `Boşluğu doldurun: “${cloze}”`,
+    reason: (answer) => `Metinde eksik kelimenin “${answer}” olduğu yazıyor.`,
+    intro: 'Basitçe:',
+    deck: (known, total, index) => `${total} karttan ${known} tanesini biliyorsunuz · Kart ${index} / ${total} · yalnızca bu oturum için`,
+    ai: 'Write the explanation and takeaway in Turkish, simple language for a Grade 9 student. Keep STEM terms in English where students normally say them in English (current, voltage, resistance).',
+  },
+  indonesian: {
+    label: 'Indonesian', native: 'Bahasa Indonesia', dir: 'ltr', lang: 'id',
+    question: (cloze) => `Isi bagian yang kosong: “${cloze}”`,
+    reason: (answer) => `Bacaan itu mengatakan kata yang hilang adalah “${answer}”.`,
+    intro: 'Dengan kata sederhana:',
+    deck: (known, total, index) => `Tahu ${known} dari ${total} · Kartu ${index} dari ${total} · hanya untuk sesi ini`,
+    ai: 'Write the explanation and takeaway in Indonesian (Bahasa Indonesia), simple language for a Grade 9 student. Keep STEM terms in English where students normally say them in English (current, voltage, resistance).',
+  },
+  chinese: {
+    label: 'Chinese', native: '中文', dir: 'ltr', lang: 'zh',
+    question: (cloze) => `填空：“${cloze}”`,
+    reason: (answer) => `文章中空缺的词是“${answer}”。`,
+    intro: '简单来说：',
+    deck: (known, total, index) => `已掌握 ${known} / ${total} · 卡片 ${index} / ${total} · 仅限本次会话`,
+    ai: 'Write the explanation and takeaway in Simplified Chinese, simple language for a Grade 9 student. Keep STEM terms in English where students normally say them in English (current, voltage, resistance).',
+  },
+};
+
+export function languageMeta(language) {
+  return LANGUAGES[language] || LANGUAGES.english;
+}
+
+export function explainIntro(language) {
+  return languageMeta(language).intro;
+}
+
+// ---------------------------------------------------------------------------
 // Small word lists
 // ---------------------------------------------------------------------------
 
@@ -60,39 +187,39 @@ const STEM_KEYWORDS = [
 // this seed, the app shows the English meaning only — it never guesses a
 // translation.
 export const GLOSSARY_SEED = {
-  'current': { en: 'The flow of electric charge through a wire, measured in amperes.', roman: 'barqi rau — bijli ka bahao, ampere mein naapa jata hai', urdu: 'برقی رو — بجلی کا بہاؤ، ایمپیئر میں ناپا جاتا ہے' },
-  'voltage': { en: 'The push that drives electric current through a circuit, measured in volts.', roman: 'barqi dabao (voltage) — woh dabao jo current ko chalata hai, volt mein', urdu: 'برقی دباؤ (voltage) — وہ دباؤ جو کرنٹ کو چلاتا ہے، وولٹ میں' },
-  'resistance': { en: 'How much a material opposes the flow of current, measured in ohms.', roman: 'muzahmat — woh rukawat jo current ko rokti hai, ohm mein', urdu: 'مزاحمت — وہ رکاوٹ جو کرنٹ کو روکتی ہے، اوہم میں' },
-  'resistor': { en: 'A part in a circuit that adds a known resistance.', roman: 'muzahim (resistor) — circuit ka woh hissa jo resistance deta hai', urdu: 'مزاحم (resistor) — سرکٹ کا وہ حصہ جو مزاحمت دیتا ہے' },
-  'circuit': { en: 'A closed path that electric current can flow around.', roman: 'circuit — band rasta jis se current guzarta hai', urdu: 'سرکٹ — بند راستہ جس سے کرنٹ گزرتا ہے' },
-  'battery': { en: 'A source that supplies voltage to a circuit.', roman: 'battery — voltage dene wala source', urdu: 'بیٹری — وولٹیج دینے والا ذریعہ' },
-  'force': { en: 'A push or pull that can change how an object moves, measured in newtons.', roman: 'quwwat — dhakka ya khinchav jo harkat badal sakta hai, newton mein', urdu: 'قوت — دھکا یا کھنچاؤ جو حرکت بدل سکتا ہے، نیوٹن میں' },
-  'mass': { en: 'How much matter an object contains, measured in kilograms.', roman: 'kamiyat (mass) — kisi cheez mein kitna maddeh hai, kilogram mein', urdu: 'کمیت (mass) — کسی چیز میں کتنا مادہ ہے، کلوگرام میں' },
-  'acceleration': { en: 'How quickly velocity changes, measured in metres per second squared.', roman: 'isra (acceleration) — raftaar kitni jaldi badalti hai', urdu: 'اسراع (acceleration) — رفتار کتنی جلدی بدلتی ہے' },
-  'energy': { en: 'The ability to do work or cause change.', roman: 'tawanai — kaam karne ki salahiyat', urdu: 'توانائی — کام کرنے کی صلاحیت' },
-  'photosynthesis': { en: 'How green plants make food from sunlight, water and carbon dioxide.', roman: 'ziai taleef — hare poday roshni, paani aur carbon dioxide se khana banate hain', urdu: 'ضیائی تالیف — ہرے پودے روشنی، پانی اور کاربن ڈائی آکسائیڈ سے کھانا بناتے ہیں' },
-  'chlorophyll': { en: 'The green pigment in leaves that absorbs sunlight.', roman: 'chlorophyll — patton mein sabz rang jo roshni jazb karta hai', urdu: 'کلوروفل — پتوں میں سبز رنگ جو روشنی جذب کرتا ہے' },
-  'chloroplast': { en: 'The part of a plant cell where photosynthesis happens.', roman: 'chloroplast — poday ke cell ka woh hissa jahan photosynthesis hoti hai', urdu: 'کلوروپلاسٹ — پودے کے خلیے کا وہ حصہ جہاں ضیائی تالیف ہوتی ہے' },
-  'chloroplasts': { en: 'The parts of a plant cell where photosynthesis happens.', roman: 'chloroplasts — poday ke cell ke woh hisse jahan photosynthesis hoti hai', urdu: 'کلوروپلاسٹ — پودے کے خلیے کے وہ حصے جہاں ضیائی تالیف ہوتی ہے' },
-  'glucose': { en: 'A simple sugar plants make in photosynthesis; food for the plant.', roman: 'glucose — woh cheeni jo poday photosynthesis mein banate hain', urdu: 'گلوکوز — وہ چینی جو پودے ضیائی تالیف میں بناتے ہیں' },
-  'oxygen': { en: 'A gas released by plants in photosynthesis; the gas we breathe in.', roman: 'oxygen — woh gas jo poday chorte hain, aur hum saans mein lete hain', urdu: 'آکسیجن — وہ گیس جو پودے چھوڑتے ہیں، اور ہم سانس میں لیتے ہیں' },
-  'carbon dioxide': { en: 'A gas in the air that plants take in for photosynthesis.', roman: 'carbon dioxide — hawa ki woh gas jo poday photosynthesis ke liye lete hain', urdu: 'کاربن ڈائی آکسائیڈ — ہوا کی وہ گیس جو پودے ضیائی تالیف کے لیے لیتے ہیں' },
-  'water': { en: 'The liquid plants take from the soil for photosynthesis.', roman: 'paani — woh liquid jo poday mitti se lete hain', urdu: 'پانی — وہ مائع جو پودے مٹی سے لیتے ہیں' },
-  'sunlight': { en: 'Light from the sun; the energy source for photosynthesis.', roman: 'suraj ki roshni — photosynthesis ke liye tawanai ka zariya', urdu: 'سورج کی روشنی — ضیائی تالیف کے لیے توانائی کا ذریعہ' },
-  'light': { en: 'The part of the sun’s energy that plants and eyes can use.', roman: 'roshni — suraj ki tawanai', urdu: 'روشنی — سورج کی توانائی' },
-  'plant': { en: 'A living thing that grows in soil and can make its own food.', roman: 'poda — zinda cheez jo mitti mein ugta hai', urdu: 'پودا — زندہ چیز جو مٹی میں اگتا ہے' },
-  'stomata': { en: 'Tiny pores in a leaf that let gases in and out.', roman: 'stomata — patte ke chote surakh jin se gas andar bahar jati hai', urdu: 'سٹومیٹا — پتے کے چھوٹے سوراخ جن سے گیس اندر باہر جاتی ہے' },
-  'temperature': { en: 'How hot or cold something is.', roman: 'darja hararat — kisi cheez ka garam ya thanda hona', urdu: 'درجہ حرارت — کسی چیز کا گرم یا ٹھنڈا ہونا' },
-  'wire': { en: 'A thin metal thread that carries current.', roman: 'taar — patli dhaat jo current le jati hai', urdu: 'تار — پتلی دھات جو کرنٹ لے جاتی ہے' },
-  'object': { en: 'A thing that a force can act on.', roman: 'cheez / jism — woh cheez jis par quwwat lag sakti hai', urdu: 'چیز / جسم — وہ چیز جس پر قوت لگ سکتی ہے' },
-  'trolley': { en: 'A small wheeled cart used in the example.', roman: 'trolley — misaal mein choti pahiyon wali gari', urdu: 'ٹرالی — مثال میں چھوٹی پہیوں والی گاڑی' },
-  'law': { en: 'A rule that describes how nature behaves, tested many times.', roman: 'qanoon — qudrat ka woh usool jo baar baar aazmaya gaya ho', urdu: 'قانون — قدرت کا وہ اصول جو بار بار آزمایا گیا ہو' },
-  'newton': { en: 'The unit of force.', roman: 'newton — quwwat ki unit', urdu: 'نیوٹن — قوت کی اکائی' },
-  'newtons': { en: 'The unit of force.', roman: 'newton — quwwat ki unit', urdu: 'نیوٹن — قوت کی اکائی' },
-  'food': { en: 'What a plant makes for itself to grow.', roman: 'khana — jo poda apne liye banata hai', urdu: 'خوراک — جو پودا اپنے لیے بناتا ہے' },
-  'growth': { en: 'Getting bigger; what glucose is used for.', roman: 'barhna — glucose isi kaam aata hai', urdu: 'بڑھنا — گلوکوز اسی کام آتا ہے' },
-  'starch': { en: 'Stored food in a plant.', roman: 'starch — poday mein mehfooz khana', urdu: 'نشاستہ — پودے میں محفوظ خوراک' },
-  'reaction': { en: 'A change in which substances turn into other substances.', roman: 'reaction — tabdeeli jis mein ek cheez doosri ban jati hai', urdu: 'تعامل — تبدیلی جس میں ایک چیز دوسری بن جاتی ہے' },
+  'current': { en: 'The flow of electric charge through a wire, measured in amperes.', roman: 'barqi rau — bijli ka bahao, ampere mein naapa jata hai', urdu: 'برقی رو — بجلی کا بہاؤ، ایمپیئر میں ناپا جاتا ہے', hindi: 'विद्युत धारा — तार से बहने वाला विद्युत आवेश, एम्पीयर में मापा जाता है', bengali: 'বিদ্যুৎ প্রবাহ — তারের মধ্য দিয়ে বৈদ্যুতিক আধানের প্রবাহ, অ্যাম্পিয়ারে মাপা হয়', arabic: 'التيار الكهربائي — تدفق الشحنة الكهربائية عبر سلك، ويُقاس بالأمبير', spanish: 'corriente — el flujo de carga eléctrica por un cable, medido en amperios', french: 'courant — le flux de charge électrique dans un fil, mesuré en ampères', portuguese: 'corrente — o fluxo de carga elétrica por um fio, medido em amperes', german: 'Strom — der Fluss elektrischer Ladung durch einen Draht, gemessen in Ampere', turkish: 'akım — telden geçen elektrik yükü akışı, amper ile ölçülür', indonesian: 'arus — aliran muatan listrik melalui kawat, diukur dalam ampere', chinese: '电流 — 电荷通过导线的流动，以安培为单位' },
+  'voltage': { en: 'The push that drives electric current through a circuit, measured in volts.', roman: 'barqi dabao (voltage) — woh dabao jo current ko chalata hai, volt mein', urdu: 'برقی دباؤ (voltage) — وہ دباؤ جو کرنٹ کو چلاتا ہے، وولٹ میں', hindi: 'वोल्टेज — वह दबाव जो सर्किट में धारा को चलाता है, वोल्ट में मापा जाता है', bengali: 'ভোল্টেজ — যে চাপ সার্কিটে বিদ্যুৎ প্রবাহ চালায়, ভোল্টে মাপা হয়', arabic: 'الجهد الكهربائي — القوة التي تدفع التيار عبر الدائرة، وتُقاس بالفولت', spanish: 'voltaje — la fuerza que impulsa la corriente por un circuito, medida en voltios', french: 'tension — la force qui pousse le courant dans un circuit, mesurée en volts', portuguese: 'voltagem — a força que impulsiona a corrente por um circuito, medida em volts', german: 'Spannung — die Kraft, die den Strom durch einen Stromkreis treibt, gemessen in Volt', turkish: 'gerilim — akımı devreden geçiren kuvvet, volt ile ölçülür', indonesian: 'tegangan — dorongan yang menggerakkan arus melalui rangkaian, diukur dalam volt', chinese: '电压 — 推动电流通过电路的力量，以伏特为单位' },
+  'resistance': { en: 'How much a material opposes the flow of current, measured in ohms.', roman: 'muzahmat — woh rukawat jo current ko rokti hai, ohm mein', urdu: 'مزاحمت — وہ رکاوٹ جو کرنٹ کو روکتی ہے، اوہم میں', hindi: 'प्रतिरोध — कोई पदार्थ धारा के प्रवाह का कितना विरोध करता है, ओम में मापा जाता है', bengali: 'রোধ — কোনো পদার্থ বিদ্যুৎ প্রবাহকে কতটা বাধা দেয়, ওহমে মাপা হয়', arabic: 'المقاومة — مقدار معارضة المادة لتدفق التيار، وتُقاس بالأوم', spanish: 'resistencia — cuánto se opone un material al paso de la corriente, medida en ohmios', french: 'résistance — la façon dont un matériau s’oppose au passage du courant, mesurée en ohms', portuguese: 'resistência — o quanto um material se opõe à passagem da corrente, medida em ohms', german: 'Widerstand — wie stark ein Material dem Stromfluss entgegenwirkt, gemessen in Ohm', turkish: 'direnç — bir maddenin akıma ne kadar karşı koyduğu, ohm ile ölçülür', indonesian: 'resistansi — seberapa besar suatu bahan melawan aliran arus, diukur dalam ohm', chinese: '电阻 — 材料阻碍电流流动的程度，以欧姆为单位' },
+  'resistor': { en: 'A part in a circuit that adds a known resistance.', roman: 'muzahim (resistor) — circuit ka woh hissa jo resistance deta hai', urdu: 'مزاحم (resistor) — سرکٹ کا وہ حصہ جو مزاحمت دیتا ہے', hindi: 'प्रतिरोधक — सर्किट का वह हिस्सा जो एक निश्चित प्रतिरोध देता है', bengali: 'রোধক — সার্কিটের সেই অংশ যা নির্দিষ্ট রোধ যোগ করে', arabic: 'المقاوِم — جزء في الدائرة يضيف مقاومة معروفة', spanish: 'resistor — una parte del circuito que añade una resistencia conocida', french: 'résistance (composant) — une partie du circuit qui ajoute une résistance connue', portuguese: 'resistor — uma parte do circuito que adiciona uma resistência conhecida', german: 'Widerstand (Bauteil) — ein Teil im Stromkreis, der einen bekannten Widerstand hinzufügt', turkish: 'direnç (parça) — devrede bilinen bir direnç ekleyen parça', indonesian: 'resistor — bagian dalam rangkaian yang menambah resistansi tertentu', chinese: '电阻器 — 电路中增加已知电阻的部件' },
+  'circuit': { en: 'A closed path that electric current can flow around.', roman: 'circuit — band rasta jis se current guzarta hai', urdu: 'سرکٹ — بند راستہ جس سے کرنٹ گزرتا ہے', hindi: 'सर्किट — बंद रास्ता जिससे धारा बह सकती है', bengali: 'বর্তনী — বন্ধ পথ যার মধ্য দিয়ে বিদ্যুৎ প্রবাহিত হতে পারে', arabic: 'الدائرة الكهربائية — مسار مغلق يمكن للتيار أن يتدفق فيه', spanish: 'circuito — un camino cerrado por el que puede fluir la corriente', french: 'circuit — un chemin fermé dans lequel le courant peut circuler', portuguese: 'circuito — um caminho fechado pelo qual a corrente pode fluir', german: 'Stromkreis — ein geschlossener Weg, durch den Strom fließen kann', turkish: 'devre — akımın akabileceği kapalı yol', indonesian: 'sirkuit — jalur tertutup yang dapat dilalui arus listrik', chinese: '电路 — 电流可以流动的闭合路径' },
+  'battery': { en: 'A source that supplies voltage to a circuit.', roman: 'battery — voltage dene wala source', urdu: 'بیٹری — وولٹیج دینے والا ذریعہ', hindi: 'बैटरी — सर्किट को वोल्टेज देने वाला स्रोत', bengali: 'ব্যাটারি — সার্কিটে ভোল্টেজ সরবরাহকারী উৎস', arabic: 'البطارية — مصدر يزوّد الدائرة بالجهد', spanish: 'batería — una fuente que suministra voltaje a un circuito', french: 'pile — une source qui fournit de la tension à un circuit', portuguese: 'bateria — uma fonte que fornece voltagem a um circuito', german: 'Batterie — eine Quelle, die einen Stromkreis mit Spannung versorgt', turkish: 'pil — devreye gerilim sağlayan kaynak', indonesian: 'baterai — sumber yang memasok tegangan ke rangkaian', chinese: '电池 — 为电路提供电压的电源' },
+  'force': { en: 'A push or pull that can change how an object moves, measured in newtons.', roman: 'quwwat — dhakka ya khinchav jo harkat badal sakta hai, newton mein', urdu: 'قوت — دھکا یا کھنچاؤ جو حرکت بدل سکتا ہے، نیوٹن میں', hindi: 'बल — धक्का या खिंचाव जो किसी वस्तु की गति बदल सकता है, न्यूटन में मापा जाता है', bengali: 'বল — ধাক্কা বা টান যা কোনো বস্তুর গতি বদলাতে পারে, নিউটনে মাপা হয়', arabic: 'القوة — دفع أو سحب يمكن أن يغيّر حركة جسم، وتُقاس بالنيوتن', spanish: 'fuerza — un empuje o tirón que puede cambiar el movimiento de un objeto, medido en newtons', french: 'force — une poussée ou une traction qui peut changer le mouvement d’un objet, mesurée en newtons', portuguese: 'força — um empurrão ou puxão que pode mudar o movimento de um objeto, medido em newtons', german: 'Kraft — ein Stoß oder Zug, der die Bewegung eines Objekts ändern kann, gemessen in Newton', turkish: 'kuvvet — bir cismin hareketini değiştirebilen itme veya çekme, newton ile ölçülür', indonesian: 'gaya — dorongan atau tarikan yang dapat mengubah gerak suatu benda, diukur dalam newton', chinese: '力 — 可以改变物体运动的推力或拉力，以牛顿为单位' },
+  'mass': { en: 'How much matter an object contains, measured in kilograms.', roman: 'kamiyat (mass) — kisi cheez mein kitna maddeh hai, kilogram mein', urdu: 'کمیت (mass) — کسی چیز میں کتنا مادہ ہے، کلوگرام میں', hindi: 'द्रव्यमान — किसी वस्तु में कितना पदार्थ है, किलोग्राम में मापा जाता है', bengali: 'ভর — কোনো বস্তুতে কতটা পদার্থ আছে, কিলোগ্রামে মাপা হয়', arabic: 'الكتلة — مقدار المادة في الجسم، وتُقاس بالكيلوغرام', spanish: 'masa — cuánta materia contiene un objeto, medida en kilogramos', french: 'masse — la quantité de matière d’un objet, mesurée en kilogrammes', portuguese: 'massa — quanta matéria um objeto contém, medida em quilogramas', german: 'Masse — wie viel Materie ein Objekt enthält, gemessen in Kilogramm', turkish: 'kütle — bir cismin ne kadar madde içerdiği, kilogram ile ölçülür', indonesian: 'massa — seberapa banyak materi dalam suatu benda, diukur dalam kilogram', chinese: '质量 — 物体所含物质的多少，以千克为单位' },
+  'acceleration': { en: 'How quickly velocity changes, measured in metres per second squared.', roman: 'isra (acceleration) — raftaar kitni jaldi badalti hai', urdu: 'اسراع (acceleration) — رفتار کتنی جلدی بدلتی ہے', hindi: 'त्वरण — वेग कितनी जल्दी बदलता है, मीटर प्रति सेकंड वर्ग में मापा जाता है', bengali: 'ত্বরণ — বেগ কত দ্রুত বদলায়, মিটার প্রতি সেকেন্ড বর্গে মাপা হয়', arabic: 'التسارع — سرعة تغيّر السرعة، ويُقاس بالمتر لكل ثانية مربعة', spanish: 'aceleración — qué tan rápido cambia la velocidad, medida en metros por segundo al cuadrado', french: 'accélération — la rapidité avec laquelle la vitesse change, mesurée en mètres par seconde carrée', portuguese: 'aceleração — quão rápido a velocidade muda, medida em metros por segundo ao quadrado', german: 'Beschleunigung — wie schnell sich die Geschwindigkeit ändert, gemessen in Metern pro Sekunde zum Quadrat', turkish: 'ivme — hızın ne kadar hızlı değiştiği, metre/saniye kare ile ölçülür', indonesian: 'percepatan — seberapa cepat kecepatan berubah, diukur dalam meter per detik kuadrat', chinese: '加速度 — 速度变化的快慢，以米每二次方秒为单位' },
+  'energy': { en: 'The ability to do work or cause change.', roman: 'tawanai — kaam karne ki salahiyat', urdu: 'توانائی — کام کرنے کی صلاحیت', hindi: 'ऊर्जा — काम करने या बदलाव लाने की क्षमता', bengali: 'শক্তি — কাজ করার বা পরিবর্তন ঘটানোর ক্ষমতা', arabic: 'الطاقة — القدرة على إنجاز شغل أو إحداث تغيير', spanish: 'energía — la capacidad de realizar trabajo o producir un cambio', french: 'énergie — la capacité à effectuer un travail ou à provoquer un changement', portuguese: 'energia — a capacidade de realizar trabalho ou causar mudança', german: 'Energie — die Fähigkeit, Arbeit zu verrichten oder Veränderung zu bewirken', turkish: 'enerji — iş yapma veya değişikliğe yol açma yeteneği', indonesian: 'energi — kemampuan untuk melakukan kerja atau menyebabkan perubahan', chinese: '能量 — 做功或引起变化的能力' },
+  'photosynthesis': { en: 'How green plants make food from sunlight, water and carbon dioxide.', roman: 'ziai taleef — hare poday roshni, paani aur carbon dioxide se khana banate hain', urdu: 'ضیائی تالیف — ہرے پودے روشنی، پانی اور کاربن ڈائی آکسائیڈ سے کھانا بناتے ہیں', hindi: 'प्रकाश संश्लेषण — हरे पौधे सूर्य के प्रकाश, पानी और कार्बन डाइऑक्साइड से भोजन कैसे बनाते हैं', bengali: 'সালোকসংশ্লেষণ — সবুজ উদ্ভিদ সূর্যের আলো, পানি ও কার্বন ডাই-অক্সাইড থেকে কীভাবে খাবার তৈরি করে', arabic: 'التمثيل الضوئي — كيف تصنع النباتات الخضراء غذاءها من ضوء الشمس والماء وثاني أكسيد الكربون', spanish: 'fotosíntesis — cómo las plantas verdes elaboran su alimento a partir de la luz solar, el agua y el dióxido de carbono', french: 'photosynthèse — la façon dont les plantes vertes fabriquent leur nourriture à partir de la lumière du soleil, de l’eau et du dioxyde de carbone', portuguese: 'fotossíntese — como as plantas verdes produzem seu alimento a partir da luz solar, da água e do dióxido de carbono', german: 'Photosynthese — wie grüne Pflanzen aus Sonnenlicht, Wasser und Kohlenstoffdioxid Nahrung herstellen', turkish: 'fotosentez — yeşil bitkilerin güneş ışığı, su ve karbondioksitten besin üretmesi', indonesian: 'fotosintesis — cara tumbuhan hijau membuat makanan dari sinar matahari, air, dan karbon dioksida', chinese: '光合作用 — 绿色植物利用阳光、水和二氧化碳制造养分的过程' },
+  'chlorophyll': { en: 'The green pigment in leaves that absorbs sunlight.', roman: 'chlorophyll — patton mein sabz rang jo roshni jazb karta hai', urdu: 'کلوروفل — پتوں میں سبز رنگ جو روشنی جذب کرتا ہے', hindi: 'क्लोरोफ़िल — पत्तियों में हरा रंग जो सूर्य का प्रकाश सोखता है', bengali: 'ক্লোরোফিল — পাতায় থাকা সবুজ রঞ্জক যা সূর্যের আলো শোষণ করে', arabic: 'الكلوروفيل — الصبغة الخضراء في الأوراق التي تمتص ضوء الشمس', spanish: 'clorofila — el pigmento verde de las hojas que absorbe la luz solar', french: 'chlorophylle — le pigment vert des feuilles qui absorbe la lumière du soleil', portuguese: 'clorofila — o pigmento verde das folhas que absorve a luz solar', german: 'Chlorophyll — der grüne Farbstoff in Blättern, der Sonnenlicht aufnimmt', turkish: 'klorofil — yapraklardaki güneş ışığını emen yeşil pigment', indonesian: 'klorofil — pigmen hijau pada daun yang menyerap sinar matahari', chinese: '叶绿素 — 叶片中吸收阳光的绿色色素' },
+  'chloroplast': { en: 'The part of a plant cell where photosynthesis happens.', roman: 'chloroplast — poday ke cell ka woh hissa jahan photosynthesis hoti hai', urdu: 'کلوروپلاسٹ — پودے کے خلیے کا وہ حصہ جہاں ضیائی تالیف ہوتی ہے', hindi: 'क्लोरोप्लास्ट — पौधे की कोशिका का वह हिस्सा जहाँ प्रकाश संश्लेषण होता है', bengali: 'ক্লোরোপ্লাস্ট — উদ্ভিদ কোষের সেই অংশ যেখানে সালোকসংশ্লেষণ ঘটে', arabic: 'البلاستيدة الخضراء — جزء الخلية النباتية الذي يحدث فيه التمثيل الضوئي', spanish: 'cloroplasto — la parte de la célula vegetal donde ocurre la fotosíntesis', french: 'chloroplaste — la partie de la cellule végétale où a lieu la photosynthèse', portuguese: 'cloroplasto — a parte da célula vegetal onde ocorre a fotossíntese', german: 'Chloroplast — der Teil einer Pflanzenzelle, in dem die Photosynthese stattfindet', turkish: 'kloroplast — bitki hücresinin fotosentezin gerçekleştiği kısmı', indonesian: 'kloroplas — bagian sel tumbuhan tempat fotosintesis terjadi', chinese: '叶绿体 — 植物细胞中进行光合作用的部分' },
+  'chloroplasts': { en: 'The parts of a plant cell where photosynthesis happens.', roman: 'chloroplasts — poday ke cell ke woh hisse jahan photosynthesis hoti hai', urdu: 'کلوروپلاسٹ — پودے کے خلیے کے وہ حصے جہاں ضیائی تالیف ہوتی ہے', hindi: 'क्लोरोप्लास्ट — पौधे की कोशिका के वे हिस्से जहाँ प्रकाश संश्लेषण होता है', bengali: 'ক্লোরোপ্লাস্ট — উদ্ভিদ কোষের সেই অংশগুলো যেখানে সালোকসংশ্লেষণ ঘটে', arabic: 'البلاستيدات الخضراء — أجزاء الخلية النباتية التي يحدث فيها التمثيل الضوئي', spanish: 'cloroplastos — las partes de la célula vegetal donde ocurre la fotosíntesis', french: 'chloroplastes — les parties de la cellule végétale où a lieu la photosynthèse', portuguese: 'cloroplastos — as partes da célula vegetal onde ocorre a fotossíntese', german: 'Chloroplasten — die Teile einer Pflanzenzelle, in denen die Photosynthese stattfindet', turkish: 'kloroplastlar — bitki hücresinin fotosentezin gerçekleştiği kısımları', indonesian: 'kloroplas — bagian-bagian sel tumbuhan tempat fotosintesis terjadi', chinese: '叶绿体 — 植物细胞中进行光合作用的部分' },
+  'glucose': { en: 'A simple sugar plants make in photosynthesis; food for the plant.', roman: 'glucose — woh cheeni jo poday photosynthesis mein banate hain', urdu: 'گلوکوز — وہ چینی جو پودے ضیائی تالیف میں بناتے ہیں', hindi: 'ग्लूकोज़ — वह साधारण चीनी जो पौधे प्रकाश संश्लेषण में बनाते हैं; पौधे का भोजन', bengali: 'গ্লুকোজ — সালোকসংশ্লেষণে উদ্ভিদের তৈরি সরল শর্করা; উদ্ভিদের খাবার', arabic: 'الغلوكوز — سكر بسيط تصنعه النباتات في التمثيل الضوئي؛ غذاء النبات', spanish: 'glucosa — un azúcar simple que las plantas elaboran en la fotosíntesis; alimento para la planta', french: 'glucose — un sucre simple que les plantes fabriquent lors de la photosynthèse ; nourriture pour la plante', portuguese: 'glicose — um açúcar simples que as plantas produzem na fotossíntese; alimento para a planta', german: 'Glukose — ein einfacher Zucker, den Pflanzen bei der Photosynthese herstellen; Nahrung für die Pflanze', turkish: 'glikoz — bitkilerin fotosentezde ürettiği basit şeker; bitkinin besini', indonesian: 'glukosa — gula sederhana yang dibuat tumbuhan dalam fotosintesis; makanan bagi tumbuhan', chinese: '葡萄糖 — 植物在光合作用中制造的简单糖分，是植物的养分' },
+  'oxygen': { en: 'A gas released by plants in photosynthesis; the gas we breathe in.', roman: 'oxygen — woh gas jo poday chorte hain, aur hum saans mein lete hain', urdu: 'آکسیجن — وہ گیس جو پودے چھوڑتے ہیں، اور ہم سانس میں لیتے ہیں', hindi: 'ऑक्सीजन — वह गैस जो पौधे प्रकाश संश्लेषण में छोड़ते हैं; वही गैस जो हम साँस में लेते हैं', bengali: 'অক্সিজেন — সালোকসংশ্লেষণে উদ্ভিদের ছাড়া গ্যাস; যে গ্যাস আমরা শ্বাসে নিই', arabic: 'الأكسجين — غاز تطلقه النباتات في التمثيل الضوئي؛ الغاز الذي نتنفسه', spanish: 'oxígeno — un gas que las plantas liberan en la fotosíntesis; el gas que respiramos', french: 'oxygène — un gaz libéré par les plantes lors de la photosynthèse ; le gaz que nous respirons', portuguese: 'oxigênio — um gás liberado pelas plantas na fotossíntese; o gás que respiramos', german: 'Sauerstoff — ein Gas, das Pflanzen bei der Photosynthese abgeben; das Gas, das wir einatmen', turkish: 'oksijen — bitkilerin fotosentezde saldığı gaz; soluduğumuz gaz', indonesian: 'oksigen — gas yang dilepas tumbuhan dalam fotosintesis; gas yang kita hirup', chinese: '氧气 — 植物在光合作用中释放的气体，也是我们吸入的气体' },
+  'carbon dioxide': { en: 'A gas in the air that plants take in for photosynthesis.', roman: 'carbon dioxide — hawa ki woh gas jo poday photosynthesis ke liye lete hain', urdu: 'کاربن ڈائی آکسائیڈ — ہوا کی وہ گیس جو پودے ضیائی تالیف کے لیے لیتے ہیں', hindi: 'कार्बन डाइऑक्साइड — हवा की वह गैस जो पौधे प्रकाश संश्लेषण के लिए लेते हैं', bengali: 'কার্বন ডাই-অক্সাইড — বাতাসের সেই গ্যাস যা উদ্ভিদ সালোকসংশ্লেষণের জন্য নেয়', arabic: 'ثاني أكسيد الكربون — غاز في الهواء تأخذه النباتات للتمثيل الضوئي', spanish: 'dióxido de carbono — un gas del aire que las plantas toman para la fotosíntesis', french: 'dioxyde de carbone — un gaz de l’air que les plantes absorbent pour la photosynthèse', portuguese: 'dióxido de carbono — um gás do ar que as plantas absorvem para a fotossíntese', german: 'Kohlenstoffdioxid — ein Gas aus der Luft, das Pflanzen für die Photosynthese aufnehmen', turkish: 'karbondioksit — bitkilerin fotosentez için havadan aldığı gaz', indonesian: 'karbon dioksida — gas di udara yang diserap tumbuhan untuk fotosintesis', chinese: '二氧化碳 — 空气中供植物光合作用吸收的气体' },
+  'water': { en: 'The liquid plants take from the soil for photosynthesis.', roman: 'paani — woh liquid jo poday mitti se lete hain', urdu: 'پانی — وہ مائع جو پودے مٹی سے لیتے ہیں', hindi: 'पानी — वह तरल जो पौधे मिट्टी से प्रकाश संश्लेषण के लिए लेते हैं', bengali: 'পানি — সেই তরল যা উদ্ভিদ মাটি থেকে সালোকসংশ্লেষণের জন্য নেয়', arabic: 'الماء — السائل الذي تأخذه النباتات من التربة للتمثيل الضوئي', spanish: 'agua — el líquido que las plantas toman del suelo para la fotosíntesis', french: 'eau — le liquide que les plantes prennent dans le sol pour la photosynthèse', portuguese: 'água — o líquido que as plantas retiram do solo para a fotossíntese', german: 'Wasser — die Flüssigkeit, die Pflanzen aus dem Boden für die Photosynthese aufnehmen', turkish: 'su — bitkilerin fotosentez için topraktan aldığı sıvı', indonesian: 'air — cairan yang diserap tumbuhan dari tanah untuk fotosintesis', chinese: '水 — 植物从土壤中吸收用于光合作用的液体' },
+  'sunlight': { en: 'Light from the sun; the energy source for photosynthesis.', roman: 'suraj ki roshni — photosynthesis ke liye tawanai ka zariya', urdu: 'سورج کی روشنی — ضیائی تالیف کے لیے توانائی کا ذریعہ', hindi: 'सूरज की रोशनी — सूर्य का प्रकाश; प्रकाश संश्लेषण के लिए ऊर्जा का स्रोत', bengali: 'সূর্যের আলো — সূর্য থেকে আসা আলো; সালোকসংশ্লেষণের শক্তির উৎস', arabic: 'ضوء الشمس — ضوء يأتي من الشمس؛ مصدر الطاقة للتمثيل الضوئي', spanish: 'luz solar — la luz del sol; la fuente de energía de la fotosíntesis', french: 'lumière du soleil — la lumière venant du soleil ; la source d’énergie de la photosynthèse', portuguese: 'luz solar — a luz do sol; a fonte de energia da fotossíntese', german: 'Sonnenlicht — Licht von der Sonne; die Energiequelle der Photosynthese', turkish: 'güneş ışığı — güneşten gelen ışık; fotosentezin enerji kaynağı', indonesian: 'sinar matahari — cahaya dari matahari; sumber energi untuk fotosintesis', chinese: '阳光 — 来自太阳的光，是光合作用的能量来源' },
+  'light': { en: 'The part of the sun’s energy that plants and eyes can use.', roman: 'roshni — suraj ki tawanai', urdu: 'روشنی — سورج کی توانائی', hindi: 'रोशनी — सूर्य की ऊर्जा का वह हिस्सा जिसका उपयोग पौधे और आँखें कर सकते हैं', bengali: 'আলো — সূর্যের শক্তির সেই অংশ যা উদ্ভিদ ও চোখ ব্যবহার করতে পারে', arabic: 'الضوء — جزء طاقة الشمس الذي يمكن للنباتات والعيون استخدامه', spanish: 'luz — la parte de la energía del sol que las plantas y los ojos pueden usar', french: 'lumière — la partie de l’énergie du soleil que les plantes et les yeux peuvent utiliser', portuguese: 'luz — a parte da energia do sol que as plantas e os olhos podem usar', german: 'Licht — der Teil der Sonnenenergie, den Pflanzen und Augen nutzen können', turkish: 'ışık — güneş enerjisinin bitkilerin ve gözlerin kullanabildiği kısmı', indonesian: 'cahaya — bagian energi matahari yang dapat digunakan tumbuhan dan mata', chinese: '光 — 植物和眼睛可以利用的那部分太阳能' },
+  'plant': { en: 'A living thing that grows in soil and can make its own food.', roman: 'poda — zinda cheez jo mitti mein ugta hai', urdu: 'پودا — زندہ چیز جو مٹی میں اگتا ہے', hindi: 'पौधा — जीवित चीज़ जो मिट्टी में उगती है और अपना भोजन खुद बना सकती है', bengali: 'উদ্ভিদ — জীবন্ত জিনিস যা মাটিতে জন্মায় এবং নিজের খাবার নিজে তৈরি করতে পারে', arabic: 'النبات — كائن حي ينمو في التربة ويمكنه صنع غذائه بنفسه', spanish: 'planta — un ser vivo que crece en el suelo y puede elaborar su propio alimento', french: 'plante — un être vivant qui pousse dans le sol et peut fabriquer sa propre nourriture', portuguese: 'planta — um ser vivo que cresce no solo e pode produzir seu próprio alimento', german: 'Pflanze — ein Lebewesen, das im Boden wächst und seine Nahrung selbst herstellen kann', turkish: 'bitki — toprakta büyüyen ve kendi besinini üretebilen canlı', indonesian: 'tumbuhan — makhluk hidup yang tumbuh di tanah dan dapat membuat makanannya sendiri', chinese: '植物 — 生长在土壤中、能自己制造养分的生物' },
+  'stomata': { en: 'Tiny pores in a leaf that let gases in and out.', roman: 'stomata — patte ke chote surakh jin se gas andar bahar jati hai', urdu: 'سٹومیٹا — پتے کے چھوٹے سوراخ جن سے گیس اندر باہر جاتی ہے', hindi: 'रंध्र — पत्ते के छोटे छिद्र जिनसे गैस अंदर-बाहर जाती है', bengali: 'পত্ররন্ধ্র — পাতার ছোট ছিদ্র যা দিয়ে গ্যাস ভেতরে-বাইরে যায়', arabic: 'الثغور — مسام صغيرة في الورقة تسمح بدخول الغازات وخروجها', spanish: 'estomas — poros diminutos de una hoja que dejan entrar y salir gases', french: 'stomates — de minuscules pores d’une feuille qui laissent entrer et sortir les gaz', portuguese: 'estômatos — poros minúsculos de uma folha que deixam os gases entrar e sair', german: 'Stomata — winzige Poren in einem Blatt, durch die Gase ein- und austreten', turkish: 'stoma — yapraktaki gazların girip çıkmasını sağlayan minik gözenekler', indonesian: 'stomata — pori-pori kecil pada daun yang membiarkan gas masuk dan keluar', chinese: '气孔 — 叶片上让气体进出的微小孔' },
+  'temperature': { en: 'How hot or cold something is.', roman: 'darja hararat — kisi cheez ka garam ya thanda hona', urdu: 'درجہ حرارت — کسی چیز کا گرم یا ٹھنڈا ہونا', hindi: 'तापमान — कोई चीज़ कितनी गर्म या ठंडी है', bengali: 'তাপমাত্রা — কোনো জিনিস কতটা গরম বা ঠান্ডা', arabic: 'درجة الحرارة — مدى سخونة شيء ما أو برودته', spanish: 'temperatura — qué tan caliente o fría está una cosa', french: 'température — le degré de chaleur ou de froid d’une chose', portuguese: 'temperatura — o quão quente ou fria uma coisa está', german: 'Temperatur — wie heiß oder kalt etwas ist', turkish: 'sıcaklık — bir şeyin ne kadar sıcak veya soğuk olduğu', indonesian: 'suhu — seberapa panas atau dinginnya sesuatu', chinese: '温度 — 某物有多热或多冷' },
+  'wire': { en: 'A thin metal thread that carries current.', roman: 'taar — patli dhaat jo current le jati hai', urdu: 'تار — پتلی دھات جو کرنٹ لے جاتی ہے', hindi: 'तार — पतली धातु जो धारा ले जाती है', bengali: 'তার — পাতলা ধাতু যা বিদ্যুৎ বহন করে', arabic: 'السلك — خيط معدني رفيع يحمل التيار', spanish: 'cable — un hilo fino de metal que transporta la corriente', french: 'fil — un fin fil de métal qui transporte le courant', portuguese: 'fio — um fio fino de metal que transporta a corrente', german: 'Draht — ein dünner Metallfaden, der Strom leitet', turkish: 'tel — akımı taşıyan ince metal iplik', indonesian: 'kawat — benang logam tipis yang membawa arus', chinese: '导线 — 传导电流的细金属线' },
+  'object': { en: 'A thing that a force can act on.', roman: 'cheez / jism — woh cheez jis par quwwat lag sakti hai', urdu: 'چیز / جسم — وہ چیز جس پر قوت لگ سکتی ہے', hindi: 'वस्तु — वह चीज़ जिस पर बल लग सकता है', bengali: 'বস্তু — সেই জিনিস যার ওপর বল কাজ করতে পারে', arabic: 'الجسم — شيء يمكن أن تؤثر عليه قوة', spanish: 'objeto — una cosa sobre la que puede actuar una fuerza', french: 'objet — une chose sur laquelle une force peut agir', portuguese: 'objeto — uma coisa sobre a qual uma força pode agir', german: 'Objekt — ein Ding, auf das eine Kraft wirken kann', turkish: 'cisim — üzerine kuvvet etki edebilen şey', indonesian: 'benda — sesuatu yang dapat dikenai gaya', chinese: '物体 — 可以受力作用的东西' },
+  'trolley': { en: 'A small wheeled cart used in the example.', roman: 'trolley — misaal mein choti pahiyon wali gari', urdu: 'ٹرالی — مثال میں چھوٹی پہیوں والی گاڑی', hindi: 'ट्रॉली — उदाहरण में इस्तेमाल होने वाली छोटी पहियों वाली गाड़ी', bengali: 'ট্রলি — উদাহরণে ব্যবহৃত ছোট চাকার গাড়ি', arabic: 'العربة — عربة صغيرة ذات عجلات تُستخدم في المثال', spanish: 'carrito — un pequeño carro con ruedas usado en el ejemplo', french: 'chariot — un petit chariot à roues utilisé dans l’exemple', portuguese: 'carrinho — um pequeno carrinho com rodas usado no exemplo', german: 'Wagen — ein kleiner Wagen mit Rädern, der im Beispiel verwendet wird', turkish: 'araba — örnekte kullanılan tekerlekli küçük araba', indonesian: 'troli — kereta kecil beroda yang digunakan dalam contoh', chinese: '小车 — 例子中使用的小轮车' },
+  'law': { en: 'A rule that describes how nature behaves, tested many times.', roman: 'qanoon — qudrat ka woh usool jo baar baar aazmaya gaya ho', urdu: 'قانون — قدرت کا وہ اصول جو بار بار آزمایا گیا ہو', hindi: 'नियम — वह सिद्धांत जो बताता है कि प्रकृति कैसे व्यवहार करती है, कई बार परखा गया', bengali: 'সূত্র — যে নিয়ম বলে প্রকৃতি কীভাবে আচরণ করে, বহুবার পরীক্ষিত', arabic: 'القانون — قاعدة تصف سلوك الطبيعة، وقد اختُبرت مرات عديدة', spanish: 'ley — una regla que describe cómo se comporta la naturaleza, comprobada muchas veces', french: 'loi — une règle qui décrit le comportement de la nature, vérifiée de nombreuses fois', portuguese: 'lei — uma regra que descreve como a natureza se comporta, testada muitas vezes', german: 'Gesetz — eine Regel, die beschreibt, wie sich die Natur verhält, vielfach geprüft', turkish: 'yasa — doğanın nasıl davrandığını açıklayan, birçok kez test edilmiş kural', indonesian: 'hukum — aturan yang menjelaskan cara alam berperilaku, telah diuji berkali-kali', chinese: '定律 — 描述自然规律、经过多次检验的规则' },
+  'newton': { en: 'The unit of force.', roman: 'newton — quwwat ki unit', urdu: 'نیوٹن — قوت کی اکائی', hindi: 'न्यूटन — बल की इकाई', bengali: 'নিউটন — বলের একক', arabic: 'النيوتن — وحدة القوة', spanish: 'newton — la unidad de fuerza', french: 'newton — l’unité de force', portuguese: 'newton — a unidade de força', german: 'Newton — die Einheit der Kraft', turkish: 'newton — kuvvet birimi', indonesian: 'newton — satuan gaya', chinese: '牛顿 — 力的单位' },
+  'newtons': { en: 'The unit of force.', roman: 'newton — quwwat ki unit', urdu: 'نیوٹن — قوت کی اکائی', hindi: 'न्यूटन — बल की इकाई', bengali: 'নিউটন — বলের একক', arabic: 'النيوتن — وحدة القوة', spanish: 'newtons — la unidad de fuerza', french: 'newtons — l’unité de force', portuguese: 'newtons — a unidade de força', german: 'Newton — die Einheit der Kraft', turkish: 'newton — kuvvet birimi', indonesian: 'newton — satuan gaya', chinese: '牛顿 — 力的单位' },
+  'food': { en: 'What a plant makes for itself to grow.', roman: 'khana — jo poda apne liye banata hai', urdu: 'خوراک — جو پودا اپنے لیے بناتا ہے', hindi: 'भोजन — जो पौधा अपने बढ़ने के लिए खुद बनाता है', bengali: 'খাবার — উদ্ভিদ যা নিজের বৃদ্ধির জন্য নিজে তৈরি করে', arabic: 'الغذاء — ما يصنعه النبات لنفسه لينمو', spanish: 'alimento — lo que una planta elabora para sí misma para crecer', french: 'nourriture — ce qu’une plante fabrique pour elle-même afin de grandir', portuguese: 'alimento — o que uma planta produz para si mesma para crescer', german: 'Nahrung — was eine Pflanze für sich selbst zum Wachsen herstellt', turkish: 'besin — bitkinin büyümesi için kendisi ürettiği şey', indonesian: 'makanan — apa yang dibuat tumbuhan untuk dirinya sendiri agar tumbuh', chinese: '养分 — 植物为生长而自己制造的东西' },
+  'growth': { en: 'Getting bigger; what glucose is used for.', roman: 'barhna — glucose isi kaam aata hai', urdu: 'بڑھنا — گلوکوز اسی کام آتا ہے', hindi: 'वृद्धि — बड़ा होना; ग्लूकोज़ इसी काम आता है', bengali: 'বৃদ্ধি — বড় হওয়া; গ্লুকোজ এই কাজে ব্যবহৃত হয়', arabic: 'النمو — أن يكبر الشيء؛ الغلوكوز يُستخدم لهذا الغرض', spanish: 'crecimiento — hacerse más grande; para eso se usa la glucosa', french: 'croissance — le fait de grandir ; c’est à cela que sert le glucose', portuguese: 'crescimento — ficar maior; é para isso que serve a glicose', german: 'Wachstum — größer werden; dafür wird Glukose verwendet', turkish: 'büyüme — büyümek; glikoz bunun için kullanılır', indonesian: 'pertumbuhan — menjadi lebih besar; glukosa digunakan untuk itu', chinese: '生长 — 变大；葡萄糖就是用于此' },
+  'starch': { en: 'Stored food in a plant.', roman: 'starch — poday mein mehfooz khana', urdu: 'نشاستہ — پودے میں محفوظ خوراک', hindi: 'स्टार्च — पौधे में संचित भोजन', bengali: 'শ্বেতসার — উদ্ভিদে সঞ্চিত খাবার', arabic: 'النشا — غذاء مخزّن في النبات', spanish: 'almidón — alimento almacenado en una planta', french: 'amidon — la nourriture stockée dans une plante', portuguese: 'amido — alimento armazenado em uma planta', german: 'Stärke — gespeicherte Nahrung in einer Pflanze', turkish: 'nişasta — bitkide depolanan besin', indonesian: 'pati — makanan yang disimpan dalam tumbuhan', chinese: '淀粉 — 储存在植物体内的养分' },
+  'reaction': { en: 'A change in which substances turn into other substances.', roman: 'reaction — tabdeeli jis mein ek cheez doosri ban jati hai', urdu: 'تعامل — تبدیلی جس میں ایک چیز دوسری بن جاتی ہے', hindi: 'अभिक्रिया — वह बदलाव जिसमें एक पदार्थ दूसरे पदार्थ में बदल जाता है', bengali: 'বিক্রিয়া — পরিবর্তন যাতে এক পদার্থ অন্য পদার্থে পরিণত হয়', arabic: 'التفاعل — تغيّر تتحول فيه مادة إلى مادة أخرى', spanish: 'reacción — un cambio en el que unas sustancias se transforman en otras', french: 'réaction — un changement dans lequel des substances se transforment en d’autres', portuguese: 'reação — uma mudança na qual substâncias se transformam em outras', german: 'Reaktion — eine Veränderung, bei der Stoffe in andere Stoffe übergehen', turkish: 'tepkime — maddelerin başka maddelere dönüştüğü değişim', indonesian: 'reaksi — perubahan ketika suatu zat berubah menjadi zat lain', chinese: '反应 — 物质转变为其他物质的变化' },
 };
 
 // ---------------------------------------------------------------------------
@@ -110,20 +237,21 @@ export function validateInput(rawText, level, language) {
   if (text.length > MAX_CHARS) {
     return { ok: false, code: 'too_long', message: `Too long: ${text.length} characters. Keep it under ${MAX_CHARS} characters — cut it to one paragraph.` };
   }
-  // T5: a passage mostly in Urdu script is rejected with a clear message,
-  // never crashed on. Samajh explains English STEM paragraphs; the Urdu
-  // choice is for the glossary and quiz wording, not for the input text.
-  // A few Urdu words in an otherwise English paragraph are fine.
-  const urduChars = (text.match(/[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/g) || []).length;
+  // A passage mostly in a non-Latin script (e.g. Urdu or Arabic) is
+  // rejected with a clear message, never crashed on. Samajh explains
+  // English STEM paragraphs; the language choice is for the glossary and
+  // quiz wording, not for the input text. A few non-Latin words in an
+  // otherwise English paragraph are fine.
+  const nonLatinChars = (text.match(/[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/g) || []).length;
   const letters = (text.match(/[A-Za-z\u0600-\u06FF\u0750-\u077F]/g) || []).length;
-  if (letters > 0 && urduChars / letters > 0.5) {
-    return { ok: false, code: 'urdu_script', message: 'This passage is written in Urdu script. Samajh explains English STEM paragraphs — paste the English paragraph, then choose Roman Urdu or Urdu script for the terms and quiz.' };
+  if (letters > 0 && nonLatinChars / letters > 0.5) {
+    return { ok: false, code: 'non_latin_script', message: 'This passage is not written in English. Samajh explains English STEM paragraphs — paste the English paragraph, then choose your language for the terms and quiz.' };
   }
   if (!['class9', 'intermediate', 'university'].includes(level)) {
     return { ok: false, code: 'bad_level', message: 'Pick a level: Class 9–10, Intermediate or University.' };
   }
-  if (!['english', 'roman', 'urdu'].includes(language)) {
-    return { ok: false, code: 'bad_language', message: 'Pick a language: Simple English, Roman Urdu or Urdu script.' };
+  if (!Object.keys(LANGUAGES).includes(language)) {
+    return { ok: false, code: 'bad_language', message: `Pick a language — ${Object.values(LANGUAGES).map((l) => l.label).join(', ')}.` };
   }
   const lower = text.toLowerCase();
   const foundKeywords = STEM_KEYWORDS.filter((k) => lower.includes(k));
@@ -213,9 +341,9 @@ export function resetDeck(deck) {
   return deck;
 }
 
-export function deckProgress(deck) {
+export function deckProgress(deck, language = 'english') {
   if (!deck || !deck.terms.length) return 'No terms found.';
-  return `Know ${deck.known.size} of ${deck.terms.length} · Card ${deck.index + 1} of ${deck.terms.length} · session only`;
+  return languageMeta(language).deck(deck.known.size, deck.terms.length, deck.index + 1);
 }
 
 // ---------------------------------------------------------------------------
@@ -322,12 +450,19 @@ export function extractKeyTerms(passage, sentences) {
     const display = idx >= 0 ? passage.slice(idx, idx + c.term.length) : c.term;
     const firstSentence = sentences.find((s) => s.toLowerCase().includes(c.term.toLowerCase())) || sentences[0] || '';
     const seed = seedFor(c.term.toLowerCase());
+    // Local meanings for every language in the seed; a language with no
+    // seed entry shows the English meaning only (never a guessed
+    // translation). meaning_roman / meaning_urdu are kept so existing
+    // callers and tests keep working.
+    const meanings = {};
+    if (seed) for (const code of Object.keys(LANGUAGES)) meanings[code] = code === 'english' ? seed.en : (seed[code] || null);
     terms.push({
       term: display,
       lower: c.term.toLowerCase(),
       meaning_en: seed ? seed.en : `Used in the passage: “${firstSentence}”`,
       meaning_roman: seed ? seed.roman : null,
       meaning_urdu: seed ? seed.urdu : null,
+      meanings,
       firstSentence,
     });
     if (terms.length >= 8) break;
@@ -471,14 +606,9 @@ function buildQuiz(passage, sentences, keyTerms, language) {
       const answerIndex = allOptions.findIndex((o) => o.toLowerCase() === correctAnswer.toLowerCase());
       if (answerIndex < 0) continue;
 
-      const question =
-        language === 'roman' ? `Khaali jagah bharein: “${cloze}”`
-        : language === 'urdu' ? `خالی جگہ بھریں: “${cloze}”`
-        : `Fill in the blank: “${cloze}”`;
-      const reason =
-        language === 'roman' ? `Passage mein khaali jagah par “${correctAnswer}” hai.`
-        : language === 'urdu' ? `عبارت میں خالی جگہ پر “${correctAnswer}” ہے۔`
-        : `The passage says the missing word is “${correctAnswer}”.`;
+      const meta = languageMeta(language);
+      const question = meta.question(cloze);
+      const reason = meta.reason(correctAnswer);
 
       items.push({
         question,
@@ -521,7 +651,7 @@ export function buildStudySheet(result, passage, level, language) {
     '## Key terms',
     '',
     ...result.keyTerms.map((t) => {
-      const local = language === 'urdu' ? t.meaning_urdu : language === 'roman' ? t.meaning_roman : null;
+      const local = t.meanings ? t.meanings[language] : (language === 'urdu' ? t.meaning_urdu : language === 'roman' ? t.meaning_roman : null);
       return `- **${t.term}** — ${t.meaning_en}${local ? ` / ${local}` : ''}`;
     }),
     '',
@@ -563,9 +693,7 @@ export function getProviderInfo() {
 }
 
 function aiLanguageInstruction(language) {
-  if (language === 'roman') return 'Write the explanation and takeaway in Roman Urdu (Urdu written in Latin letters, as Pakistani students speak it). Keep STEM terms in English where students normally say them in English (current, voltage, resistance).';
-  if (language === 'urdu') return 'Write the explanation and takeaway in Urdu script (Nastaliq). Keep STEM terms in English where students normally say them in English.';
-  return 'Write the explanation and takeaway in simple English, short sentences, Class 9 level.';
+  return languageMeta(language).ai;
 }
 
 export function buildAiPrompt(passage, level, language) {

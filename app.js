@@ -1,4 +1,4 @@
-import { validateInput, runPipeline, buildStudySheet, normalise, splitSentences, numberWarningText, scoreQuiz, createFlashcardDeck, resetDeck, deckProgress } from './samajh.js';
+import { validateInput, runPipeline, buildStudySheet, normalise, splitSentences, numberWarningText, scoreQuiz, createFlashcardDeck, resetDeck, deckProgress, languageMeta, explainIntro } from './samajh.js';
 
 // Fallback copies of the samples, used only if fetch() cannot read the
 // samples/ files (e.g. when index.html is opened directly from disk).
@@ -105,11 +105,11 @@ function render(result, mode, reason) {
     + (result.mode === 'ai' ? ' Quiz and glossary are still checked offline against your passage.' : '');
 
   const lang = result.language;
-  $('explain-intro').textContent =
-    lang === 'roman' ? 'Seedha matlab yeh hai:'
-    : lang === 'urdu' ? 'سادہ مطلب یہ ہے:' : 'In simple words:';
-  if (lang === 'urdu') { $('explain-intro').setAttribute('dir', 'rtl'); $('explain-intro').setAttribute('lang', 'ur'); }
-  else { $('explain-intro').removeAttribute('dir'); $('explain-intro').removeAttribute('lang'); }
+  const meta = languageMeta(lang);
+  const introEl = $('explain-intro');
+  introEl.textContent = explainIntro(lang);
+  if (meta.dir === 'rtl') { introEl.setAttribute('dir', 'rtl'); introEl.setAttribute('lang', meta.lang); }
+  else { introEl.removeAttribute('dir'); introEl.removeAttribute('lang'); }
 
   $('takeaway').textContent = result.oneLine;
   $('explanation').innerHTML = result.explanationSentences
@@ -140,9 +140,18 @@ function render(result, mode, reason) {
 }
 
 function localMeaning(term, language) {
+  if (term.meanings) return term.meanings[language] || null;
   if (language === 'roman') return term.meaning_roman;
   if (language === 'urdu') return term.meaning_urdu;
   return null;
+}
+
+function localAttrs(language) {
+  // dir + lang for the local-meaning text, so RTL languages (Urdu, Arabic)
+  // lay out correctly and non-Latin scripts get the right font.
+  const meta = languageMeta(language);
+  if (language === 'english') return '';
+  return meta.dir === 'rtl' ? ` dir="rtl" lang="${meta.lang}"` : ` lang="${meta.lang}"`;
 }
 
 function renderGlossary(result) {
@@ -150,7 +159,7 @@ function renderGlossary(result) {
   $('glossary').innerHTML = result.keyTerms.map((t) => {
     const local = localMeaning(t, lang);
     const localHtml = local
-      ? `<p${lang === 'urdu' ? ' dir="rtl" lang="ur" class="urdu"' : ''}>${escapeHtml(local)}</p>`
+      ? `<p${localAttrs(lang)}${lang === 'urdu' ? ' class="urdu"' : ''}>${escapeHtml(local)}</p>`
       : '<p class="muted">English meaning only — this term is not in the checked glossary, so no translation is guessed.</p>';
     return `<article><h3>${escapeHtml(t.term)}</h3><p>${escapeHtml(t.meaning_en)}</p>${localHtml}</article>`;
   }).join('');
@@ -259,10 +268,14 @@ function renderCard() {
   $('card-front').textContent = t.term;
   $('card-back').textContent = t.meaning_en;
   const local = localMeaning(t, current.language);
-  $('card-back-local').textContent = local || '';
-  $('card-back-local').className = current.language === 'urdu' ? 'urdu' : 'muted';
-  if (current.language === 'urdu') { $('card-back-local').setAttribute('dir', 'rtl'); $('card-back-local').setAttribute('lang', 'ur'); }
-  $('card-progress').textContent = deckProgress(deck);
+  const backLocal = $('card-back-local');
+  backLocal.textContent = local || '';
+  backLocal.className = current.language === 'urdu' ? 'urdu' : 'muted';
+  const meta = languageMeta(current.language);
+  if (meta.dir === 'rtl') { backLocal.setAttribute('dir', 'rtl'); backLocal.setAttribute('lang', meta.lang); }
+  else if (current.language !== 'english') { backLocal.setAttribute('lang', meta.lang); backLocal.removeAttribute('dir'); }
+  else { backLocal.removeAttribute('dir'); backLocal.removeAttribute('lang'); }
+  $('card-progress').textContent = deckProgress(deck, current.language);
 }
 $('flashcard').addEventListener('click', () => {
   cardFlipped = !cardFlipped;

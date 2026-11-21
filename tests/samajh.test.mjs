@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path';
 import {
   validateInput, normalise, checkEvidence, offlineEngine, runPipeline,
   getProviderInfo, callProvider, aiEngine, parseAiResponse, buildAiPrompt,
-  buildStudySheet, extractKeyTerms,
+  buildStudySheet, extractKeyTerms, LANGUAGES, GLOSSARY_SEED, languageMeta, explainIntro,
   splitSentences, checkNumbers, numberWarningText, scoreQuiz,
   createFlashcardDeck, resetDeck, deckProgress, MIN_CHARS, MAX_CHARS,
 } from '../samajh.js';
@@ -220,17 +220,17 @@ test('number_warning: real offline results never trigger it (extractive)', () =>
   }
 });
 
-// --- T5: Urdu-script passage ------------------------------------------------
-test('T5 urdu_script: a passage mostly in Urdu script is rejected, never crashes', () => {
+// --- T5: non-Latin-script passage -------------------------------------------
+test('T5 non_latin_script: a passage mostly in Urdu script is rejected, never crashes', () => {
   const urduPassage = 'اوہم کا قانون بتاتا ہے کہ کرنٹ، وولٹیج اور مزاحمت کا آپس میں کیا تعلق ہے۔ اگر تار کا درجہ حرارت مستقل رہے تو کرنٹ وولٹیج کے راست متناسب ہوتا ہے۔ اس تعلق کو V = I × R لکھا جاتا ہے۔';
   const r = validateInput(urduPassage, 'class9', 'urdu');
   assert.equal(r.ok, false);
-  assert.equal(r.code, 'urdu_script');
-  assert.ok(r.message.includes('Urdu script'));
+  assert.equal(r.code, 'non_latin_script');
+  assert.ok(r.message.includes('not written in English'));
   // And the engine rejects it with the same clear message, not a crash.
-  assert.throws(() => offlineEngine(urduPassage, 'class9', 'urdu'), /Urdu script/);
+  assert.throws(() => offlineEngine(urduPassage, 'class9', 'urdu'), /not written in English/);
 });
-test('T5 urdu_script: a few Urdu words in an English passage are fine', () => {
+test('T5 non_latin_script: a few Urdu words in an English passage are fine', () => {
   const mixed = `${ohm} (Samajh: samajhna means to understand.)`;
   assert.equal(validateInput(mixed, 'class9', 'roman').ok, true);
 });
@@ -297,4 +297,91 @@ test('buildStudySheet: Urdu meanings in Urdu mode, Roman meanings in Roman mode'
   const resultEn = offlineEngine(ohm, 'class9', 'english');
   const mdEn = buildStudySheet(resultEn, ohm, 'class9', 'english');
   assert.ok(!mdEn.includes('barqi rau') && !mdEn.includes('برقی رو'), 'English sheet carries no local meanings');
+});
+
+// --- 13 languages (added 21 Nov 2026 — international use) -------------------
+test('languages: all 13 are registered with native names, direction and templates', () => {
+  const codes = Object.keys(LANGUAGES);
+  assert.equal(codes.length, 13);
+  for (const code of codes) {
+    const m = LANGUAGES[code];
+    assert.ok(m.label && m.native && m.lang, `${code} needs label/native/lang`);
+    assert.ok(['ltr', 'rtl'].includes(m.dir), `${code} needs a direction`);
+    assert.equal(typeof m.question, 'function');
+    assert.equal(typeof m.reason, 'function');
+    assert.equal(typeof m.deck, 'function');
+    assert.ok(m.intro && m.ai, `${code} needs intro + AI instruction`);
+  }
+  assert.equal(LANGUAGES.urdu.dir, 'rtl');
+  assert.equal(LANGUAGES.arabic.dir, 'rtl');
+  assert.equal(LANGUAGES.english.dir, 'ltr');
+  assert.equal(LANGUAGES.hindi.native, 'हिन्दी');
+  assert.equal(LANGUAGES.arabic.native, 'العربية');
+  assert.equal(LANGUAGES.chinese.native, '中文');
+});
+
+test('languages: every seed term has a meaning in every language (no gaps)', () => {
+  const codes = Object.keys(LANGUAGES);
+  for (const [term, entry] of Object.entries(GLOSSARY_SEED)) {
+    for (const code of codes) {
+      // English lives under the seed key "en"; every other language uses its own code.
+      const key = code === 'english' ? 'en' : code;
+      assert.ok(typeof entry[key] === 'string' && entry[key].length > 3,
+        `seed term "${term}" is missing a ${code} meaning`);
+    }
+  }
+});
+
+test('languages: validateInput accepts all 13, rejects a bogus one', () => {
+  for (const code of Object.keys(LANGUAGES)) {
+    assert.equal(validateInput(ohm, 'class9', code).ok, true, code);
+  }
+  assert.equal(validateInput(ohm, 'class9', 'klingon').ok, false);
+});
+
+test('languages: offline engine works in Spanish and Arabic — quiz and glossary localized', () => {
+  const es = offlineEngine(ohm, 'class9', 'spanish');
+  assert.equal(es.quiz.length, 5);
+  assert.ok(es.quiz[0].question.startsWith('Completa el espacio en blanco:'));
+  assert.ok(es.quiz[0].reason.includes('El pasaje dice que'));
+  assert.ok(es.quiz.every((q) => q.verified), 'evidence still verifies in Spanish mode');
+  const currentEs = es.keyTerms.find((t) => t.lower === 'current');
+  assert.ok(currentEs.meanings.spanish.includes('corriente'));
+  assert.ok(currentEs.meanings.spanish.length > 10);
+
+  const ar = offlineEngine(ohm, 'class9', 'arabic');
+  assert.equal(ar.quiz.length, 5);
+  assert.ok(ar.quiz[0].question.startsWith('املأ الفراغ:'));
+  assert.ok(ar.quiz.every((q) => q.verified), 'evidence still verifies in Arabic mode');
+  const currentAr = ar.keyTerms.find((t) => t.lower === 'current');
+  assert.ok(currentAr.meanings.arabic.includes('التيار'));
+  assert.equal(languageMeta('arabic').dir, 'rtl');
+});
+
+test('languages: explainIntro and deck progress are localized', () => {
+  assert.equal(explainIntro('spanish'), 'En palabras simples:');
+  assert.equal(explainIntro('arabic'), 'بكلمات بسيطة:');
+  assert.equal(explainIntro('chinese'), '简单来说：');
+  assert.equal(explainIntro('hindi'), 'सीधे शब्दों में:');
+  const deck = createFlashcardDeck([{ term: 'current' }, { term: 'voltage' }]);
+  assert.ok(deckProgress(deck, 'spanish').includes('Tarjeta 1 de 2'));
+  assert.ok(deckProgress(deck, 'arabic').includes('البطاقة 1 من 2'));
+  assert.ok(deckProgress(deck, 'english').includes('Card 1 of 2'));
+});
+
+test('languages: study sheet carries the chosen language meaning (Spanish, Chinese)', () => {
+  const es = offlineEngine(ohm, 'class9', 'spanish');
+  const mdEs = buildStudySheet(es, ohm, 'class9', 'spanish');
+  assert.ok(mdEs.includes('corriente'), 'Spanish sheet carries the Spanish meaning');
+  const zh = offlineEngine(ohm, 'class9', 'chinese');
+  const mdZh = buildStudySheet(zh, ohm, 'class9', 'chinese');
+  assert.ok(mdZh.includes('电流'), 'Chinese sheet carries the Chinese meaning');
+  assert.ok(!mdZh.includes('barqi rau'), 'Chinese sheet must not carry Roman meanings');
+});
+
+test('languages: AI prompt asks for the chosen language (Hindi, French)', () => {
+  const pHi = buildAiPrompt(ohm, 'class9', 'hindi');
+  assert.ok(pHi.user.includes('Hindi (Devanagari script)'));
+  const pFr = buildAiPrompt(ohm, 'class9', 'french');
+  assert.ok(pFr.user.includes('in French'));
 });

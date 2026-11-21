@@ -1,6 +1,6 @@
 /**
  * eval/run_eval.mjs — measure the offline engine, honestly.
- * Runs the 3 sample passages × 3 languages (9 runs), times each run,
+ * Runs the 3 sample passages × 13 languages (39 runs), times each run,
  * counts verified quiz items and explanations that changed a number or
  * formula. Quiz-answer correctness is NOT judged by this script: it dumps
  * every quiz item to eval/quiz_dump.md for a human to check, and the
@@ -12,12 +12,13 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { offlineEngine } from '../samajh.js';
+import { offlineEngine, LANGUAGES } from '../samajh.js';
 
 const dir = dirname(fileURLToPath(import.meta.url));
 const root = join(dir, '..');
 const samples = ['ohm', 'photosynthesis', 'newton2'];
-const languages = ['english', 'roman', 'urdu'];
+const languages = Object.keys(LANGUAGES);
+const runCount = samples.length * languages.length;
 
 function median(arr) {
   const s = [...arr].sort((a, b) => a - b);
@@ -25,7 +26,7 @@ function median(arr) {
 }
 
 const rows = [];
-const dump = ['# Samajh — quiz dump for manual correctness check', '', 'Every quiz item from the 9 evaluation runs. A human read each one and marked whether the correct option is the only sensible answer for the blank, given the evidence sentence.', ''];
+const dump = ['# Samajh — quiz dump for manual correctness check', '', `Every quiz item from the ${runCount} evaluation runs. The 45 unique items (3 samples × 5 questions × 3 original languages) were read by a human and marked whether the correct option is the only sensible answer for the blank, given the evidence sentence. The 10 added languages reuse the same items with localized question/reason wording only — options, answers and evidence are identical.`, ''];
 let totalItems = 0;
 let totalVerified = 0;
 let totalChanged = 0;
@@ -64,19 +65,25 @@ for (const sample of samples) {
 }
 
 const verifiedPct = ((totalVerified / totalItems) * 100).toFixed(1);
-// Keep a hand-written manual-correctness line across re-runs; a script
+// Keep the hand-written manual-correctness line across re-runs; a script
 // must never invent that number. If none exists yet, leave a placeholder.
 let manualLine = '- Quiz answers manually checked as correct: **not yet checked — read eval/quiz_dump.md and fill in by hand**';
+// Keep the hand-written AI-mode section across re-runs too: the offline
+// script must not wipe the live AI measurements.
+let aiSection = '';
 const resultsPath = join(dir, 'results.md');
 if (existsSync(resultsPath)) {
-  const prev = readFileSync(resultsPath, 'utf8').split('\n')
-    .find((l) => l.startsWith('- Quiz answers manually checked as correct:'));
-  if (prev && !prev.includes('not yet checked')) manualLine = prev;
+  const prev = readFileSync(resultsPath, 'utf8');
+  const prevManual = prev.split('\n').find((l) => l.startsWith('- Quiz answers manually checked as correct:'));
+  if (prevManual && !prevManual.includes('not yet checked')) manualLine = prevManual;
+  const aiStart = prev.indexOf('## AI mode');
+  const aiEnd = prev.indexOf('## What the numbers mean');
+  if (aiStart >= 0 && aiEnd > aiStart) aiSection = prev.slice(aiStart, aiEnd).trimEnd();
 }
 const table = [
   '# Samajh — evaluation results (measured 21 November 2026)',
   '',
-  'Offline engine only (PROVIDER=none). 3 sample passages × 3 languages = 9 runs. Each run timed 5 times; the median is shown.',
+  `Offline engine only (PROVIDER=none). 3 sample passages × ${languages.length} languages = ${runCount} runs. Each run timed 5 times; the median is shown.`,
   '',
   '| Sample | Language | Median time (ms) | Quiz items | Verified | Terms | Numbers changed |',
   '|---|---|---|---|---|---|---|',
@@ -86,11 +93,12 @@ const table = [
   '',
   `- Quiz items with evidence verified: **${totalVerified} of ${totalItems} (${verifiedPct}%)**`,
   manualLine,
-  `- Explanations that changed a number or formula: **${totalChanged} of 9 runs**`,
-  `- Median time to result (median of the 9 run-medians): **${median(allTimes).toFixed(2)} ms** (in-process engine time only; excludes the 400 ms skeleton pause in the UI)`,
+  `- Explanations that changed a number or formula: **${totalChanged} of ${runCount} runs**`,
+  `- Median time to result (median of the ${runCount} run-medians): **${median(allTimes).toFixed(2)} ms** (in-process engine time only; excludes the 400 ms skeleton pause in the UI)`,
   '- Student clarity rating (1–5): **not measured** (no student test was run before the deadline)',
-  '- AI mode: **not measured** (no AI provider is connected; PROVIDER=none)',
+  aiSection ? '- AI mode: **measured live — see the AI mode section below**' : '- AI mode: **not measured in this file** (see the live AI runs in docs/AI_LOG.md)',
   '',
+  ...(aiSection ? [aiSection, ''] : []),
   '## What the numbers mean',
   '',
   '- Evidence is verified by design in the offline engine: each quiz item blanks a word out of its own evidence sentence, so the sentence is always found in the passage. The check still runs on every item and would flag a fake sentence (see the unit tests).',
@@ -100,5 +108,5 @@ const table = [
 
 writeFileSync(join(dir, 'results.md'), table.join('\n'));
 writeFileSync(join(dir, 'quiz_dump.md'), dump.join('\n'));
-console.log(`runs: 9, quiz items: ${totalItems}, verified: ${totalVerified} (${verifiedPct}%), numbers changed: ${totalChanged}, median of medians: ${median(allTimes).toFixed(2)} ms`);
+console.log(`runs: ${runCount}, quiz items: ${totalItems}, verified: ${totalVerified} (${verifiedPct}%), numbers changed: ${totalChanged}, median of medians: ${median(allTimes).toFixed(2)} ms`);
 console.log('wrote eval/results.md and eval/quiz_dump.md');
